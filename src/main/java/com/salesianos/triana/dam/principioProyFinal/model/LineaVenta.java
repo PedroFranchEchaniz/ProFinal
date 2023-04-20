@@ -1,10 +1,11 @@
 package com.salesianos.triana.dam.principioProyFinal.model;
 
-import java.time.LocalDate;
-
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,11 +17,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Venta {
+public class LineaVenta {
 
 	@Id
 	@GeneratedValue
 	private Long id;
-	private LocalDate fecha;
+	private int cantidad;
+	private double pvp;
+	
+	@ManyToOne
+	@JoinColumn(foreignKey = @ForeignKey(name="fk_lieneaVenta_producto"))
+	private Producto producto;
 	
 }
