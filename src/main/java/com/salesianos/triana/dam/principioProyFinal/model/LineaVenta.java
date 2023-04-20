@@ -29,4 +29,7 @@ public class LineaVenta {
 	@JoinColumn(foreignKey = @ForeignKey(name="fk_lieneaVenta_producto"))
 	private Producto producto;
 	
+	@ManyToOne
+	@JoinColumn(foreignKey = @ForeignKey(name="fk_lineaVenta_venta"))
+	private Venta venta;
 }
