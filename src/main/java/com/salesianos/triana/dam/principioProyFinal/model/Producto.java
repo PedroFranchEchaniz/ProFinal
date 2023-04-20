@@ -30,17 +30,26 @@ public class Producto {
 	private Long id;
 	private String titulo;
 	private double precioUnidad;
-	private int stock;
+	private int stock;	
+
+	public Producto(Long id, String titulo, double precioUnidad, int stock) {
+		this.id = id;
+		this.titulo = titulo;
+		this.precioUnidad = precioUnidad;
+		this.stock = stock;
+	}
 	
 	@ManyToOne
 	@JoinColumn(foreignKey = @ForeignKey(name="fk_producto_editorial"))
-	private Editorial editorial;
+	private Editorial editorial;	
+	
 	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	@OneToMany(mappedBy="producto", fetch = FetchType.EAGER)
 	@Builder.Default
 	private List<Valoracion> valoraciones = new ArrayList<>();
+	
 	
 	public void addToEditorial(Editorial editorial) {
 		this.editorial=editorial;
