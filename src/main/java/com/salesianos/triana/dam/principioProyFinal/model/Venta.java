@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -35,4 +36,13 @@ public class Venta {
 	@Builder.Default
 	private List<Valoracion> valoraciones = new ArrayList<>();
 	
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	@Builder.Default
+	@OneToMany(
+			mappedBy = "venta", fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL,
+			orphanRemoval = true
+			)
+	private List<LineaVenta> lineaVenta = new ArrayList<>();
 }
