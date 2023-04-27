@@ -30,11 +30,7 @@ public class Venta {
 	private Long id;
 	private LocalDate fecha;
 	
-	@ToString.Exclude
-	@EqualsAndHashCode.Exclude
-	@OneToMany(mappedBy="venta", fetch = FetchType.EAGER)
-	@Builder.Default
-	private List<Valoracion> valoraciones = new ArrayList<>();
+	
 	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
