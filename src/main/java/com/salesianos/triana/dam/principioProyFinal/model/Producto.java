@@ -32,12 +32,6 @@ public class Producto {
 	private double precioUnidad;
 	private int stock;	
 
-	public Producto(Long id, String titulo, double precioUnidad, int stock) {
-		this.id = id;
-		this.titulo = titulo;
-		this.precioUnidad = precioUnidad;
-		this.stock = stock;
-	}
 	
 	@ManyToOne
 	@JoinColumn(foreignKey = @ForeignKey(name="fk_producto_editorial"))
@@ -60,4 +54,12 @@ public class Producto {
 		editorial.getProductos().remove(this);
 		this.editorial = null;
 	}
+	
+	public Producto(Long id, String titulo, double precioUnidad, int stock) {
+		this.id = id;
+		this.titulo = titulo;
+		this.precioUnidad = precioUnidad;
+		this.stock = stock;
+	}
+	
 }
