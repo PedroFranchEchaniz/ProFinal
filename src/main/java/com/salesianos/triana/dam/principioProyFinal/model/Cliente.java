@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,7 +31,8 @@ public class Cliente {
 	private Long id;
 	private String nombre;
 	private String apellidos;
-	private LocalDate fechaNacimineto;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate fechaNacimiento;
 	private String direccion;
 	private String ciudad;
 	private String cp;
