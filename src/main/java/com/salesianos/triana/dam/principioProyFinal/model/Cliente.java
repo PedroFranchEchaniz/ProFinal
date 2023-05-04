@@ -1,5 +1,6 @@
 package com.salesianos.triana.dam.principioProyFinal.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +29,13 @@ public class Cliente {
 	private Long id;
 	private String nombre;
 	private String apellidos;
-	private String nombreUsuario;
+	private LocalDate fechaNacimineto;
+	private String direccion;
+	private String ciudad;
+	private String cp;
+	private String provincia;
+	private String telefono;
+	private String dni;
 	private String contrasenia;
 	private String correoElectronico;
 	
