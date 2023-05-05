@@ -1205,3 +1205,7 @@ insert into cliente (id, apellidos, ciudad, contrasenia, correo_electronico, cp,
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
 	at com.salesianos.triana.dam.principioProyFinal.PrincipioProyFinalApplication.main(PrincipioProyFinalApplication.java:10)
+2023-05-05 10:04:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "ALTER SEQUENCE hibernate_sequence [*]QESTART WITH 1000"
+Syntax error in SQL statement "ALTER SEQUENCE hibernate_sequence [*]QESTART WITH 1000"; SQL statement:
+ALTER SEQUENCE hibernate_sequence QESTART WITH 1000 [42000-214]

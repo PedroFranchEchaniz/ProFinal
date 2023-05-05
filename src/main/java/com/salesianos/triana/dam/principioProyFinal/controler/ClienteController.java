@@ -16,7 +16,7 @@ public class ClienteController {
 	@Autowired
 	private ClienteServicio  clienteServicio;
 	
-	@GetMapping({"/listaClientes"})
+	@GetMapping({"/listaCliente"})
 	public String listarClientes(Model model) {
 		model.addAttribute("listaClientes", clienteServicio.findAll());
 		return "listaClientes";
@@ -31,6 +31,6 @@ public class ClienteController {
 	@PostMapping("/nuevo/submit")
 	public String procesarFormularioCliente(@ModelAttribute("cliente") Cliente c) {
 		clienteServicio.save(c);
-		return "redirect:/listaClientes";
+		return "redirect:/listaCliente";
 	}
 }
