@@ -8,6 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -24,25 +26,26 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Producto {
 	@Id
 	@GeneratedValue
-	private Long id;
-	private String titulo;
-	private double precioUnidad;
-	private int stock;	
+	protected Long id;
+	protected String titulo;
+	protected double precioUnidad;
+	protected int stock;	
 
 	
 	@ManyToOne
 	@JoinColumn(foreignKey = @ForeignKey(name="fk_producto_editorial"))
-	private Editorial editorial;	
+	protected Editorial editorial;	
 	
 	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	@OneToMany(mappedBy="producto", fetch = FetchType.EAGER)
 	@Builder.Default
-	private List<Valoracion> valoraciones = new ArrayList<>();
+	protected List<Valoracion> valoraciones = new ArrayList<>();
 	
 	
 	public void addToEditorial(Editorial editorial) {
