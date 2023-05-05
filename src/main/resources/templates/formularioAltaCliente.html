@@ -49,35 +49,36 @@
             <img class="rounded-circle" src="img/logoUsuario.png" alt="imagenUsuario" width="120px">
             <button type="button" class="btn btn-primary btn-sm"><i class="bi bi-card-image"></i></button>
         </div>    
-        <form class="contenedorform row bg-light" th:action="${cliente.id != 0} ? @{/editar/submit} : @{/nuevoCliente}" th:object="${cliente}">
-            <fieldset class="contenedorfildset row d-flex col-6">                
+        <form class="contenedorform row bg-light" th:action="${cliente.id != 0} ? @{/nuevo/submit} : @{/nuevo}" th:object="${cliente}" method="post">
+            <fieldset class="contenedorfildset row d-flex col-6">
+				       
                 <label class="col-3" for="nombre">Nombre*</label>
-                <input class="col-9" type="text" name="nombre" id="nombre" required autocomplete autofocus th:field="*{nombre}">
+                <input class="col-9" type="text" name="nombre" id="nombre" autocomplete autofocus th:field="${cliente.nombre}">
                 <label class="col-3"for="fechanacimiento">Fecha Nacimiento*</label>
-                <input class="col-3"type="date" name="fechanacimiento" id="fechanacimiento" required th:field="*{fechaNacimiento}">
+                <input class="col-3"type="date" name="fechanacimiento" id="fechanacimiento" th:field="${cliente.fechaNacimiento}">
                 <div class="col-6"></div>
                 <label class="col-3"for="ciudad">Ciudad*</label>
-                <input class="col-9"type="text" name="ciudad" id="ciudad" required th:field="*{ciudad}">
+                <input class="col-9"type="text" name="ciudad" id="ciudad"  th:field="${cliente.ciudad}">
                 <label class="col-3"for="provincia">Provincia*</label>
-                <input class="col-9"type="text" name="provincia" id="provincia" required th:field="*{provincia}"><br/>                
+                <input class="col-9"type="text" name="provincia" id="provincia" th:field="${cliente.provincia}"><br/>                
                 
                 <label class="col-3"for="telefono">Teléfono</label>
-                <input class="col-9"type="text" name="telefono" id="telefono" th:field="*{telefono}">
+                <input class="col-9"type="text" name="telefono" id="telefono" th:field="${cliente.telefono}">
                 <label class="col-3"for="contrasena">Contraseña*</label>
-                <input class="col-9"type="password" name="contrasena" id="contrasena" required th:field="*{contrasenia}">                
+                <input class="col-9"type="password" name="contrasena" id="contrasena"  th:field="${cliente.contrasenia}">                
             </fieldset>
             <fieldset class="contenedorfildset2 row d-flex col-6">                
                 <label class="col-3"for="apellido">Apellido*</label>
-                <input class="col-9" type="text" name="apellido" id="apellido" required th:field="*{apellidos}"><br/>
+                <input class="col-9" type="text" name="apellido" id="apellido"  th:field="${cliente.apellidos}"><br/>
                 <label class="col-3"for="direccion">Direccion*</label>
-                <input class="col-9"type="text" name="direccion" id="direccion" required th:field="*{direccion}"><br/>
+                <input class="col-9"type="text" name="direccion" id="direccion" th:field="${cliente.direccion}"><br/>
                 <label class="col-3"for="codigopostal">Código Postal*</label>
-                <input class="col-2"type="text" name="codigopostal" id="codigopostal" required th:field="*{cp}">
+                <input class="col-2"type="text" name="codigopostal" id="codigopostal" th:field="${cliente.cp}">
                 <div class="col-7"></div>
                 <label class="col-3"for="email">Email*</label>
-                <input class="col-9"type="email" name="email" id="email" required th:field="*{correoElectronico}"><br/>
+                <input class="col-9"type="email" name="email" id="email"  th:field="${cliente.correoElectronico}"><br/>
                 <label class="col-3"for="dni">DNI</label>
-                <input class="col-3"type="text" name="dni" id="dni" th:field="*{dni}"><br/> 
+                <input class="col-3"type="text" name="dni" id="dni" th:field="${cliente.dni}"><br/> 
                 <div class="col-6"></div>               
             </fieldset>
             <p>Los campos * son obligatorios</p>
