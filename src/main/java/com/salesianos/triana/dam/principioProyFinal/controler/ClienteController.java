@@ -14,13 +14,8 @@ import com.salesianos.triana.dam.principioProyFinal.service.ClienteServicio;
 public class ClienteController {
 
 	@Autowired
-	private ClienteServicio  clienteServicio;
+	private ClienteServicio  clienteServicio;	
 	
-	@GetMapping({"/","/listaCliente"})
-	public String listarClientes(Model model) {
-		model.addAttribute("listaClientes", clienteServicio.findAll());
-		return "listaClientes";
-	}
 	
 	@GetMapping("/nuevoCliente")
 	public String formularioCliente(Model model) {
@@ -31,6 +26,6 @@ public class ClienteController {
 	@PostMapping("/nuevo/submit")
 	public String procesarFormularioCliente(@ModelAttribute("cliente") Cliente c) {
 		clienteServicio.save(c);
-		return "redirect:/";
+		return "portada2";
 	}
 }
