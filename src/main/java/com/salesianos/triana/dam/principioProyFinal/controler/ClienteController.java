@@ -26,6 +26,6 @@ public class ClienteController {
 	@PostMapping("/nuevo/submit")
 	public String procesarFormularioCliente(@ModelAttribute("cliente") Cliente c) {
 		clienteServicio.save(c);
-		return "portada2";
+		return "redirect:/nuevoCliente";
 	}
 }
