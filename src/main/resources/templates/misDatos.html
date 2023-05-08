@@ -19,8 +19,8 @@
             <img class="rounded-circle" src="img/logoUsuario.png" alt="imagenUsuario" width="120px">
             <button type="button" class="btn btn-primary btn-sm"><i class="bi bi-card-image"></i></button>
         </div>    
-        <form class="contenedorform row bg-light" th:object="${cliente}">
-            <fieldset class="contenedorfildset row d-flex col-6">                
+        <form class="contenedorform row bg-light" th:object="${cliente}" method="post">
+            <div class="contenedorfildset row d-flex col-6">                
                 <fieldset class="contenedorfildset row d-flex col-6">                
                 <label class="col-4" for="nombre">Nombre*</label>
                 <input class="col-8" type="text" name="nombre" id="nombre" required autocomplete autofocus th:field="${cliente.nombre}">
@@ -34,7 +34,7 @@
                 <label class="col-4"for="telefono">Teléfono</label>
                 <input class="col-8"type="text" name="telefono" id="telefono" th:field="${cliente.telefono}">
                 <label class="col-4"for="contrasena">Contraseña*</label>
-                <input class="col-8"type="password" name="contrasena" id="contrasena" required th:field="${cliente.contrasenia}">                
+                <input class="col-8"type="password" name="contrasena" id="contrasena" th:field="${cliente.contrasenia}">                
             </fieldset>
             <fieldset class="contenedorfildset2 row d-flex col-6">                
                 <label class="col-4"for="apellido">Apellido*</label>
@@ -50,17 +50,13 @@
                 <input class="col-8"type="text" name="dni" id="dni"th:field="${cliente.dni}"><br/> 
                                
                 <label class="col-4"for="contrasena2">Contraseña*</label>
-                <input class="col-8"type="password" name="contrasena2" id="contrasena2" required >
+                <input class="col-8"type="password" name="contrasena2" id="contrasena2">
             </fieldset>
+            </div>
             <p>Los campos * son obligatorios</p>
             <p class="col-11"></p>
-            <button type="submit" class="btn btn-primary col-1">Enviar</button>
-        </form>
-            </fieldset>
-            <p>Los campos * son obligatorios</p>
-            <p class="col-11"></p>
-            <button type="button" class="btn btn-primary col-1">Actualizar</button>
-        </form>
+            <button type="submit" class="btn btn-primary col-1">Actualizar</button>            
+        </form>            
     </main>
     <footer>
     <nav th:replace="~{fragment/footer::pie}"></nav>

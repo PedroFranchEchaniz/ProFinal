@@ -18,6 +18,11 @@ public class ClienteController {
 	@Autowired
 	private ClienteServicio  clienteServicio;	
 	
+	@GetMapping("/")
+	public String listaClientes(Model model) {
+		model.addAttribute("listaClientes", clienteServicio.findAll());
+		return "listaClientes";
+	}
 	
 	@GetMapping("/nuevoCliente")
 	public String formularioCliente(Model model) {
@@ -35,6 +40,12 @@ public class ClienteController {
 	public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {		
 		model.addAttribute("cliente", clienteServicio.findById(id));
 		return "misDatos";
+	}
+	
+	@PostMapping("/editar/submit")
+	public String procesarFormularioEdicion(@ModelAttribute("cliente") Cliente c) {
+		clienteServicio.edit(c);
+		return "listaClientes";
 	}
 
 }
