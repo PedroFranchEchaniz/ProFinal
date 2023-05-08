@@ -7,8 +7,11 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,11 +28,12 @@ import lombok.ToString;
 public class Cliente {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
 	private String apellidos;
-	private LocalDate fechaNacimineto;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate fechaNacimiento;
 	private String direccion;
 	private String ciudad;
 	private String cp;
