@@ -50,7 +50,7 @@ public class ClienteController {
 	@PostMapping("/editar/submit")
 	public String procesarFormularioEdicion(@ModelAttribute("cliente") Cliente c) {
 		clienteServicio.edit(c);
-		return "redirect:/";
+		return "redirect:/editar/{id}";
 	}
 
 }
