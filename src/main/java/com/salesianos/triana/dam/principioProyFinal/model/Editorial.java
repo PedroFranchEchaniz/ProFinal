@@ -28,7 +28,8 @@ public class Editorial {
 	private Long id;
 	private String nombre;
 	private String direccion;
-	private String contacto;
+	private String email;
+	private String tlf;
 	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
