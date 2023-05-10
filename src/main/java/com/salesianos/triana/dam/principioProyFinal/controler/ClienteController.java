@@ -24,7 +24,7 @@ public class ClienteController {
 		return "listaClientes";
 	}
 	
-	@GetMapping("/nuevoCliente")
+	@GetMapping("/login")
 	public String formularioCliente(Model model) {
 		model.addAttribute("cliente", new Cliente());
 		return "login";

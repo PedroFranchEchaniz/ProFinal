@@ -2,6 +2,7 @@ package com.salesianos.triana.dam.principioProyFinal.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -12,6 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,7 +29,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Cliente {
+public class Cliente implements UserDetails  {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -39,13 +43,41 @@ public class Cliente {
 	private String cp;
 	private String provincia;
 	private String telefono;
-	private String dni;
-	private String contrasenia;
+	private String username;
+	private String password;
 	private String correoElectronico;
+	private boolean admin;
 	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	@OneToMany(mappedBy="cliente", fetch = FetchType.EAGER)
 	@Builder.Default
 	private List <Valoracion> valoraciones = new ArrayList<>();
+	
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		String role = "ROLE_";
+		role += (admin) ? "ADMIN" : "USER";
+		return List.of(new SimpleGrantedAuthority(role));
+	}	
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
 }
