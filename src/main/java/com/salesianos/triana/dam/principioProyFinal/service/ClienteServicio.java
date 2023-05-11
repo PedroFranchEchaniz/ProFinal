@@ -2,12 +2,10 @@ package com.salesianos.triana.dam.principioProyFinal.service;
 
 
 
-<<<<<<< HEAD
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-=======
->>>>>>> 9b738cad789781d9c232ece32f7c0a942644b393
 import org.springframework.stereotype.Service;
 
 import com.salesianos.triana.dam.principioProyFinal.model.Cliente;
