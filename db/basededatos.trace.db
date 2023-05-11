@@ -1394,6 +1394,7 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/pedro/D
 	at org.h2.mvstore.FileStore.open(FileStore.java:128)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:452)
 	... 55 more
+<<<<<<< HEAD
 2023-05-11 09:29:01 database: flush
 org.h2.message.DbException: Error General : "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/Admin/Documents/workspace-spring-tool-suite-4-4.18.0.RELEASE/PrincipioProyFinal/db/basededatos.mv.db [2.1.214/7]"
 General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/Admin/Documents/workspace-spring-tool-suite-4-4.18.0.RELEASE/PrincipioProyFinal/db/basededatos.mv.db [2.1.214/7]" [50000-214]
@@ -1545,6 +1546,38 @@ General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/Ad
 	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:127)
 	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1460)
 	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1494)
+=======
+2023-05-11 19:40:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: La cantidad de columnas no coincide
+Column count does not match; SQL statement:
+INSERT INTO cliente (id, apellidos, contrasenia , correo_electronico, nombre) VALUES (1, 'Franch', 'pedrofe.av@gmail.com', 'Pedro') [21002-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.command.dml.Insert.doPrepare(Insert.java:295)
+	at org.h2.command.dml.DataChangeStatement.prepare(DataChangeStatement.java:37)
+	at org.h2.command.Parser.prepareCommand(Parser.java:575)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:458)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applyImportSources(SchemaCreatorImpl.java:514)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:183)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:138)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:124)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:168)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:85)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:335)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498)
+>>>>>>> 9b738cad789781d9c232ece32f7c0a942644b393
 	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
 	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
 	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
@@ -1568,6 +1601,7 @@ General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/Ad
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
 	at com.salesianos.triana.dam.principioProyFinal.PrincipioProyFinalApplication.main(PrincipioProyFinalApplication.java:10)
+<<<<<<< HEAD
 Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Error General : "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/Admin/Documents/workspace-spring-tool-suite-4-4.18.0.RELEASE/PrincipioProyFinal/db/basededatos.mv.db [2.1.214/7]"
 General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/Admin/Documents/workspace-spring-tool-suite-4-4.18.0.RELEASE/PrincipioProyFinal/db/basededatos.mv.db [2.1.214/7]" [50000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
@@ -1579,3 +1613,5 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/Admin/D
 	at org.h2.mvstore.FileStore.open(FileStore.java:128)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:452)
 	... 55 more
+=======
+>>>>>>> 9b738cad789781d9c232ece32f7c0a942644b393

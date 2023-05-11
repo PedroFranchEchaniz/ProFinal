@@ -30,8 +30,11 @@
                         <td th:text="${editorial.email}">null</td>
                         <td th:text="${editorial.tlf}">null</td>
                         <td>                                               
-                        <button type="button" class="btn btn-primary">Editar</button>
-                        <button type="button" class="btn btn-danger">Eliminar</button>
+                        <td><a href="#"
+								th:href="@{editarEditorial/{id}(id=${editorial.id})}"
+								class="btn btn-primary">Editar</a>
+                        <a type="button" class="btn btn-danger" href="#"
+								th:href="@{borrarEditorial/{id}(id=${editorial.id})}">Eliminar</a>
                         </td>
                     </tr>
                 </tbody>
