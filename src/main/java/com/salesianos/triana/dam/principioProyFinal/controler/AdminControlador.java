@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin")
 public class AdminControlador {
 
-	@GetMapping()
+	@GetMapping("/")
 	public String index() {
 		return "listaClientes";
 	}

@@ -12,13 +12,12 @@ import com.salesianos.triana.dam.principioProyFinal.model.Editorial;
 import com.salesianos.triana.dam.principioProyFinal.service.EditorialServicio;
 
 @Controller
-
 public class EditorialController {
 
 	@Autowired
 	private EditorialServicio editorialServicio;
 
-	@GetMapping({"/", "/list"})
+	@GetMapping("/list")
 	public String listarTodos(Model model) {
 		model.addAttribute("lista", editorialServicio.findAll());
 		return "listaEditoriales";
