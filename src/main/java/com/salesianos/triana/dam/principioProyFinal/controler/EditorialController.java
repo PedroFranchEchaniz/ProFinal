@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianos.triana.dam.principioProyFinal.model.Editorial;
@@ -34,5 +35,30 @@ public class EditorialController {
 		return "redirect:/"; 
 	}
 	
+	@GetMapping("/editarEditorial/{id}")
+	public String monstrarFormularioEdicionEditorial(@PathVariable("id") Long id, Model model) {
+		Editorial eEditar = editorialServicio.findById(id).orElse(null);
+		if (eEditar != null) {
+			model.addAttribute("editorial", eEditar);
+			return "altaEditorial";
+		}else {
+			return "redirect:/nuevaEditorial";
+		}
+	}
 	
+	@PostMapping("/editarEditorial/submit")
+	public String procesarFormularioEdicion(@ModelAttribute("editorial") Editorial e) {
+		editorialServicio.edit(e);
+		return "redirect:/";
+	}
+	
+	@GetMapping("/borrarEditorial/{id}")
+	public String borrarEditorial(@PathVariable("id") Long id, Model model) {
+		
+		Editorial eEliminar = editorialServicio.findById(id).orElse(null);
+		if (eEliminar != null) {
+			editorialServicio.delete(eEliminar);
+		}
+		return "redirect:/";
+	}
 }
