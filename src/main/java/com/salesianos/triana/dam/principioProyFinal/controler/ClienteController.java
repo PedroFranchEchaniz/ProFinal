@@ -14,7 +14,7 @@ import com.salesianos.triana.dam.principioProyFinal.model.Cliente;
 @RequestMapping("/user")
 public class ClienteController {
 
-	@GetMapping("/")
+	@GetMapping("/me")
 	public String me() {
 
 		Cliente c = (Cliente) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

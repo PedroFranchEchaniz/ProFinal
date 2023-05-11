@@ -10,6 +10,6 @@ public class AdminControlador {
 
 	@GetMapping("/")
 	public String index() {
-		return "listaEditoriales";
+		return "listaClientes";
 	}
 }
