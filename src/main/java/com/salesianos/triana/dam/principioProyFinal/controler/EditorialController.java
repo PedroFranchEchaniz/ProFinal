@@ -12,7 +12,6 @@ import com.salesianos.triana.dam.principioProyFinal.model.Editorial;
 import com.salesianos.triana.dam.principioProyFinal.service.EditorialServicio;
 
 @Controller
-
 public class EditorialController {
 
 	@Autowired

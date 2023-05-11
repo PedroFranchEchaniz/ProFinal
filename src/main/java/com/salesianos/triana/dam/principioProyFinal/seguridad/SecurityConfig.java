@@ -50,11 +50,11 @@ public class SecurityConfig {
 		http
 		.authorizeRequests()
 			.antMatchers("/css/**","/js/**","/webjars/**", "/h2-console/**").permitAll()
-			.antMatchers("/admi/**").hasRole("ADMIN")
+			.antMatchers("/admin/**").hasRole("ADMIN")
 			.anyRequest().authenticated()
 			.and()
 		.formLogin()
-			.loginPage("/login")
+			.loginPage("/login")			
 			.permitAll();
 		http.csrf().disable();
 		http.headers().frameOptions().disable();
