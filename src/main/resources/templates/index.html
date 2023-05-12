@@ -11,5 +11,7 @@
 </head>
 </head>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-	<a class="button" th:href="@{/admin/}">Lista Editoriales</a>
+	<div sec:authorize="hasRole('ROLE_ADMIN')" >
+		<a class="button" th:href="@{/admin/}">Lista Editoriales</a>
+	</div>	
 </html>
