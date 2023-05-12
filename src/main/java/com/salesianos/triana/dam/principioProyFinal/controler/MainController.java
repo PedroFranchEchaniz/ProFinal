@@ -7,8 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainController {
 
-	@GetMapping("/inicio")
+	@GetMapping("/")
 	public String portada(Model model) {		
-		return "portada";
+		return "index";
+	}
+	
+	@GetMapping("/error")
+	public String error(Model model) {
+		return "error";
 	}
 }

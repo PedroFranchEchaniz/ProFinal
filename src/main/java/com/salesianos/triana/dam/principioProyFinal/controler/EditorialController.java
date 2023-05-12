@@ -33,7 +33,7 @@ public class EditorialController {
 	@PostMapping("/nuevaEditorial/submit")
 		public String procesarFormularioEditorial(@ModelAttribute("editorial") Editorial e) {
 		editorialServicio.save(e);
-		return "redirect:/"; 
+		return "redirect:/list"; 
 	}
 	
 	@GetMapping("/editarEditorial/{id}")
