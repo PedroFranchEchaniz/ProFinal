@@ -60,7 +60,7 @@ public class EditorialController {
 		if (eEliminar != null) {
 			editorialServicio.delete(eEliminar);
 		}
-		return "redirect:/";
+		return "redirect:/list";
 	}
 }
 
