@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.salesianos.triana.dam.principioProyFinal.model.Editorial;
 import com.salesianos.triana.dam.principioProyFinal.service.EditorialServicio;
@@ -17,7 +18,7 @@ public class EditorialController {
 	@Autowired
 	private EditorialServicio editorialServicio;
 
-	@GetMapping({"/", "/list"})
+	@GetMapping("/list")
 	public String listarTodos(Model model) {
 		model.addAttribute("lista", editorialServicio.findAll());
 		return "listaEditoriales";
@@ -32,7 +33,7 @@ public class EditorialController {
 	@PostMapping("/nuevaEditorial/submit")
 		public String procesarFormularioEditorial(@ModelAttribute("editorial") Editorial e) {
 		editorialServicio.save(e);
-		return "redirect:/"; 
+		return "redirect:/list"; 
 	}
 	
 	@GetMapping("/editarEditorial/{id}")
