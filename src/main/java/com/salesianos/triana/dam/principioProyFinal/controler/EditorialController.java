@@ -63,3 +63,4 @@ public class EditorialController {
 		return "redirect:/";
 	}
 }
+
