@@ -19,7 +19,7 @@
             <img class="rounded-circle" src="img/logoUsuario.png" alt="imagenUsuario" width="120px">
             <button type="button" class="btn btn-primary btn-sm"><i class="bi bi-card-image"></i></button>
         </div>    
-        <form class="contenedorform row bg-light" th:object="${cliente}" method="post" th:action="${cliente.admin} ? @{/listaEditoriales} : @{/nuevo/submit}">
+        <form class="contenedorform row bg-light" th:object="${cliente}" method="post" th:action="@{/}">
             <div class="contenedorfildset row d-flex col-6">                
             	<fieldset class="contenedorfildset row d-flex col-6">
 					<input th:if="${cliente.id != 0}" type="hidden" name="id" th:field="*{id}" />                

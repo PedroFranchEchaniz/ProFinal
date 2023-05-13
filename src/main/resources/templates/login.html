@@ -14,12 +14,10 @@
     <title>misDatos</title>
 </head>
 <body>
-	<header>
-		<nav th:replace="~{fragment/header::encabezado}"></nav>
-	</header>	 
+		 
     <main>
   <div class="row d-flex justify-content-center">
-        <form  class="contenedorform" method="POST" th:action="@{/login}">
+        <form  class="contenedorfildset" method="POST" th:action="@{/login}">
 		<input type="text" id="username" name="username"placeholder="Username" required autofocus>
 		 <input	type="password" name="password" id="password" placeholder="Password" required>
 		 <button type="submit" class="btn btn-primary col-1">Enviar</button>

@@ -105,11 +105,11 @@
     margin-top: 10px;    
 }
 
-.contenedorfildset label+input:hover{
+.contenedorfildset input:hover{
     background-color: #f5a623; 
 }
 
-.contenedorfildset2 label+input:hover{
+.contenedorfildset2 input:hover{
     background-color: #f5a623;
 }
 
