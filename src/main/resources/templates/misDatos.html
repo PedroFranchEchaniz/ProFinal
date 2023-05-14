@@ -21,27 +21,18 @@
         </div>    
         <form class="contenedorform row bg-light" th:object="${cliente}" method="post" th:action="@{/}">
             <div class="contenedorfildset row d-flex col-6">                
-            	<fieldset class="contenedorfildset row d-flex col-6">
+            	<fieldset class="contenedorfildset row d-flex col-6">					
 					<input th:if="${cliente.id != 0}" type="hidden" name="id" th:field="*{id}" />                
 	                <label class="col-4" for="nombre">Nombre*</label>
 	                <input class="col-8" type="text" name="nombre" id="nombre" required autocomplete autofocus th:field="${cliente.nombre}">
 	                <label class="col-4"for="fechanacimiento">Fecha Nacimiento*</label>
-	                <input class="col-8"type="date" name="fechanacimiento" id="fechanacimiento" required th:field="${cliente.fechaNacimiento}">                
-	                <label class="col-4"for="ciudad">Ciudad*</label>
-	                <input class="col-8"type="text" name="ciudad" id="ciudad" required th:field="${cliente.ciudad}">
-	                <label class="col-4"for="provincia">Provincia*</label>
-	                <input class="col-8"type="text" name="provincia" id="provincia" required th:field="${cliente.provincia}"><br/>
-	                
-	                <label class="col-4"for="telefono">Teléfono</label>
-	                <input class="col-8"type="text" name="telefono" id="telefono" th:field="${cliente.telefono}">	                               
+	                <input class="col-8"type="date" name="fechanacimiento" id="fechanacimiento" required th:field="${cliente.fechaNacimiento}">	                	                               
             	</fieldset>
             	<fieldset class="contenedorfildset2 row d-flex col-6">                
 	                <label class="col-4"for="apellido">Apellido*</label>
 	                <input class="col-8" type="text" name="apellido" id="apellido" required th:field="${cliente.apellidos}"><br/>
 	                <label class="col-4"for="direccion">Direccion*</label>
-	                <input class="col-8"type="text" name="direccion" id="direccion" required th:field="${cliente.direccion}"><br/>
-	                <label class="col-4"for="codigopostal">Código Postal*</label>
-	                <input class="col-8"type="text" name="codigopostal" id="codigopostal" required th:field="${cliente.cp}">	                
+	                <input class="col-8"type="text" name="direccion" id="direccion" required th:field="${cliente.direccion}"><br/>	                	                
 	                <label class="col-4"for="email">Email*</label>
 	                <input class="col-8"type="email" name="email" id="email" required th:field="${cliente.correoElectronico}"><br/>
 	                <label class="col-4"for="user">user</label>
@@ -50,7 +41,8 @@
             </div>
             <p>Los campos * son obligatorios</p>
             <p class="col-11"></p>
-            <button type="submit" class="btn btn-primary col-1">Actualizar</button>            
+            <a href="#"	th:href="@{editarUsario/{id}(id=${cliente.id})}"
+								class="btn btn-primary">Editar</a>            
         </form>            
     </main>
     <footer>
