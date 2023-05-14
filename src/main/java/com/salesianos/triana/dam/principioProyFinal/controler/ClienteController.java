@@ -2,7 +2,6 @@ package com.salesianos.triana.dam.principioProyFinal.controler;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,25 +20,7 @@ import com.salesianos.triana.dam.principioProyFinal.service.ClienteServicio;
 public class ClienteController {
 	
 	@Autowired
-	ClienteServicio clienteServicio;
-
-	@GetMapping("/")
-	public String me() {
-
-		Cliente c = (Cliente) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-		System.out.println(c.toString());
-
-		return "misDatos";
-	}
-
-	@GetMapping("/me2")
-	public String me2(@AuthenticationPrincipal Cliente c) {
-
-		System.out.println(c.toString());
-
-		return "perfil";
-	}
+	ClienteServicio clienteServicio;	
 	
 	@GetMapping ("/nuevoUsuario")
 	public String formularioUsuario (Model model) {
