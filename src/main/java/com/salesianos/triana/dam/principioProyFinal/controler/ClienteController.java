@@ -35,7 +35,7 @@ public class ClienteController {
 		}
 	
 	@GetMapping ("/editarUsuario/{id}")
-	public String monstrarMisDatos (@PathVariable("id") Long id, Model model) {
+	public String monstrarMisDatos (@PathVariable("id") Long id, Model model, @AuthenticationPrincipal Cliente c) {
 		
 		Cliente uEditar = clienteServicio.findById(id).orElse(null);
 		if (uEditar != null) {

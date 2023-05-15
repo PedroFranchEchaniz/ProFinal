@@ -14,8 +14,6 @@
 	<div sec:authorize="hasRole('ROLE_ADMIN')" >
 		<a type="button" th:href="@{/admin/}">Zona Admin</a>
 	</div>
-	<div sec:authorize="hasRole('ROLE_ADMIN')" >
-		<a type="button" th:href="@{/user/editarUsuario/{id}(id=${cliente.id})}">usuario</a>
-	</div>
+	
 </body>	
 </html>

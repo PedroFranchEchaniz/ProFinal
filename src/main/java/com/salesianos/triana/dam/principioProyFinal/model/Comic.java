@@ -14,14 +14,14 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class Comic extends Producto{
 
-	private String autor;
+	private String ilustrador;
 	private String guionista;
 	private String sinopsis;
 	
 	public Comic(Long id, String titulo, double precioUnidad, int stock, String autor, String guionista,
 			String sinopsis) {
 		super(id, titulo, precioUnidad, stock);
-		this.autor = autor;
+		this.ilustrador = autor;
 		this.guionista = guionista;
 		this.sinopsis = sinopsis;
 	}
