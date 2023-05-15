@@ -16,15 +16,17 @@ public class Comic extends Producto{
 
 	private String ilustrador;
 	private String guionista;
-	private String sinopsis;
-	
-	public Comic(Long id, String titulo, double precioUnidad, int stock, String autor, String guionista,
-			String sinopsis) {
-		super(id, titulo, precioUnidad, stock);
-		this.ilustrador = autor;
+	private String sinopsis;	
+
+	public Comic(Long id, String titulo, double precioUnidad, int stock, Editorial editorial, String ilustrador,
+			String guionista, String sinopsis) {
+		super(id, titulo, precioUnidad, stock, editorial);
+		this.ilustrador = ilustrador;
 		this.guionista = guionista;
 		this.sinopsis = sinopsis;
 	}
+	
+	
 	
 	
 	

@@ -12,8 +12,9 @@
 </head>
 <body>
     <main>
-        <form class="contenedorform row bg-dark text-light" th:object="${comic}">
-            <fieldset class="contenedorfildset row d-flex col-6">                
+        <form class="contenedorform row bg-dark text-light" th:action="${comic.id != 0} ? @{/nuevoComic/submit} : @{/nuevoComic}" th:object="${comic}" method="post">
+            <fieldset class="contenedorfildset row d-flex col-6">
+				<input th:if="${comic.id != 0}" type="hidden" name="id" th:field="*{id}" />                
                 <label class="col-3" for="nombre">Título*</label>
                 <input class="col-9" type="text" name="tituo" id="titulo" required autofocus th:field="*{titulo}">
                 <label class="col-3"for="precioU">Precio Unidad*</label>

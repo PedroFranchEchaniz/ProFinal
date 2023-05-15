@@ -56,13 +56,16 @@ public class Producto {
 	public void removeFromEditorial(Editorial editorial) {
 		editorial.getProductos().remove(this);
 		this.editorial = null;
-	}
+	}	
 	
-	public Producto(Long id, String titulo, double precioUnidad, int stock) {
+
+	public Producto(Long id, String titulo, double precioUnidad, int stock, Editorial editorial) {
+		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.precioUnidad = precioUnidad;
 		this.stock = stock;
+		this.editorial = editorial;		
 	}
 	
 }
