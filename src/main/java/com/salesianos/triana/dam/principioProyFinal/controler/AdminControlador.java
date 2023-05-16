@@ -15,7 +15,7 @@ public class AdminControlador {
 	@Autowired
 	private ClienteServicio clienteServicio;
 
-	@GetMapping("/")
+	@GetMapping("/listaEditorial")
 	public String index() {
 		return "redirect:/list";
 	}

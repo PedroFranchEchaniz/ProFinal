@@ -33,7 +33,8 @@ public class Producto {
 	protected Long id;
 	protected String titulo;
 	protected double precioUnidad;
-	protected int stock;	
+	protected int stock;
+	protected String img;
 
 	
 	@ManyToOne
@@ -56,16 +57,20 @@ public class Producto {
 	public void removeFromEditorial(Editorial editorial) {
 		editorial.getProductos().remove(this);
 		this.editorial = null;
-	}	
-	
+	}
 
-	public Producto(Long id, String titulo, double precioUnidad, int stock, Editorial editorial) {
+	public Producto(Long id, String titulo, double precioUnidad, int stock, String img, Editorial editorial
+			) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.precioUnidad = precioUnidad;
 		this.stock = stock;
+		this.img = img;
 		this.editorial = editorial;		
-	}
+	}	
+	
+
+	
 	
 }

@@ -16,16 +16,20 @@ public class JuegoMesa extends Producto{
 
 	private int nJugadores;
 	private String tipo;
-	private String descripcion;	
+	private String descripcion;
 	
-
-	public JuegoMesa(Long id, String titulo, double precioUnidad, int stock, Editorial editorial, int nJugadores,
-			String tipo, String descripcion) {
-		super(id, titulo, precioUnidad, stock, editorial);
+	public JuegoMesa(Long id, String titulo, double precioUnidad, int stock, String img, Editorial editorial,
+			int nJugadores, String tipo, String descripcion) {
+		super(id, titulo, precioUnidad, stock, img, editorial);
 		this.nJugadores = nJugadores;
 		this.tipo = tipo;
 		this.descripcion = descripcion;
 	}
+	
+	
+	
+
+
 	
 	
 	
