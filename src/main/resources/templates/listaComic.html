@@ -10,31 +10,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="javascript:void(0)">Logo</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="mynavbar">
-                <ul class="navbar-nav me-auto">
-                    <li>
-                        <button type="button" class="btn btn-primary">Cómic</button>
-                    </li>
-                    <li>
-                        <button type="button" class="btn btn-primary">Juego de mesa</button>
-                    </li>
-                    <li>
-                        <button type="button" class="btn btn-primary">Clientes</button>
-                    </li>                    
-                </ul>
-                <form class="d-flex" th:action="@{/search}" th:object="${buscar}" method="POST">
-                    <input class="form-control me-2" type="text" placeholder="Search" th:field="*{search}">
-                    <button class="btn btn-primary" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-        </nav>        
+    	<nav th:replace="~{fragment/headerAdmin::encabezado}"></nav>     
     </header>
     
     <main>
@@ -48,7 +24,7 @@
                         <th class="col-2">Editorial</th>                
                     </tr>
                 </thead>
-                <tbody th:each="comic : ${comics}">
+                <tbody th:each="comic:${comics}">
                     <tr>
                         <td th:text="${comic.titulo}">null</td>
                         <td th:text="${comic.precioUnidad}">null</td>
@@ -59,12 +35,12 @@
 								th:href="@{editarComic/{id}(id=${comic.id})}"
 								class="btn btn-primary">Editar</a>
                         <a type="button" class="btn btn-danger" href="#"
-								th:href="@{borrarComic/{id}/(id=${comic.id})}">Eliminar</a>
+								th:href="@{/admin/borrarComic/{id}/(id=${comic.id})}">Eliminar</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <a th:href="@{/nuevoComic}" class="btn btn-primary">Añadir</a>
+            <a th:href="@{/admin/nuevoComic}" class="btn btn-primary">Añadir</a>
         </div>
     </main>
           

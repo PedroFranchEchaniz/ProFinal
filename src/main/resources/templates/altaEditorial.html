@@ -15,7 +15,7 @@
 		<nav th:replace="~{fragment/headerAdmin::encabezado}"></nav>
 	</header>	
   <main>
-        <form class="contenedorform row bg-dark text-light" th:action="${editorial.id != 0} ? @{/nuevaEditorial/submit} : @{/nuevaEditorial}" th:object="${editorial}" method="post">
+        <form class="contenedorform row bg-dark text-light" th:action="${editorial.id != 0} ? @{/admin/nuevaEditorial/submit} : @{/admin/nuevaEditorial}" th:object="${editorial}" method="post">
             <fieldset class="contenedorfildset row d-flex col-6">
 				<input th:if="${editorial.id != 0}" type="hidden" name="id" th:field="*{id}" />			               
                 <label class="col-3" for="nombre">Nombre</label>

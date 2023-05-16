@@ -14,14 +14,17 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class JuegoMesa extends Producto{
 
-	private int nJugadores;
+	private int nJugadoresMin;
+	private int nJugadoresMax;
 	private String tipo;
-	private String descripcion;
-	
-	public JuegoMesa(Long id, String titulo, double precioUnidad, int stock, String img, Editorial editorial,
-			int nJugadores, String tipo, String descripcion) {
+	private String descripcion;	
+
+	public JuegoMesa(Long id, String titulo, double precioUnidad,
+			int stock, String img, Editorial editorial,
+			int nJugadoresMin, int nJugadoresMax, String tipo, String descripcion) {
 		super(id, titulo, precioUnidad, stock, img, editorial);
-		this.nJugadores = nJugadores;
+		this.nJugadoresMin = nJugadoresMin;
+		this.nJugadoresMax = nJugadoresMax;
 		this.tipo = tipo;
 		this.descripcion = descripcion;
 	}

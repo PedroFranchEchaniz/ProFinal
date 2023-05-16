@@ -19,18 +19,18 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item">
-							<a class="nav-link" href="#">Registrarse</a>
+			<li class="nav-item" sec:authorize="hasRole('ROLE_USER')">							
+							<a class="nav-link" type="button" th:href="@{/user/editarUsuario}">Zona Usuario</a>	
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="/nuevoCliente">Ingresar</a>
+						<li class="nav-link" sec:authorize="hasRole('ROLE_ADMIN')" >
+							<a type="button" th:href="@{/admin/listaEditorial}">Zona Admin</a>
+						</li>
+						<li>
+							<a type="button"  href="javascript:document.getElementById('logoutForm').submit()">Salir</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#"><i class="bi bi-cart3"></i><sub>0</sub></a>                            
 						</li>
-            <li class="nav-item">
-              <p class="nav-link">0.0</p>
-            </li>
 					</ul>
             <form class="d-flex">
               <input class="form-control me-2" type="text" placeholder="Buscar">
