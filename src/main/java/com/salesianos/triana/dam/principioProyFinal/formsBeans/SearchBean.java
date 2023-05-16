@@ -16,8 +16,4 @@ private String search;
 		this.search = search;
 	}
 	
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> fixes

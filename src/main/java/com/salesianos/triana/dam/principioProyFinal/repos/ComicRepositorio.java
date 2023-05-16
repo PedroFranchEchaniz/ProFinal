@@ -10,9 +10,4 @@ public interface ComicRepositorio extends JpaRepository <Comic, Long> {
 
 	List<Comic> findByTituloContainsIgnoreCase(String titulo);
 	
-	
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> fixes

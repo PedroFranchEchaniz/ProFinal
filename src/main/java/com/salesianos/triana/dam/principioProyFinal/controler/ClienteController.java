@@ -45,8 +45,4 @@ public class ClienteController {
 		clienteServicio.edit(u);
 		return "misDatos";
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> fixes

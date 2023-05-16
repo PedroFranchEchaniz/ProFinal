@@ -25,9 +25,4 @@ public class AdminControlador {
 			model.addAttribute("listaClientes", clienteServicio.findAll());
 			return "listaClientes";
 		}
-	
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> fixes
