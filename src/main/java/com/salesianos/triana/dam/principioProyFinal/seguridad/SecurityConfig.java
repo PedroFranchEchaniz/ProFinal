@@ -56,6 +56,7 @@ public class SecurityConfig {
 		.formLogin()
 			.loginPage("/login")			
 			.permitAll();
+		
 		http.csrf().disable();
 		http.headers().frameOptions().disable();
 		return http.build();		

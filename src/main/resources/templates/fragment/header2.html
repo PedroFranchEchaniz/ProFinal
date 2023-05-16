@@ -25,6 +25,9 @@
 						<li class="nav-link" sec:authorize="hasRole('ROLE_ADMIN')" >
 							<a type="button" th:href="@{/admin/listaEditorial}">Zona Admin</a>
 						</li>
+						<li>
+							<a type="button"  href="javascript:document.getElementById('logoutForm').submit()">Salir</a>
+						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#"><i class="bi bi-cart3"></i><sub>0</sub></a>                            
 						</li>
