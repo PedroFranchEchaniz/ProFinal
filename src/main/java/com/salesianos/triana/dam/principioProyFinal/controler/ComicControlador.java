@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.salesianos.triana.dam.principioProyFinal.formsBeans.SearchBean;
 import com.salesianos.triana.dam.principioProyFinal.model.Comic;
 import com.salesianos.triana.dam.principioProyFinal.service.ComicServicio;
 import com.salesianos.triana.dam.principioProyFinal.service.EditorialServicio;
@@ -23,7 +24,8 @@ public class ComicControlador {
 	
 	@GetMapping("/listaComics")
 	public String index (Model model) {
-		model.addAttribute("comics", comicServicio.findAll());		
+		model.addAttribute("comics", comicServicio.findAll());
+		model.addAttribute("buscar", new SearchBean());
 		return "listaComic";
 	}
 	
@@ -65,6 +67,11 @@ public class ComicControlador {
 			comicServicio.delete(cEliminar);
 		}
 		return "redirect:/listaComics";
-	}	
+	}
 	
+	@PostMapping("/search")
+	public String buscarProducto(@ModelAttribute("buscar") SearchBean searchBean, Model model) {
+		model.addAttribute("comics", comicServicio.findByNombre(searchBean.getSearch()));
+		return "listaComic";
+	}
 }
