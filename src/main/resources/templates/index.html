@@ -11,12 +11,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 </head>
 <body>	
+	<footer>
+		<header>
+		<nav th:replace="~{fragment/header2::encabezado}"></nav>
+	</header>
+	</footer>
+	<main>
 	<div sec:authorize="hasRole('ROLE_ADMIN')" >
 		<a type="button" th:href="@{/admin/}">Zona Admin</a>
 	</div>
+	</main>	
 	
-	<div sec:authorize="hasRole('ROLE_USER')" >
-	<a type="button" th:href="@{/user/editarUsuario}">Zona Usuario</a>
-	</div>
 </body>	
 </html>
