@@ -35,15 +35,13 @@ public class ClienteController {
 		}
 	
 	@GetMapping ("/editarUsuario")
-	public String monstrarMisDatos (Model model, @AuthenticationPrincipal Cliente c) {
-		
+	public String monstrarMisDatos (Model model, @AuthenticationPrincipal Cliente c) {		
 			model.addAttribute("cliente", c);
-			return "misDatos";
-		
+			return "misDatos";		
 	}
 	
 	@PostMapping ("/editarUsuario/submit")
-	public String procesarMisDatos (@ModelAttribute("cliente") Cliente u) {
+	public String procesarMisDatos (@ModelAttribute("cliente") @AuthenticationPrincipal Cliente u) {
 		clienteServicio.edit(u);
 		return "misDatos";
 	}
