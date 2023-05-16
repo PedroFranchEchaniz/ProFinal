@@ -38,11 +38,7 @@ public class Cliente implements UserDetails  {
 	private String apellidos;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaNacimiento;
-	private String direccion;
-	private String ciudad;
-	private String cp;
-	private String provincia;
-	private String telefono;
+	private String direccion;	
 	private String username;
 	private String password;
 	private String correoElectronico;

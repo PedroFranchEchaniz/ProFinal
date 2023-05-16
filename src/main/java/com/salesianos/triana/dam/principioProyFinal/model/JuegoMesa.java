@@ -33,4 +33,8 @@ public class JuegoMesa extends Producto{
 	
 	
 	
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> fixes

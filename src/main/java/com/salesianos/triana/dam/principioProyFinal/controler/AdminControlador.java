@@ -26,4 +26,8 @@ public class AdminControlador {
 			return "listaClientes";
 		}
 	
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> fixes

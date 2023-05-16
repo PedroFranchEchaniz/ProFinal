@@ -27,6 +27,12 @@ public class Comic extends Producto{
 	}
 
 
+<<<<<<< HEAD
+=======
+	
+	
+	
+>>>>>>> fixes
 	
 	
 	

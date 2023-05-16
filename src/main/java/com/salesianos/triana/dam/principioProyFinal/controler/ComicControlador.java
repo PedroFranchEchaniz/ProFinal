@@ -74,4 +74,8 @@ public class ComicControlador {
 		model.addAttribute("comics", comicServicio.findByNombre(searchBean.getSearch()));
 		return "listaComic";
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> fixes
