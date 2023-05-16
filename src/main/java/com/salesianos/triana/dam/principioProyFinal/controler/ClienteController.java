@@ -29,21 +29,17 @@ public class ClienteController {
 	}
 	
 	@PostMapping("/nuevoUsuario/submit")
-		public String procesarFormularioCliente(@ModelAttribute("cliente") Cliente u) {
+		public String procesarFormularioCliente(@AuthenticationPrincipal Cliente u) {
 			clienteServicio.save(u);
 			return "misDatos";
 		}
 	
-	@GetMapping ("/editarUsuario/{id}")
-	public String monstrarMisDatos (@PathVariable("id") Long id, Model model, @AuthenticationPrincipal Cliente c) {
+	@GetMapping ("/editarUsuario")
+	public String monstrarMisDatos (Model model, @AuthenticationPrincipal Cliente c) {
 		
-		Cliente uEditar = clienteServicio.findById(id).orElse(null);
-		if (uEditar != null) {
-			model.addAttribute("cliente", uEditar);
+			model.addAttribute("cliente", c);
 			return "misDatos";
-		}else {
-			return "redirect:/nuevoUsuario";
-		}
+		
 	}
 	
 	@PostMapping ("/editarUsuario/submit")
