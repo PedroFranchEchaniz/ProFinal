@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="/static/css/estilocss.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <title>altaJuegoMesa</title>
 </head>
@@ -28,21 +28,22 @@
 					<option value="-1">---</option>
 					<option th:each="editorial : ${editoriales}"
 					th:value="${editorial.id}" th:text="${editorial.nombre}">Editorial</option>
-                </select><br/>
+                </select>
                 <label class="col-3"for="tipo">Tipo</label>
                 <input class="col-9"type="text" name="tipo" id="tipo" th:field="*{tipo}">
-                <label class="col-3"for="nJugadoresMin">n mínimo Jugador </label>
-                <input class="col-9"type="number" name="nJugadoresMin" id="nJugadoresMin" th:field="*{nJugadoresMin}">
-                 <label class="col-3"for="nJugadoresMax">n máximo Jugador </label>
-                <input class="col-9"type="number" name="nJugadoresMax" id="nJugadoresMax" th:field="*{nJugadoresMax}">
+                <label class="col-5"for="nJugadoresMin">n mínimo Jugador </label>
+                <input class="col-2"type="number" name="nJugadoresMin" id="nJugadoresMin" th:field="*{nJugadoresMin}">
+                <div class="col-3"></div>
+                 <label class="col-5"for="nJugadoresMax">n máximo Jugador </label>
+                <input class="col-2"type="number" name="nJugadoresMax" id="nJugadoresMax" th:field="*{nJugadoresMax}">
+                <div class="col-3"></div>
                                 
             </fieldset>
-            <fieldset class="col-6">
-				<label class="col-3"for="guionista">Url</label>
+            <fieldset class=" contenedorfildset2 row d-flex col-6">
+				<label class="col-1"for="guionista">Url</label>
                 <input class="col-9"type="text" name="imagen" id="imagen" th:field="*{img}">
                 <div class="portada">
-                    <img class="img-thumbnail" src="img/logoUsuario.png" alt="portada comic" width="200px">
-                    <button type="button" class="btn btn-primary btn-sm"><i class="bi bi-card-image"></i></button>
+                    <img class="img-thumbnail" src="/static/img/noImg.jpg" th:field="*{img}" alt="portada comic" width="300px" height="300">                    
                 </div> 
             </fieldset>            
             <fieldset class="contenedorfildset3 row d-flex col-12">                

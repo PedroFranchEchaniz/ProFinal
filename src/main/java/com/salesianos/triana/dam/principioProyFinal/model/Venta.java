@@ -29,6 +29,7 @@ public class Venta {
 	@GeneratedValue
 	private Long id;
 	private LocalDate fecha;
+	private double total;
 	
 	
 	
