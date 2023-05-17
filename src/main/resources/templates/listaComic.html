@@ -10,6 +10,9 @@
 </head>
 <body>
     <header>
+<<<<<<< HEAD
+    	<nav th:replace="~{fragment/headerAdmin::encabezado}"></nav>     
+=======
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="javascript:void(0)">Logo</a>
@@ -35,6 +38,7 @@
             </div>
         </div>
         </nav>        
+>>>>>>> main
     </header>
     
     <main>
@@ -48,7 +52,7 @@
                         <th class="col-2">Editorial</th>                
                     </tr>
                 </thead>
-                <tbody th:each="comic : ${comics}">
+                <tbody th:each="comic:${comics}">
                     <tr>
                         <td th:text="${comic.titulo}">null</td>
                         <td th:text="${comic.precioUnidad}">null</td>
@@ -59,12 +63,12 @@
 								th:href="@{editarComic/{id}(id=${comic.id})}"
 								class="btn btn-primary">Editar</a>
                         <a type="button" class="btn btn-danger" href="#"
-								th:href="@{borrarComic/{id}/(id=${comic.id})}">Eliminar</a>
+								th:href="@{/admin/borrarComic/{id}/(id=${comic.id})}">Eliminar</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <a th:href="@{/nuevoComic}" class="btn btn-primary">Añadir</a>
+            <a th:href="@{/admin/nuevoComic}" class="btn btn-primary">Añadir</a>
         </div>
     </main>
           

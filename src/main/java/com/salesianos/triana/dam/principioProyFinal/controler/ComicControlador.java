@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.salesianos.triana.dam.principioProyFinal.formsBeans.SearchBean;
 import com.salesianos.triana.dam.principioProyFinal.model.Comic;
@@ -14,6 +15,7 @@ import com.salesianos.triana.dam.principioProyFinal.service.ComicServicio;
 import com.salesianos.triana.dam.principioProyFinal.service.EditorialServicio;
 
 @Controller
+@RequestMapping("/admin")
 public class ComicControlador {
 	
 	@Autowired
@@ -22,7 +24,7 @@ public class ComicControlador {
 	@Autowired
 	public EditorialServicio editorialServicio;
 	
-	@GetMapping("/listaComics")
+	@GetMapping("/listaC")
 	public String index (Model model) {
 		model.addAttribute("comics", comicServicio.findAll());
 		model.addAttribute("buscar", new SearchBean());
@@ -39,7 +41,7 @@ public class ComicControlador {
 	@PostMapping("/nuevoComic/submit")
 	public String submitNuevoComic(@ModelAttribute("comic") Comic c) {		
 		comicServicio.save(c);
-		return "redirect:/listaComics";
+		return "redirect:/admin/listaC";
 	}
 	
 	@GetMapping("/editarComic/{id}")
@@ -50,14 +52,14 @@ public class ComicControlador {
 			model.addAttribute("editoriales", editorialServicio.findAll());
 			return "altaComic";
 		}else {
-			return "redirect:/nuevoComic";
+			return "redirect:/admin/nuevoComic";
 		}
 	}
 	
 	@PostMapping("/editarComic/submit")
 	public String procesarFormularoComic(@ModelAttribute("comic") Comic c) {
 		comicServicio.edit(c);
-		return "redirect:/listaComics";
+		return "redirect:/admin/listaComics";
 	}
 	
 	@GetMapping("/borrarComic/{id}")
@@ -66,7 +68,7 @@ public class ComicControlador {
 		if(cEliminar != null) {
 			comicServicio.delete(cEliminar);
 		}
-		return "redirect:/listaComics";
+		return "redirect:/admin/listaC";
 	}
 	
 	@PostMapping("/search")

@@ -12,17 +12,5 @@ import com.salesianos.triana.dam.principioProyFinal.service.ClienteServicio;
 @RequestMapping("/admin")
 public class AdminControlador {
 	
-	@Autowired
-	private ClienteServicio clienteServicio;
-
-	@GetMapping("/listaEditorial")
-	public String index() {
-		return "redirect:/list";
-	}
 	
-	@GetMapping("/listaCliente")
-		public String listarTodos (Model model) {
-			model.addAttribute("listaClientes", clienteServicio.findAll());
-			return "listaClientes";
-		}
 }

@@ -4313,11 +4313,18 @@ INSERT INTO cliente (id, apellidos, contrasenia , correo_electronico, nombre) VA
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
 	at com.salesianos.triana.dam.principioProyFinal.PrincipioProyFinalApplication.main(PrincipioProyFinalApplication.java:10)
 <<<<<<< HEAD
+2023-05-16 19:44:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Columna "IMG" no encontrada
+Column "IMG" not found; SQL statement:
+INSERT INTO comic (guionista, ilustrador, sinopsis, id, img, precio_unidad, stock, editorial_id, titulo) VALUES ('Paco', 'Luis', 'Un comic muy guay', 2, null, 20, 3, 1, 'Batman3') [42122-214]
+=======
+<<<<<<< HEAD
 =======
 2023-05-13 11:23:33 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Columna "CONTRASENIA" no encontrada
 Column "CONTRASENIA" not found; SQL statement:
 INSERT INTO cliente (id, apellidos, contrasenia , correo_electronico, nombre) VALUES (1, 'Franch', 'contrasenia', 'pedrofe.av@gmail.com', 'Pedro') [42122-214]
+>>>>>>> main
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	at org.h2.message.DbException.get(DbException.java:223)
@@ -4371,6 +4378,8 @@ INSERT INTO cliente (id, apellidos, contrasenia , correo_electronico, nombre) VA
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
 	at com.salesianos.triana.dam.principioProyFinal.PrincipioProyFinalApplication.main(PrincipioProyFinalApplication.java:10)
+<<<<<<< HEAD
+=======
 2023-05-13 11:23:47 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Columna "CONTRASENIA" no encontrada
 Column "CONTRASENIA" not found; SQL statement:
@@ -7618,3 +7627,4 @@ INSERT INTO producto (id, img, precio_unidad, stock, editorial_id, titulo) VALUE
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
 	at com.salesianos.triana.dam.principioProyFinal.PrincipioProyFinalApplication.main(PrincipioProyFinalApplication.java:10)
 >>>>>>> fixes
+>>>>>>> main

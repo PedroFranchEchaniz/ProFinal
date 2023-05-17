@@ -23,7 +23,7 @@
         <a href="#">COMIC</a>
         <a href="#">JUEGOS MESA</a>
       </div>          
-      <div class="main col-8" th:each="producto:${productos} ">
+      <div class="main col-2" th:each="producto:${productos} ">
         <div class="card" style="width:200px">
           <img class="card-img-top" th:src="${#strings.isEmpty(producto.img)} ? 'http://placehold.it/350x260' : ${producto.img}" alt="Card image">
           <div class="card-body">

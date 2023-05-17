@@ -101,11 +101,16 @@
     margin-top: 10px;    
 }
 
-.contenedorfildset2 label+input{
+.contenedorfildset label+select{
     margin-top: 10px;    
 }
 
-.contenedorfildset input:hover{
+.contenedorfildset2 label+input{
+    margin-top: 10px;
+    margin-bottom: 10px;    
+}
+
+.contenedorfildset label+input:hover{
     background-color: #f5a623; 
 }
 

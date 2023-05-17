@@ -7,17 +7,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.salesianos.triana.dam.principioProyFinal.model.Editorial;
 import com.salesianos.triana.dam.principioProyFinal.service.EditorialServicio;
 
 @Controller
+@RequestMapping("/admin")
 public class EditorialController {
 
 	@Autowired
 	private EditorialServicio editorialServicio;
 
-	@GetMapping("/list")
+	@GetMapping("/listaEditorial")
 	public String listarTodos(Model model) {
 		model.addAttribute("lista", editorialServicio.findAll());
 		return "listaEditoriales";
@@ -32,7 +34,7 @@ public class EditorialController {
 	@PostMapping("/nuevaEditorial/submit")
 		public String procesarFormularioEditorial(@ModelAttribute("editorial") Editorial e) {
 		editorialServicio.save(e);
-		return "redirect:/list"; 
+		return "redirect:/admin/listaEditorial"; 
 	}
 	
 	@GetMapping("/editarEditorial/{id}")
@@ -42,14 +44,14 @@ public class EditorialController {
 			model.addAttribute("editorial", eEditar);
 			return "altaEditorial";
 		}else {
-			return "redirect:/nuevaEditorial";
+			return "redirect:/admin/nuevaEditorial";
 		}
 	}
 	
 	@PostMapping("/editarEditorial/submit")
 	public String procesarFormularioEdicion(@ModelAttribute("editorial") Editorial e) {
 		editorialServicio.edit(e);
-		return "redirect:/";
+		return "redirect:/admin/listaEditorial";
 	}
 	
 	@GetMapping("/borrarEditorial/{id}")
@@ -59,7 +61,7 @@ public class EditorialController {
 		if (eEliminar != null) {
 			editorialServicio.delete(eEliminar);
 		}
-		return "redirect:/list";
+		return "redirect:/admin/listaEditorial";
 	}
 }
 
