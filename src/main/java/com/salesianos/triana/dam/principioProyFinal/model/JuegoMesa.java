@@ -29,11 +29,4 @@ public class JuegoMesa extends Producto{
 		this.descripcion = descripcion;
 	}
 	
-	
-	
-
-
-	
-	
-	
 }
