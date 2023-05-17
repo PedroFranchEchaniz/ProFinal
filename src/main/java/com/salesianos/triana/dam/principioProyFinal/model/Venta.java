@@ -30,8 +30,9 @@ public class Venta {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private LocalDate fecha;
+	private LocalDate fecha;	
 	private double total;
+	private boolean cierreCompra;
 	
 	
 	
