@@ -9,4 +9,8 @@ import com.salesianos.triana.dam.principioProyFinal.repos.VentaRepositorio;
 public class VentaServicio extends BaseServiceImpl <Venta, Long, VentaRepositorio> {
 
 	
+	
+	
+	
+	
 }

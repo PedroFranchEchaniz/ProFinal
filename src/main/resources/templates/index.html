@@ -30,7 +30,7 @@
             <h4 class="card-title" th:text="${producto.titulo}" >John Doe</h4>
             <p class="card-text" th:text="${producto.stock}">Some example text.</p>
             <p class="card-text" th:text="${producto.precioUnidad}"></p>
-            <a href="#" class="btn btn-primary">See Profile</a>
+            <a href="/productoACarrito/" th:href="@{/productoACarrito/{id}(id=${producto.id})}"class="btn btn-primary">See Profile</a>
           </div>
         </div>
       </div>                                                          

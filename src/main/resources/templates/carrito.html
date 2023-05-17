@@ -28,12 +28,12 @@
                                 <th>Acciones</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody th:each="producto : ${productos.entrySet()}">
                             <tr>
-                                <td><img src="" alt=""></img>Producto 1</td>                                
-                                <td>100.00</td>
-                                <td>1</td>
-                                <td>100.00</td>
+                                <td><img th:src="${#strings.isEmpty(producto.key.img)} ? 'http://placehold.it/350x260' : ${producto.key.img}"></td>                                
+                                <td th:text="${producto.key.precioUnidad}">100.00</td>
+                                <td th:text="${producto.value}">1</td>
+                                <td th:text="${producto.key.precioUnidad">100.00</td>
                                 <td>
                                     <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
                                 </td>
