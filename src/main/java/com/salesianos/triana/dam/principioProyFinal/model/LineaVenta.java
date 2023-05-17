@@ -1,11 +1,11 @@
 package com.salesianos.triana.dam.principioProyFinal.model;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,9 +19,10 @@ import lombok.NoArgsConstructor;
 @Builder
 public class LineaVenta {
 
-	@Id
-	@GeneratedValue
-	private Long id;
+	@EmbeddedId
+	@Builder.Default
+	private LineaVentaPK lineaventaPK = new LineaVentaPK();
+	
 	private int cantidad;
 	private double pvp;
 	
@@ -30,6 +31,7 @@ public class LineaVenta {
 	private Producto producto;
 	
 	@ManyToOne
-	@JoinColumn(foreignKey = @ForeignKey(name="fk_lineaVenta_venta"))
+	@MapsId("venta_id")
+	@JoinColumn(name="aviob_id")
 	private Venta venta;
 }

@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.w3c.dom.ls.LSResourceResolver;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -42,4 +44,14 @@ public class Venta {
 			orphanRemoval = true
 			)
 	private List<LineaVenta> lineaVenta = new ArrayList<>();
+	
+	public void addLineaVenta (LineaVenta lv) {
+		lv.setVenta(this);
+		this.lineaVenta.add(lv);
+	}
+	
+	public void removeLineaVenta (LineaVenta lv) {
+		this.lineaVenta.remove(lv);
+		lv.setVenta(null);
+	}
 }
