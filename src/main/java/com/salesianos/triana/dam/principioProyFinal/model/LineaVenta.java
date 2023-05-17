@@ -32,6 +32,6 @@ public class LineaVenta {
 	
 	@ManyToOne
 	@MapsId("venta_id")
-	@JoinColumn(name="aviob_id")
+	@JoinColumn(name="venta_id")
 	private Venta venta;
 }
