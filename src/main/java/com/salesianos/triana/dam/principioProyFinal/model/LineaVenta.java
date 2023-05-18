@@ -25,6 +25,7 @@ public class LineaVenta {
 	
 	private int cantidad;
 	private double pvp;
+	private double subtotal;
 	
 	@ManyToOne
 	@JoinColumn(foreignKey = @ForeignKey(name="fk_lieneaVenta_producto"))

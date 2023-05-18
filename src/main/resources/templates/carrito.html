@@ -28,12 +28,12 @@
                                 <th>Acciones</th>
                             </tr>
                         </thead>
-                        <tbody th:each="producto : ${productos.entrySet()}">
+                        <tbody th:each="element:${producto.entrySet()}">
                             <tr>
-                                <td><img th:src="${#strings.isEmpty(producto.key.img)} ? 'http://placehold.it/350x260' : ${producto.key.img}"></td>                                
-                                <td th:text="${producto.key.precioUnidad}">100.00</td>
-                                <td th:text="${producto.value}">1</td>
-                                <td th:text="${producto.key.precioUnidad">100.00</td>
+                                <td><img th:src="${#strings.isEmpty(element.key.img)} ? 'http://placehold.it/350x260' : ${element.key.img}"></td>                                
+                                <td th:text="${element.key.precioUnidad}">100.00</td>
+                                <td th:text="${element.value}">1</td>
+                                
                                 <td>
                                     <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
                                 </td>
@@ -52,7 +52,7 @@
             <div class="row">
                 <div class="col-12">
                     <a href="#" class="btn btn-primary">Seguir comprando</a>
-                    <a href="#" class="btn btn-success">Finalizar compra</a>
+                    <a th:href="@{/checkout}" class="btn btn-success">Finalizar compra</a>
                 </div>
             </div>
         </div>

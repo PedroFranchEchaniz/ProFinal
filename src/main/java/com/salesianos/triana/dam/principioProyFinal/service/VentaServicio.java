@@ -29,6 +29,9 @@ public class VentaServicio extends BaseServiceImpl <Venta, Long, VentaRepositori
 	@Autowired
 	VentaRepositorio ventaRepositorio;
 	
+	@Autowired 
+	ProductoServicio productoServicio;
+	
 	private Map <Producto, Integer> producto = new HashMap<>();
 	
 	
@@ -67,7 +70,7 @@ public class VentaServicio extends BaseServiceImpl <Venta, Long, VentaRepositori
 		return 0.0;
 	}
 	
-	  public void checkoutCarrito() {
+	 public void checkoutCarrito() {
 	    	Venta v = new Venta();
 		  for(Producto p : producto.keySet()) {
 			  int valor = producto.get(p);
@@ -75,8 +78,15 @@ public class VentaServicio extends BaseServiceImpl <Venta, Long, VentaRepositori
 					  LineaVenta.builder()
 					  .producto(p)
 					  .cantidad(valor)
+					  .pvp(p.getPrecioUnidad()+(25/100))
+					  .subtotal(p.getPrecioUnidad()+(25/100)*valor)
 					  .build());
+			  productoServicio.restarStock(p.getId(), valor);
 		  }
+		  v.setFecha(LocalDate.now());
+		  v.setTotal(totalCarrito());		  
+		  save(v);
+		  producto.clear();
 	    	/*LineaVenta lv;
 	    	List<LineaVenta> lista = new ArrayList<LineaVenta>();
 	    	Venta venta = new Venta();

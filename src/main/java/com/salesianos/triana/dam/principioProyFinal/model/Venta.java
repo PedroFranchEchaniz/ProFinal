@@ -36,6 +36,7 @@ public class Venta {
 	
 	
 	
+	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	@Builder.Default
