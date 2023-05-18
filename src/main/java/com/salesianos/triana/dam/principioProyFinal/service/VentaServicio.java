@@ -75,7 +75,7 @@ public class VentaServicio extends BaseServiceImpl <Venta, Long, VentaRepositori
 					  LineaVenta.builder()
 					  .producto(p)
 					  .cantidad(valor)
-					  .build()
+					  .build());
 		  }
 	    	/*LineaVenta lv;
 	    	List<LineaVenta> lista = new ArrayList<LineaVenta>();
