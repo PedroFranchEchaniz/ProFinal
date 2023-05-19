@@ -77,8 +77,8 @@ public class VentaServicio extends BaseServiceImpl <Venta, Long, VentaRepositori
 					  LineaVenta.builder()
 					  .producto(p)
 					  .cantidad(valor)
-					  .pvp(p.getPrecioUnidad()+(25/100))
-					  .subtotal(p.getPrecioUnidad()+(25/100)*valor)
+					  .pvp(p.getPrecioUnidad())
+					  .subtotal(p.getPrecioUnidad()*valor)
 					  .build());
 			  productoServicio.restarStock(p.getId(), valor);
 		  }

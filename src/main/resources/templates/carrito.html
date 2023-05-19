@@ -30,10 +30,10 @@
                         </thead>
                         <tbody th:each="element:${producto.entrySet()}">
                             <tr>
-                                <td><img th:src="${#strings.isEmpty(element.key.img)} ? 'http://placehold.it/350x260' : ${element.key.img}"></td>                                
-                                <td th:text="${element.key.precioUnidad}">100.00</td>
-                                <td th:text="${element.value}">1</td>
-                                
+                                <td><img th:src="${#strings.isEmpty(element.key.img)} ? 'http://placehold.it/350x260' : ${element.key.img}" width="100px"></td>                                
+                                <td th:text="${element.key.precioUnidad}">0</td>
+                                <td th:text="${element.value}">0</td>
+                                <td th:text="${element.key.precioUnidad * element.value}">0</td>
                                 <td>
                                     <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
                                 </td>
@@ -42,7 +42,7 @@
                         <tfoot>
                             <tr>
                                 <td colspan="3" class="text-end">Total</td>
-                                <td>500.00</td>
+                                <td th:text="${total_carrito}"></td>>0</tdth>
                                 <td></td>
                             </tr>
                         </tfoot>

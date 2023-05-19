@@ -7,6 +7,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.salesianos.triana.dam.principioProyFinal.model.Cliente;
@@ -52,6 +53,11 @@ public class VentaController {
 			return "carrito";
 		}
 	}
+	
+	  @ModelAttribute("total_carrito")
+	  private double totalCarrito() {
+		 return ventaServicio.totalCarrito();
+	  }
 	
 	@GetMapping("/checkout")
 	private String guardarVenta(@AuthenticationPrincipal Cliente c) {
