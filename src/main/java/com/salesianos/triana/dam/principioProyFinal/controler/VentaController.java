@@ -54,7 +54,7 @@ public class VentaController {
 	@GetMapping("/checkout")
 	private String guardarVenta() {
 		ventaServicio.checkoutCarrito();
-		return "/";
+		return "redirect:/";
 	}
 	
 	

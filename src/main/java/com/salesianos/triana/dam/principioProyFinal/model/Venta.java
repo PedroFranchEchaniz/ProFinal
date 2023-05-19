@@ -2,6 +2,8 @@ package com.salesianos.triana.dam.principioProyFinal.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -47,7 +49,12 @@ public class Venta {
 			)
 	private List<LineaVenta> lineaVenta = new ArrayList<>();
 	
+	public List<LineaVenta> getLineaVenta(){
+		return Collections.unmodifiableList(lineaVenta);
+	}
+	
 	public void addLineaVenta (LineaVenta lv) {
+		lv.getLineaventaPK().setLineaVenta_id(generarId());
 		lv.setVenta(this);
 		this.lineaVenta.add(lv);
 	}
@@ -55,5 +62,16 @@ public class Venta {
 	public void removeLineaVenta (LineaVenta lv) {
 		this.lineaVenta.remove(lv);
 		lv.setVenta(null);
+	}
+	
+	public long generarId() {
+		if(this.lineaVenta.size()>0) {
+			return this.lineaVenta.stream()
+					.map(LineaVenta::getLineaventaPK)
+					.map(LineaVentaPK::getLineaVenta_id)
+					.max(Comparator.naturalOrder())
+					.orElse(01l)+1l;
+		}else
+			return 1L;
 	}
 }
