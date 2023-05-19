@@ -9,11 +9,12 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
-import org.w3c.dom.ls.LSResourceResolver;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,8 +37,19 @@ public class Venta {
 	private double total;
 	private boolean cierreCompra;
 	
+	@ManyToOne
+	@JoinColumn(foreignKey=@ForeignKey(name="fk_venta_cliente"))
+	private Cliente cliente;
 	
+	public void addToCliente (Cliente c) {
+		this.cliente=c;
+		c.getVentas().add(this);
+	}
 	
+	public void removeFromCliente (Cliente c) {
+		c.getVentas().remove(this);
+		this.cliente=null;
+	}
 	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude

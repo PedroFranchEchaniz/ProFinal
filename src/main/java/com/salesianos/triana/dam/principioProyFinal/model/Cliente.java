@@ -44,11 +44,17 @@ public class Cliente implements UserDetails  {
 	private String correoElectronico;
 	private boolean admin;
 	
+	/*@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	@OneToMany(mappedBy="cliente", fetch = FetchType.EAGER)
+	@Builder.Default
+	private List <Valoracion> valoraciones = new ArrayList<>();*/
+	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	@OneToMany(mappedBy="cliente", fetch = FetchType.EAGER)
 	@Builder.Default
-	private List <Valoracion> valoraciones = new ArrayList<>();
+	private List<Venta>ventas=new ArrayList<>();
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

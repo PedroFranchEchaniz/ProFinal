@@ -1,10 +1,8 @@
 package com.salesianos.triana.dam.principioProyFinal.service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +11,7 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.salesianos.triana.dam.principioProyFinal.model.Cliente;
 import com.salesianos.triana.dam.principioProyFinal.model.LineaVenta;
 import com.salesianos.triana.dam.principioProyFinal.model.Producto;
 import com.salesianos.triana.dam.principioProyFinal.model.Venta;
@@ -70,7 +69,7 @@ public class VentaServicio extends BaseServiceImpl <Venta, Long, VentaRepositori
 		return 0.0;
 	}
 	
-	 public void checkoutCarrito() {
+	 public void checkoutCarrito(Cliente c) {
 	    	Venta v = new Venta();
 		  for(Producto p : producto.keySet()) {
 			  int valor = producto.get(p);
@@ -83,6 +82,7 @@ public class VentaServicio extends BaseServiceImpl <Venta, Long, VentaRepositori
 					  .build());
 			  productoServicio.restarStock(p.getId(), valor);
 		  }
+		  v.setCliente(c);
 		  v.setFecha(LocalDate.now());
 		  v.setTotal(totalCarrito());		  
 		  save(v);

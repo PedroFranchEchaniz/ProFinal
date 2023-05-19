@@ -1,6 +1,6 @@
 package com.salesianos.triana.dam.principioProyFinal.model;
 
-import javax.persistence.Entity;
+/*import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -53,4 +53,4 @@ public class Valoracion {
 		producto.getValoraciones().remove(this);
 		this.producto=null;
 	}
-}
+}*/

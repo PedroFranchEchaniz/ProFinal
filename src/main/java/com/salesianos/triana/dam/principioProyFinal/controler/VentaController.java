@@ -3,11 +3,13 @@ package com.salesianos.triana.dam.principioProyFinal.controler;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.salesianos.triana.dam.principioProyFinal.model.Cliente;
 import com.salesianos.triana.dam.principioProyFinal.model.Producto;
 import com.salesianos.triana.dam.principioProyFinal.service.ProductoServicio;
 import com.salesianos.triana.dam.principioProyFinal.service.VentaServicio;
@@ -52,8 +54,8 @@ public class VentaController {
 	}
 	
 	@GetMapping("/checkout")
-	private String guardarVenta() {
-		ventaServicio.checkoutCarrito();
+	private String guardarVenta(@AuthenticationPrincipal Cliente c) {
+		ventaServicio.checkoutCarrito(c);
 		return "redirect:/";
 	}
 	
