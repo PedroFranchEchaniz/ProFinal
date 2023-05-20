@@ -35,7 +35,7 @@
                                 <td th:text="${element.value}">0</td>
                                 <td th:text="${element.key.precioUnidad * element.value}">0</td>
                                 <td>
-                                    <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                    <a th:href="@{/borrarProducto/{id}/(id=${element.key.id})}"  class="btn btn-danger"><i class="bi bi-trash"></i></a>
                                 </td>
                             </tr>                            
                         </tbody>
@@ -51,7 +51,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <a href="#" class="btn btn-primary">Seguir comprando</a>
+                    <a th:href="@{/}" class="btn btn-primary">Seguir comprando</a>
                     <a th:href="@{/checkout}" class="btn btn-success">Finalizar compra</a>
                 </div>
             </div>
