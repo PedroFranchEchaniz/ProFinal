@@ -1,5 +1,7 @@
 package com.salesianos.triana.dam.principioProyFinal.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +17,10 @@ public class ProductoServicio extends BaseServiceImpl<Producto, Long, ProductoRe
 	public void restarStock (Long id, int cantidad) {
 		Producto p = productoRepositorio.findById(id).orElse(null);
 		p.setStock(p.getStock()-cantidad);		
+	}
+	
+	public List<Producto> buscarPorTitulo (String titulo){
+		return productoRepositorio.buscarPorTitulo(titulo);
+		
 	}
 }

@@ -69,11 +69,6 @@ public class ComicControlador {
 			comicServicio.delete(cEliminar);
 		}
 		return "redirect:/admin/listaC";
-	}
+	}	
 	
-	@PostMapping("/search")
-	public String buscarProducto(@ModelAttribute("buscar") SearchBean searchBean, Model model) {
-		model.addAttribute("comics", comicServicio.findByNombre(searchBean.getSearch()));
-		return "listaComic";
-	}
 }
