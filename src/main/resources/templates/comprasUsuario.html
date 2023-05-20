@@ -16,13 +16,14 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th class="col-2">Referencia</th>                                                           
+                        <th class="col-2">Referencia</th>
+                        <th class="col-2">Producto</th>                                                          
                     </tr>
                 </thead>
                 <tbody th:each="venta : ${ventas}">
                     <tr>
                         <td th:text="${venta.id}">null</td>                         
-						<td th:text="${venta.LineaVenta}"></td>					                                                                     
+						<td th:text="${venta.LineaVenta}">null</td>					                                                                     
                     </tr>
                 </tbody>
             </table>

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.salesianos.triana.dam.principioProyFinal.formsBeans.SearchBean;
 import com.salesianos.triana.dam.principioProyFinal.model.Editorial;
 import com.salesianos.triana.dam.principioProyFinal.service.EditorialServicio;
 
