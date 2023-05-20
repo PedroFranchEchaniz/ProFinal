@@ -66,6 +66,10 @@
     color: #f5a623;
 }
 
+.card{
+    max-width: 300px;
+}
+
 .carousel-inner{
     background-color: #f5a623;
 }

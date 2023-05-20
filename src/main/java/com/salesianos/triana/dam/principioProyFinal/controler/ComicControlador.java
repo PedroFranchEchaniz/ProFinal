@@ -25,7 +25,7 @@ public class ComicControlador {
 	public EditorialServicio editorialServicio;
 	
 	@GetMapping("/listaC")
-	public String index (Model model) {
+	public String listaComics (Model model) {
 		model.addAttribute("comics", comicServicio.findAll());
 		model.addAttribute("buscar", new SearchBean());
 		return "listaComic";

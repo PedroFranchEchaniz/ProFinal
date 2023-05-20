@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="row d-flex justify-content-center">        
-        <form class="col-9 contenedorform row bg-light" th:object="${cliente}" method="post">
+        <form class="contenedorform row bg-dark text-light" th:action="${cliente.id != 0} ? @{/admin/nuevoUsuario/submit} : @{/admin/nuevoUsuario}" th:object="${cliente}" method="post">
             <fieldset class="contenedorfildset row d-flex col-6">
 				<input th:if="${cliente.id != 0}" type="hidden" name="id" th:field="*{id}" />                
                 <label class="col-4" for="nombre">Nombre*</label>
@@ -31,7 +31,7 @@
                 <input class="col-8" type="text" name="apellido" id="apellido" th:field="*{apellidos}"><br/>
                 <p class="col-12">Introduzca unicamente letras</p>
                 <label class="col-4"for="direccion">Direccion*</label>
-                <input class="col-8"type="text" name="direccion" id="direccion" th:field="*{dirrecion}"><br/>              
+                <input class="col-8"type="text" name="direccion" id="direccion" th:field="*{direccion}"><br/>              
                 <label class="col-4"for="email">Email*</label>
                 <input class="col-8"type="email" name="email" id="email" th:field="*{correoElectronico}"><br/>
                 <label class="col-4"for="user">Usuario</label>

@@ -16,25 +16,30 @@ import com.salesianos.triana.dam.principioProyFinal.service.ClienteServicio;
 
 
 @Controller
-@RequestMapping("/user")
 public class ClienteController {
 	
 	@Autowired
-	ClienteServicio clienteServicio;	
+	ClienteServicio clienteServicio;
 	
-	@GetMapping ("/nuevoUsuario")
+	@GetMapping("/admin/listaClientes")
+	public String listaClientes (Model model) {
+		model.addAttribute("listaClientes", clienteServicio.findAll());
+		return"listaClientes";
+	}
+	
+	@GetMapping ("/admin/nuevoUsuario")
 	public String formularioUsuario (Model model) {
 		model.addAttribute("cliente", new Cliente());
 		return "altaUsuario";
 	}
 	
-	@PostMapping("/nuevoUsuario/submit")
-		public String procesarFormularioCliente(@AuthenticationPrincipal Cliente u) {
+	@PostMapping("/admin/nuevoUsuario/submit")
+		public String procesarFormularioCliente(@ModelAttribute("cliente") Cliente u) {
 			clienteServicio.save(u);
-			return "misDatos";
+			return "redirect:/admin/listaClientes";
 		}
 	
-	@GetMapping ("/editarUsuario")
+	@GetMapping ("user/editarUsuario")
 	public String monstrarMisDatos (Model model, @AuthenticationPrincipal Cliente c) {		
 			model.addAttribute("cliente", c);
 			return "misDatos";		

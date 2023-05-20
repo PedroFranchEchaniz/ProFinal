@@ -9,29 +9,9 @@
     <title>ListaClientes</title>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="javascript:void(0)">Logo</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="mynavbar">
-                <ul class="navbar-nav me-auto">
-                    <li>
-                        <button type="button" class="btn btn-primary">Productos</button>
-                    </li>                    
-                </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="text" placeholder="Search">
-                    <button class="btn btn-primary" type="button">Search</button>
-                </form>
-            </div>
-        </div>
-        </nav>
-        
-    </header>
-    
+    <header>        
+       <nav th:replace="~{fragment/headerAdmin::encabezado}"></nav> 
+    </header>    
     <main>
         <div class="container-fluid">
             <table class="table table-striped">
@@ -48,8 +28,7 @@
                     <tr>
                         <td th:text="${cliente.id}">null</td>
                         <td th:text="${cliente.nombre}">null</td>
-                        <td th:text="${cliente.apellidos}">null</td>                        
-                        <td th:text="${cliente.password}">null</td>
+                        <td th:text="${cliente.apellidos}">null</td>                       
                         <td th:text="${cliente.correoElectronico}">null</td>
                         <td>                        
                         <button type="button" class="btn btn-primary">Editar</button>
@@ -58,7 +37,7 @@
                     </tr>
                 </tbody>
             </table>
-            <button type="button" class="btn btn-primary">Añadir</button>
+            <a type="button" class="btn btn-primary" th:href="@{/admin/nuevoUsuario}">Añadir</a>
         </div>
     </main>
 </body>
