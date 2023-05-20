@@ -6,12 +6,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.salesianos.triana.dam.principioProyFinal.model.Cliente;
 import com.salesianos.triana.dam.principioProyFinal.service.ClienteServicio;
+import com.salesianos.triana.dam.principioProyFinal.service.VentaServicio;
 
 
 
@@ -20,6 +19,9 @@ public class ClienteController {
 	
 	@Autowired
 	ClienteServicio clienteServicio;
+	
+	@Autowired
+	VentaServicio ventaServicio;
 	
 	@GetMapping("/admin/listaClientes")
 	public String listaClientes (Model model) {
@@ -49,5 +51,12 @@ public class ClienteController {
 	public String procesarMisDatos (@ModelAttribute("cliente") @AuthenticationPrincipal Cliente u) {
 		clienteServicio.edit(u);
 		return "misDatos";
+	}
+	
+	@GetMapping ("/misCompras")
+	public String misCompras (@AuthenticationPrincipal Cliente u, Model model) {
+		model.addAttribute("ventas", ventaServicio.findByIdCliente(u));
+		return "comprasUsuario";
+		
 	}
 }
