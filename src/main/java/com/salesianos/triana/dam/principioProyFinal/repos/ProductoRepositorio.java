@@ -9,7 +9,6 @@ import com.salesianos.triana.dam.principioProyFinal.model.Producto;
 
 public interface ProductoRepositorio
 	extends JpaRepository<Producto, Long>{
-
 	
 	public List<Producto> findByTituloContainingIgnoreCase (String titulo);
 	

@@ -15,8 +15,7 @@ import com.salesianos.triana.dam.principioProyFinal.service.ProductoServicio;
 @Controller
 public class MainController {
 
-	@Autowired
-	HttpSession session;
+	
 
 	@Autowired
 	public ProductoServicio productoServicio;

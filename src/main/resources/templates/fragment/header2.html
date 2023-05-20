@@ -15,7 +15,7 @@
 	<form th:action="@{/logout/}" method="POST" id="logoutForm" style="display: none;"></form>
 	<nav class="navbar navbar-expand-md navbar-light bg-light" th:fragment="encabezado">
 			<div class="container">
-				<a class="navbar-brand" href="#" th:href="@{/}"><img src="img/logo.png" alt="the android's dungeon"></a>
+				<a class="navbar-brand" href="#" th:href="@{/}"><img th:href="@{/img/logo.png}" alt="the android's dungeon"></a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
 					<span class="navbar-toggler-icon"></span>
 				</button>

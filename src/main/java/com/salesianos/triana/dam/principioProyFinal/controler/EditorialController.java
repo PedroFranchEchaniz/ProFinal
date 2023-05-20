@@ -1,5 +1,7 @@
 package com.salesianos.triana.dam.principioProyFinal.controler;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.salesianos.triana.dam.principioProyFinal.formsBeans.SearchBean;
 import com.salesianos.triana.dam.principioProyFinal.model.Editorial;
 import com.salesianos.triana.dam.principioProyFinal.service.EditorialServicio;
 
@@ -17,11 +20,14 @@ import com.salesianos.triana.dam.principioProyFinal.service.EditorialServicio;
 public class EditorialController {
 
 	@Autowired
+	HttpSession session;
+	
+	@Autowired
 	private EditorialServicio editorialServicio;
 
 	@GetMapping("/listaEditorial")
 	public String listarTodos(Model model) {
-		model.addAttribute("lista", editorialServicio.findAll());
+		model.addAttribute("lista", editorialServicio.findAll());		
 		return "listaEditoriales";
 	}
 
@@ -62,6 +68,7 @@ public class EditorialController {
 			editorialServicio.delete(eEliminar);
 		}
 		return "redirect:/admin/listaEditorial";
-	}
+	}	
+	
 }
 
