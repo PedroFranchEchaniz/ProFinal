@@ -15,8 +15,7 @@ import com.salesianos.triana.dam.principioProyFinal.service.ProductoServicio;
 @Controller
 public class MainController {
 
-	@Autowired
-	HttpSession session;
+	
 
 	@Autowired
 	public ProductoServicio productoServicio;
@@ -24,12 +23,24 @@ public class MainController {
 	@GetMapping("/")
 	public String portada(Model model) {
 		model.addAttribute("productos", productoServicio.findAll());
+		model.addAttribute("searchForm", new SearchBean());
 		return "index";
 	}
 	
 	@GetMapping("/error")
 	public String error(Model model) {
 		return "error";
-	}	
+	}
+	
+	@PostMapping("/search")
+	public String buscarPorTitulo (@ModelAttribute("searchForm") SearchBean searchBean, Model model) {
+		model.addAttribute("productos", productoServicio.findByTitulo(searchBean.getSearch()));
+		return "index";
+	}
+	
+	@GetMapping("/login")
+	public String showLogin () {
+		return "login";
+	}
 	
 }

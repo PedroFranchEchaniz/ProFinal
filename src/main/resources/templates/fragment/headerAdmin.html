@@ -11,6 +11,8 @@
     <title>AltaEditorial</title>
 </head>
 <body>
+	<header th:fragment="encabezado">
+		
        <nav class="navbar navbar-expand-sm navbar-dark bg-dark" th:fragment="encabezado">
         <div class="container-fluid">
             <a class="navbar-brand" href="javascript:void(0)" th:href="@{/}">Logo</a>
@@ -31,12 +33,9 @@
                     <li>
                         <a type="button" class="btn btn-primary" th:href="@{/admin/listaClientes}">Clientes</a>
                     </li>                     
-                </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="text" placeholder="Search">
-                    <button class="btn btn-primary" type="button">Search</button>
-                </form>
+                </ul>                
             </div>
         </div>
         </nav> 
+	</header>
 </html>
