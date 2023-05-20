@@ -11,6 +11,8 @@
     <title>Pop Art Comics</title>
 </head>
 <body>
+	<header th:fragment="encabezado">
+	<form th:action="@{/logout/}" method="POST" id="logoutForm" style="display: none;"></form>
 	<nav class="navbar navbar-expand-md navbar-light bg-light" th:fragment="encabezado">
 			<div class="container">
 				<a class="navbar-brand" href="#" th:href="@{/}"><img src="img/logo.png" alt="the android's dungeon"></a>
@@ -19,24 +21,25 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav ml-auto">
-			<li class="nav-item" sec:authorize="hasRole('ROLE_USER')">							
+						<li class="nav-item" sec:authorize="hasRole('ROLE_USER')">							
 							<a class="nav-link" type="button" th:href="@{/user/editarUsuario}">Zona Usuario</a>	
 						</li>
 						<li class="nav-link" sec:authorize="hasRole('ROLE_ADMIN')" >
 							<a type="button" th:href="@{/admin/listaEditorial}">Zona Admin</a>
 						</li>
-						<li sec:authorize="isAuthenticated()">
-							<a class="nav-link" href="javascript:document.getElementById(logoutForm).submit()">Salir</a>
-						</li>
+						<li class="nav-item" sec:authorize="isAuthenticated()">
+                          <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Salir</a>
+                    </li>
 						<li class="nav-item">
 							<a class="nav-link" href="#"><i class="bi bi-cart3"></i><sub>0</sub></a>                            
 						</li>
 					</ul>
-            <form class="d-flex">
-              <input  class="form-control me-2" type="text" placeholder="Buscar">
-              <button class="btn btn-primary" type="button">Buscar</button>
+            <form th:action="@{/search}" th:object="${searchForm}" method="POST" class="d-flex">
+              <input  class="form-control me-2" type="text" placeholder="Buscar" th:field="*{search}" name="titulo">
+              <button class="btn btn-primary" type="submit">Buscar</button>
             </form>
 				</div>
 			</div>
 		</nav>
+	</header>
 </body>

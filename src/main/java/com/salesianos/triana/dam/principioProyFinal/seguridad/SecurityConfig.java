@@ -7,10 +7,9 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-
-import com.salesianos.triana.dam.principioProyFinal.service.ClienteServicio;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,14 +18,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-	private final ClienteServicio userDetailsService;
+	private final UserDetailsService userDetailsService;
 	private final PasswordEncoder passwordEncoder;
-	/*@Bean
-	public InMemoryUserDetailsManager userDetailsService() {
-		UserDetails user = User.builder().username("admin").password("{noop}admin").roles("ADMIN").build();
-		return new InMemoryUserDetailsManager(user);
-	}*/
-
+	
 	@Bean 
 	public DaoAuthenticationProvider daoAuthenticationProvider() {
 		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
