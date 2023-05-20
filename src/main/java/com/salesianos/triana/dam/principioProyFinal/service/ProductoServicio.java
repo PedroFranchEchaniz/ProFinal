@@ -18,9 +18,5 @@ public class ProductoServicio extends BaseServiceImpl<Producto, Long, ProductoRe
 		Producto p = productoRepositorio.findById(id).orElse(null);
 		p.setStock(p.getStock()-cantidad);		
 	}
-	
-	public List<Producto> buscarPorTitulo (String titulo){
-		return productoRepositorio.buscarPorTitulo(titulo);
-		
-	}
+
 }

@@ -10,6 +10,5 @@ import com.salesianos.triana.dam.principioProyFinal.model.Producto;
 public interface ProductoRepositorio
 	extends JpaRepository<Producto, Long>{
 
-	@Query("Select p from producto pr where pr.titulo = ?1")
-	public List<Producto> buscarPorTitulo(String titulo);
+	
 }

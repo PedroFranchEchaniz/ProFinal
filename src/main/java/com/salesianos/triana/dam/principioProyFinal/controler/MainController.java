@@ -1,5 +1,7 @@
 package com.salesianos.triana.dam.principioProyFinal.controler;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,9 @@ import com.salesianos.triana.dam.principioProyFinal.service.ProductoServicio;
 public class MainController {
 
 	@Autowired
+	HttpSession session;
+
+	@Autowired
 	public ProductoServicio productoServicio;
 	
 	@GetMapping("/")
@@ -25,11 +30,6 @@ public class MainController {
 	@GetMapping("/error")
 	public String error(Model model) {
 		return "error";
-	}
+	}	
 	
-	@PostMapping("/buscar")
-	public String buscarProducto(@ModelAttribute("searhcForm") SearchBean searchBean, Model model) {
-		model.addAttribute("productos", productoServicio.buscarPorTitulo(searchBean.getSearch()));
-		return "redirect:/";
-	}
 }
