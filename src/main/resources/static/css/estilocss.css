@@ -66,22 +66,23 @@
     color: #f5a623;
 }
 
-.card{
-    max-width: 300px;
-}
-
 .carousel-inner{
     background-color: #f5a623;
 }
 
 .contenedorform{
     margin-top: 20px;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
     padding-top:2%;
     padding-bottom: 2%; 
-    padding-right: 4%;
-    padding-left: 4%;   
+    padding-right: 1%;
+    padding-left: 1%;   
+}
+
+.contenedorform>fieldset>p{
+    display: none;
+    color: red;
 }
 
 .contenedorfildset{
@@ -105,20 +106,15 @@
     margin-top: 10px;    
 }
 
-.contenedorfildset label+select{
-    margin-top: 10px;    
-}
-
 .contenedorfildset2 label+input{
-    margin-top: 10px;
-    margin-bottom: 10px;    
+    margin-top: 10px;    
 }
 
 .contenedorfildset label+input:hover{
     background-color: #f5a623; 
 }
 
-.contenedorfildset2 input:hover{
+.contenedorfildset2 label+input:hover{
     background-color: #f5a623;
 }
 
@@ -147,4 +143,13 @@
 .botonmargin{
     margin-top: 20px;    
     margin-bottom: 20px;
+}
+
+.login{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+section{
+    padding: 20px;
 }
