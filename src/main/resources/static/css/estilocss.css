@@ -66,27 +66,26 @@
     color: #f5a623;
 }
 
+.card{
+    max-width: 300px;
+}
+
 .carousel-inner{
     background-color: #f5a623;
 }
 
 .contenedorform{
     margin-top: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
     padding-top:2%;
     padding-bottom: 2%; 
-    padding-right: 1%;
-    padding-left: 1%;   
-}
-
-.contenedorform>fieldset>p{
-    display: none;
-    color: red;
+    padding-right: 4%;
+    padding-left: 4%;   
 }
 
 .contenedorfildset{
-    padding: 3%;    
+    padding: 3%;       
 }
 
 .contenedorfildset2{
@@ -106,15 +105,20 @@
     margin-top: 10px;    
 }
 
-.contenedorfildset2 label+input{
+.contenedorfildset label+select{
     margin-top: 10px;    
+}
+
+.contenedorfildset2 label+input{
+    margin-top: 10px;
+    margin-bottom: 10px;    
 }
 
 .contenedorfildset label+input:hover{
     background-color: #f5a623; 
 }
 
-.contenedorfildset2 label+input:hover{
+.contenedorfildset2 input:hover{
     background-color: #f5a623;
 }
 
@@ -145,11 +149,10 @@
     margin-bottom: 20px;
 }
 
-.login{
-    margin-top: 20px;
-    margin-left: 20px;
+section{
+	padding: 5%;
 }
 
-section{
-    padding: 20px;
+.mensajeContraseña{
+    display: none;
 }

@@ -55,7 +55,7 @@ public class ClienteController {
 		}
 	}
 	
-	@PostMapping("admin/editarCliente/{id}")
+	@PostMapping("admin/editarCliente/submit")
 	public String procesarEdicionCliente(@ModelAttribute("cliente") Cliente c) {
 		clienteServicio.edit(c);
 		return "redirect:/admin/listaClientes";

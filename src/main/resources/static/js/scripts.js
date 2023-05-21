@@ -1,11 +1,14 @@
-const form = document.getElementById('controlForm');
-const contrasenia = document.getElementById('contrasena');
-const constrasenia2 = document.getElementById('contrasena2');
+let boton = document.getElementById('botonFormularioCliente');
+let contrasena = document.getElementById('contrasena');
+let contrasena2 = document.getElementById('contrasena2');
+boton.addEventListener('click', compararContrasenias);
 
-form.addEventListener('submit', function(){
-	if(contrasenia.value !== constrasenia2.value){
-		alert('Las contraseñas no coinciden')
-		return false
-	}
-});
-
+function compararContrasenias() {
+    if (contrasena.value === contrasena2.value) {
+        // Contraseñas coinciden
+    } else {
+        let mostrarmenaje = document.querySelector('.mensajeContraseña');
+        mostrarmenaje.style.display = 'block';
+        event.preventDefault(); // Evita el envío del formulario
+    }
+}
