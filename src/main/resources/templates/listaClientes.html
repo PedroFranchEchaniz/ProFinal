@@ -31,8 +31,11 @@
                         <td th:text="${cliente.apellidos}">null</td>                       
                         <td th:text="${cliente.correoElectronico}">null</td>
                         <td>                        
-                        <button type="button" class="btn btn-primary">Editar</button>
-                        <button type="button" class="btn btn-danger">Eliminar</button>
+                        <a href="#"
+								th:href="@{editarCliente/{id}(id=${cliente.id})}"
+								class="btn btn-primary">Editar</a>
+                       <a type="button" class="btn btn-danger" href="#"
+    						th:href="@{/admin/borrarCliente/{id}(id=${cliente.id})}">Eliminar</a>
                         </td>
                     </tr>
                 </tbody>

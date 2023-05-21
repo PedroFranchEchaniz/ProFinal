@@ -1,11 +1,14 @@
 package com.salesianos.triana.dam.principioProyFinal.controler;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianos.triana.dam.principioProyFinal.model.Cliente;
@@ -40,6 +43,35 @@ public class ClienteController {
 			clienteServicio.save(u);
 			return "redirect:/admin/listaClientes";
 		}
+	
+	@GetMapping("admin/editarCliente/{id}")
+	public String editarCliente(@PathVariable("id") Long id, Model model) {
+		Optional<Cliente> cEditar = clienteServicio.findById(id);
+		if(cEditar != null) {
+			model.addAttribute("cliente", cEditar.get());			
+			return "altaUsuario";
+		}else {
+			return "redirect:/admin/nuevoUsuario";
+		}
+	}
+	
+	@PostMapping("admin/editarCliente/{id}")
+	public String procesarEdicionCliente(@ModelAttribute("cliente") Cliente c) {
+		clienteServicio.edit(c);
+		return "redirect:/admin/listaClientes";
+	}
+	
+	@GetMapping("admin/borrarCliente/{id}")
+	public String borrarEditorial (@PathVariable("id") Long id, Model model){
+		Optional<Cliente> eliminarCliente = clienteServicio.findById(id);		
+		if(eliminarCliente != null) {
+			clienteServicio.delete(eliminarCliente.get());
+			return "redirect:/admin/listaClientes";
+		}else {
+			return "index";
+		}
+	}	
+	
 	
 	@GetMapping ("user/editarUsuario")
 	public String monstrarMisDatos (Model model, @AuthenticationPrincipal Cliente c) {		
