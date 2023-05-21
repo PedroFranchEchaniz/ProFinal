@@ -155,8 +155,7 @@ section{
 
 .mensajeContraseña {
     display: none;
-    position: absolute;
     color: red;
     font-weight: bold;
-    margin-top: 190px; /* Ajusta este valor según sea necesario para el espaciado deseado */
+    margin-top: 20px; 
 }
