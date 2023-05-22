@@ -34,7 +34,7 @@ public class VentaController {
 	public String productoAcarrito(@PathVariable("id") Long id, Model model) {
 		Optional<Producto> agregarProducto = productoServicio.findById(id);		
 		if(agregarProducto != null) {
-			ventaServicio.addProducto(agregarProducto.orElse(null));
+			ventaServicio.addProducto(agregarProducto.get());
 			return "redirect:/cesta";
 		}else {
 			return "index";
@@ -48,9 +48,9 @@ public class VentaController {
 		
 		if(quitarProducto != null) {
 			ventaServicio.removeProducto(quitarProducto.get());
-			return "redirect:/carrito";
+			return "redirect:/cesta";
 		}else {
-			return "carrito";
+			return "index";
 		}
 	}
 	

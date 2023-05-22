@@ -1,5 +1,7 @@
 package com.salesianos.triana.dam.principioProyFinal.controler;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -8,10 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.salesianos.triana.dam.principioProyFinal.model.Cliente;
 import com.salesianos.triana.dam.principioProyFinal.service.ClienteServicio;
+import com.salesianos.triana.dam.principioProyFinal.service.VentaServicio;
 
 
 
@@ -20,6 +22,9 @@ public class ClienteController {
 	
 	@Autowired
 	ClienteServicio clienteServicio;
+	
+	@Autowired
+	VentaServicio ventaServicio;
 	
 	@GetMapping("/admin/listaClientes")
 	public String listaClientes (Model model) {
@@ -39,6 +44,35 @@ public class ClienteController {
 			return "redirect:/admin/listaClientes";
 		}
 	
+	@GetMapping("admin/editarCliente/{id}")
+	public String editarCliente(@PathVariable("id") Long id, Model model) {
+		Optional<Cliente> cEditar = clienteServicio.findById(id);
+		if(cEditar != null) {
+			model.addAttribute("cliente", cEditar.get());			
+			return "altaUsuario";
+		}else {
+			return "redirect:/admin/nuevoUsuario";
+		}
+	}
+	
+	@PostMapping("admin/editarCliente/submit")
+	public String procesarEdicionCliente(@ModelAttribute("cliente") Cliente c) {
+		clienteServicio.edit(c);
+		return "redirect:/admin/listaClientes";
+	}
+	
+	@GetMapping("admin/borrarCliente/{id}")
+	public String borrarEditorial (@PathVariable("id") Long id, Model model){
+		Optional<Cliente> eliminarCliente = clienteServicio.findById(id);		
+		if(eliminarCliente != null) {
+			clienteServicio.delete(eliminarCliente.get());
+			return "redirect:/admin/listaClientes";
+		}else {
+			return "index";
+		}
+	}	
+	
+	
 	@GetMapping ("user/editarUsuario")
 	public String monstrarMisDatos (Model model, @AuthenticationPrincipal Cliente c) {		
 			model.addAttribute("cliente", c);
@@ -49,5 +83,12 @@ public class ClienteController {
 	public String procesarMisDatos (@ModelAttribute("cliente") @AuthenticationPrincipal Cliente u) {
 		clienteServicio.edit(u);
 		return "misDatos";
+	}
+	
+	@GetMapping ("/misCompras")
+	public String misCompras (@AuthenticationPrincipal Cliente u, Model model) {
+		model.addAttribute("ventas", ventaServicio.findByIdCliente(u));
+		return "comprasUsuario";
+		
 	}
 }

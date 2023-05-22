@@ -85,7 +85,7 @@
 }
 
 .contenedorfildset{
-    padding: 3%;    
+    padding: 3%;       
 }
 
 .contenedorfildset2{
@@ -147,4 +147,15 @@
 .botonmargin{
     margin-top: 20px;    
     margin-bottom: 20px;
+}
+
+section{
+	padding: 5%;
+}
+
+.mensajeContraseña {
+    display: none;
+    color: red;
+    font-weight: bold;
+    margin-top: 20px; 
 }
