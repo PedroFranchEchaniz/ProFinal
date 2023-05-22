@@ -53,7 +53,11 @@ public class SecurityConfig {
 			.logout()
 			.logoutUrl("/logout/")
 			.logoutSuccessUrl("/login")
-			.permitAll();
+			.permitAll()
+			.and()
+		.exceptionHandling()
+			.accessDeniedPage("/error");
+		
 			
 		
 		http.csrf().disable();

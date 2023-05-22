@@ -44,7 +44,7 @@ public class ProductoController {
 		Optional <Comic> comic = comicServicio.findById(id);
 		Optional<JuegoMesa> jm = jmServicio.findById(id);
 		
-		if(producto != null) {
+		if(producto.isPresent()) {
 			if(producto.get() instanceof Comic) {
 				model.addAttribute("comic", comic.get());
 				return "producto";
@@ -52,8 +52,8 @@ public class ProductoController {
 				model.addAttribute("jm", jm.get());
 				return "producto2";
 			}
-		}else {
-			return "redirect:/";
+		}else{
+			return "error";
 		}
 	}
 	

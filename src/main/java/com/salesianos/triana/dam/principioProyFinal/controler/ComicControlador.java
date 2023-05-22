@@ -1,5 +1,7 @@
 package com.salesianos.triana.dam.principioProyFinal.controler;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,9 +48,9 @@ public class ComicControlador {
 	
 	@GetMapping("/editarComic/{id}")
 	public String mostrarFormularioComic(@PathVariable("id") Long id, Model model) {
-		Comic cEditar = comicServicio.findById(id).orElse(null);
+		Optional<Comic> cEditar = comicServicio.findById(id);		
 		if(cEditar != null) {
-			model.addAttribute("comic", cEditar);
+			model.addAttribute("comic", cEditar.get());
 			model.addAttribute("editoriales", editorialServicio.findAll());
 			return "altaComic";
 		}else {
@@ -64,9 +66,9 @@ public class ComicControlador {
 	
 	@GetMapping("/borrarComic/{id}")
 	public String borrarEditorial(@PathVariable("id") Long id, Model model) {
-		Comic cEliminar = comicServicio.findById(id).orElse(null);
+		Optional <Comic> cEliminar = comicServicio.findById(id);
 		if(cEliminar != null) {
-			comicServicio.delete(cEliminar);
+			comicServicio.delete(cEliminar.get());
 		}
 		return "redirect:/admin/listaC";
 	}	

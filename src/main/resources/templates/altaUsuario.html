@@ -20,7 +20,7 @@
 				<input th:if="${cliente.id != 0}" type="hidden" name="id" th:field="*{id}" />                
                 <label class="col-4" for="nombre">Nombre*</label>                
                 <input class="col-8" type="text" name="nombre" id="nombre" autocomplete autofocus th:field="*{nombre}" required>
-                <p class="mensajeContraseña col-12" id="mensajeNombre">Solo se admiten letras</p>               
+                <p class="mensajeNombre col-12" id="mensajeNombre"></p>               
                 <label class="col-4"for="fechanacimiento">Fecha Nacimiento*</label>
                 <input class="col-8"type="date" name="fechanacimiento" id="fechanacimiento" th:field="*{fechaNacimiento}">                            
                 <label class="col-4"for="user">Usuario</label>
@@ -30,7 +30,8 @@
             </fieldset>
             <fieldset class="contenedorfildset2 row d-flex col-6">                
                 <label class="col-4"for="apellido">Apellido*</label>
-                <input class="col-8" type="text" name="apellido" id="apellido" th:field="*{apellidos}"><br/>                
+                <input class="col-8" type="text" name="apellido" id="apellido" th:field="*{apellidos}"><br/>
+                <p class="mensajeApellido col-12" id="mensajeApellido"></p>                  
                 <label class="col-4"for="direccion">Direccion*</label>
                 <input class="col-8"type="text" name="direccion" id="direccion" th:field="*{direccion}"><br/>              
                 <label class="col-4"for="email">Email*</label>

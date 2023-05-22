@@ -47,7 +47,7 @@ public class ClienteController {
 	@GetMapping("admin/editarCliente/{id}")
 	public String editarCliente(@PathVariable("id") Long id, Model model) {
 		Optional<Cliente> cEditar = clienteServicio.findById(id);
-		if(cEditar != null) {
+		if(cEditar.isPresent()) {
 			model.addAttribute("cliente", cEditar.get());			
 			return "altaUsuario";
 		}else {
@@ -65,7 +65,7 @@ public class ClienteController {
 	@GetMapping("admin/borrarCliente/{id}")
 	public String borrarEditorial (@PathVariable("id") Long id, Model model){
 		Optional<Cliente> eliminarCliente = clienteServicio.findById(id);		
-		if(eliminarCliente != null) {
+		if(eliminarCliente.isPresent()) {
 			clienteServicio.delete(eliminarCliente.get());
 			return "redirect:/admin/listaClientes";
 		}else {

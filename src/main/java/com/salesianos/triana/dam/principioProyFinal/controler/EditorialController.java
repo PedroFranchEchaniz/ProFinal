@@ -1,5 +1,7 @@
 package com.salesianos.triana.dam.principioProyFinal.controler;
 
+import java.util.Optional;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,9 +46,9 @@ public class EditorialController {
 	
 	@GetMapping("/editarEditorial/{id}")
 	public String monstrarFormularioEdicionEditorial(@PathVariable("id") Long id, Model model) {
-		Editorial eEditar = editorialServicio.findById(id).orElse(null);
+		Optional<Editorial> eEditar = editorialServicio.findById(id);
 		if (eEditar != null) {
-			model.addAttribute("editorial", eEditar);
+			model.addAttribute("editorial", eEditar.get());
 			return "altaEditorial";
 		}else {
 			return "redirect:/admin/nuevaEditorial";
@@ -60,11 +62,10 @@ public class EditorialController {
 	}
 	
 	@GetMapping("/borrarEditorial/{id}")
-	public String borrarEditorial(@PathVariable("id") Long id, Model model) {
-		
-		Editorial eEliminar = editorialServicio.findById(id).orElse(null);
+	public String borrarEditorial(@PathVariable("id") Long id, Model model) {		
+		Optional<Editorial> eEliminar = editorialServicio.findById(id);
 		if (eEliminar != null) {
-			editorialServicio.delete(eEliminar);
+			editorialServicio.delete(eEliminar.get());
 		}
 		return "redirect:/admin/listaEditorial";
 	}	
