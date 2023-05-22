@@ -28,7 +28,7 @@
                         <td th:text="${juegoMesa.titulo}">null</td>
                         <td th:text="${juegoMesa.precioUnidad}">null</td>
                         <td th:text="${juegoMesa.stock}">null</td>                        
-                        <td th:text="${juegoMesa.editorial}">null</td>
+                        <td th:text="${juegoMesa.editorial.nombre}">null</td>
                         <td>                        
                         <a href="#"
 								th:href="@{editarJuegoMesa/{id}(id=${juegoMesa.id})}"

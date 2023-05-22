@@ -29,7 +29,7 @@
                         <td th:text="${comic.titulo}">null</td>
                         <td th:text="${comic.precioUnidad}">null</td>
                         <td th:text="${comic.stock}">null</td>                        
-                        <td th:text="${comic.editorial}">null</td>
+                        <td th:text="${comic.editorial.nombre}">null</td>
                         <td>                        
                         <a href="#"
 								th:href="@{editarComic/{id}(id=${comic.id})}"
