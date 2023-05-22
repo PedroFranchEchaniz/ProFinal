@@ -13,16 +13,16 @@
 <body>
 	
 	<main>
-        <div class="maincontainer row d-flex" th:object="${producto}">
+        <div class="maincontainer row d-flex" th:object="${comic}">
             <div class="col-12 col-md-6">
-                <img th:src="${#strings.isEmpty(producto.img)} ? 'http://placehold.it/350x260' : ${producto.img}" alt="Card image" width="200px">
+                <img th:src="${#strings.isEmpty(producto.img)} ? 'http://placehold.it/350x260' : ${comic.img}" alt="Card image" width="200px">
                 <p>Valoración</p>                
             </div>
             <div class="col-12 col-md-6">
-                <h1 th:text="${producto.titulo}">Producto</h1>
-                <p>Lorem ipsum dolor sit amet</p>
+                <h1 th:text="${comic.titulo}">Producto</h1>
+                <p th:text="{comic.ilustrador}">Lorem ipsum dolor sit amet</p>
                 <div class="descripcion col-12 col-md-6">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias velit doloremque fugit sequi ab quibusdam, consequuntur qui fugiat? Culpa, iusto eaque minima eligendi laborum autem tenetur sit officiis nulla impedit?</p>
+                    <p th:text="${comic.sinopsis}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias velit doloremque fugit sequi ab quibusdam, consequuntur qui fugiat? Culpa, iusto eaque minima eligendi laborum autem tenetur sit officiis nulla impedit?</p>
                 </div>
                 <div class="row">
                     <p class="col-12" th:field="${producto.precioUnidad}">Precio</p>                                     
