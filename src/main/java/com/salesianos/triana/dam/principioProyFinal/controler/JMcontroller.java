@@ -1,5 +1,7 @@
 package com.salesianos.triana.dam.principioProyFinal.controler;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,9 +46,9 @@ public class JMcontroller {
 	 
 	 @GetMapping("/editarJuegoMesa/{id}")
 	 public String monstrarFormularioJuegoMesa(@PathVariable("id") Long id, Model model) {
-		 JuegoMesa jmEditar = jmServicio.findById(id).orElse(null);
-		 if(jmEditar != null) {
-			 model.addAttribute("juegoMesa", jmEditar);
+		 Optional<JuegoMesa> jmEditar = jmServicio.findById(id);
+		 if(jmEditar.isPresent()) {
+			 model.addAttribute("juegoMesa", jmEditar.get());
 			 model.addAttribute("editoriales", editorialServicio.findAll());
 			 return "altaJuegoMesa";
 		 }else {
@@ -62,9 +64,9 @@ public class JMcontroller {
 	 
 	 @GetMapping("/borrarJuegoMesa/{id}")
 	 public String borrarJuegoMesa(@PathVariable("id") Long id, Model model) {
-		 JuegoMesa jmEliminar = jmServicio.findById(id).orElse(null);
-		 if(jmEliminar != null) {
-			 jmServicio.delete(jmEliminar);
+		Optional <JuegoMesa> jmEliminar = jmServicio.findById(id);
+		 if(jmEliminar.isPresent()) {
+			 jmServicio.delete(jmEliminar.get());
 		 }
 		 return "redirect:/admin/listaJM";
 	 }

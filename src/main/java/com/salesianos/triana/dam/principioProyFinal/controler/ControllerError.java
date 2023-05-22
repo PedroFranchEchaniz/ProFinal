@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @ControllerAdvice
 public class ControllerError {
 
-	@RequestMapping("/error/500")
+	/*@RequestMapping("/error/500")
 	public String handlerInertanlServerError() {
 		return "error";
 	}
@@ -14,5 +14,5 @@ public class ControllerError {
 	@RequestMapping("/error/400")
 	public String handleNoFoundError() {
 		return "error";
-	}
+	}*/
 }

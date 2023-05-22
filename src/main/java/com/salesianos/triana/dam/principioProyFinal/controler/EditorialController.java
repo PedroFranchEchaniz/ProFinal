@@ -47,7 +47,7 @@ public class EditorialController {
 	@GetMapping("/editarEditorial/{id}")
 	public String monstrarFormularioEdicionEditorial(@PathVariable("id") Long id, Model model) {
 		Optional<Editorial> eEditar = editorialServicio.findById(id);
-		if (eEditar != null) {
+		if (eEditar.isPresent()) {
 			model.addAttribute("editorial", eEditar.get());
 			return "altaEditorial";
 		}else {

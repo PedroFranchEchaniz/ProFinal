@@ -53,10 +53,10 @@ public class SecurityConfig {
 			.logout()
 			.logoutUrl("/logout/")
 			.logoutSuccessUrl("/login")
-			.permitAll()
-			.and()
+			.permitAll();
+			/*and();
 		.exceptionHandling()
-			.accessDeniedPage("/error");
+			.accessDeniedPage("/error");*/
 		
 			
 		

@@ -45,7 +45,7 @@ public class VentaController {
 	@GetMapping("/borrarProducto/{id}")
 	public String eliminarProducto (@PathVariable("id") Long id, Model model) {
 		Optional<Producto> quitarProducto = productoServicio.findById(id);		
-		if(quitarProducto != null) {
+		if(quitarProducto.isPresent()) {
 			ventaServicio.removeProducto(quitarProducto.get());
 			return "redirect:/cesta";
 		}else {

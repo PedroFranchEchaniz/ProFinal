@@ -29,7 +29,7 @@ public class ComicControlador {
 	@GetMapping("/listaC")
 	public String listaComics (Model model) {
 		model.addAttribute("comics", comicServicio.findAll());
-		model.addAttribute("buscar", new SearchBean());
+		model.addAttribute("busqueda", new SearchBean());
 		return "listaComic";
 	}
 	
@@ -49,7 +49,7 @@ public class ComicControlador {
 	@GetMapping("/editarComic/{id}")
 	public String mostrarFormularioComic(@PathVariable("id") Long id, Model model) {
 		Optional<Comic> cEditar = comicServicio.findById(id);		
-		if(cEditar != null) {
+		if(cEditar.isPresent()) {
 			model.addAttribute("comic", cEditar.get());
 			model.addAttribute("editoriales", editorialServicio.findAll());
 			return "altaComic";
@@ -67,10 +67,16 @@ public class ComicControlador {
 	@GetMapping("/borrarComic/{id}")
 	public String borrarEditorial(@PathVariable("id") Long id, Model model) {
 		Optional <Comic> cEliminar = comicServicio.findById(id);
-		if(cEliminar != null) {
+		if(cEliminar.isPresent()) {
 			comicServicio.delete(cEliminar.get());
 		}
 		return "redirect:/admin/listaC";
-	}	
+	}
+	
+	@PostMapping("/buscarComic")
+	public String buscarPorTitulo (@ModelAttribute("busqueda") SearchBean searchBean, Model model) {
+		model.addAttribute("comics", comicServicio.findByNombre(searchBean.getSearch()));
+		return "listaComic";
+	}
 	
 }
