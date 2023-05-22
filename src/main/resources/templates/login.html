@@ -18,82 +18,158 @@
     AOS.init();
   </script>		 
   <main>
-    <div class="row d-flex ">
-      <div class="col-12 col-md-3 col-xl-3">
+    <div class="row d-flex">
+      <div class="col-sm-12 col-md-4 col-xl-4 m-5 p-5">
         <form class="login" method="POST" th:action="@{/login}">
           <input type="text" id="username" name="username" placeholder="Username" required autofocus class="form-control mb-3">
           <input type="password" name="password" id="password" placeholder="Password" required class="form-control mb-3">
           <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
       </div>
-      <div class="col-12 col-md-7 col-xl-7">
-        <img src="/img/logo.png" alt="Logo de la tienda" class="img-fluid">
+        <div class="col-sm-12 col-md-6 col-xl-5  m-5 p-5">
+          <img src="/img/logo.png" alt="Logo de la tienda" class="img-fluid">
+      	</div>
+      <div class="col-12 mx-auto text-center mb-5">
+        <h1>The Android's Dungeon</h1>
       </div>
     </div>   
   </main>
 
-  <section>
-    <div class="row"  data-aos="flip-up">
-        <div class="col-xl-1">
+  	<section>
+    		<div class="row"  data-aos="flip-up">
+        		<div class="col-xl-1">
+     		</div>
+     		<div class="col-12 col-md-5 col-xl-5">
+          		<img src="/img/juegosmesa.jpg" alt="Estanteria de juegos de mesa" width="400px">
+      		</div>
+      		<div class="col-11 col-md-6 col-xl-6">
+          		<div class="seccion">
+              		<h2>¿Quienes somos?</h2>
+              		<p>¡Bienvenidos a The Android's Dungeon, tu destino definitivo para los amantes de los cómics y los juegos de mesa! Sumérgete en un mundo lleno de aventuras épicas, emociones sin límites y diversión sin fin. En The Android's Dungeon, nos apasiona brindarte la mejor experiencia al explorar los mundos de los cómics y los juegos de mesa.
+              		</p>
+          		</div>
+      		</div>
+  		</div>
+	</section>
+	<section>
+  		<div class="row"  data-aos="flip-up">
+      		<div class="col-12 col-md-5 col-xl-5 img order-md-1">
+          		<img src="/img/juegosmesa2.jpg" alt="Juegos de mesa y comics" width="400px">
+      		</div>
+      		<div class="col-11 col-md-6 col-xl-6">
+         		<div class="seccion">
+         			<h2>Selección de cómics y juegos de mesa</h2>
+             		<p>En The Android's Dungeon, te ofrecemos una amplia y cuidadosamente seleccionada variedad de cómics y juegos de mesa. Nuestro extenso catálogo de cómics abarca desde los clásicos superhéroes hasta novelas gráficas contemporáneas, manga, cómics independientes y mucho más. Además, también tenemos una increíble selección de juegos de mesa que te sumergirán en emocionantes mundos de fantasía, estrategia y diversión para todas las edades.
+             		</p>              
+         		</div>
+      		</div>
+  		</div>
+	</section>
+	<section>
+  		<div class="row"  data-aos="flip-up">
+      		<div class="col-xl-1">
+      		</div>
+      		<div class="col-12 col-md-5 col-xl-5">
+          		<img src="/img/juegosmesa3.jpg" alt="Estanteria de juegos de mesa" width="400px">
+      		</div>
+      	<div class="col-11 col-md-6 col-xl-6">
+          	<div class="seccion">
+              	<h2>Experiencia en la tienda</h2>
+              	<p>Cuando visites The Android's Dungeon, te sumergirás en un ambiente acogedor y lleno de energía, donde podrás explorar nuestras estanterías repletas de cómics y estantes de juegos de mesa. Nuestro personal apasionado y conocedor está listo para ayudarte a encontrar las historias y los juegos perfectos que se adapten a tus gustos e intereses. También ofrecemos eventos regulares, como torneos de juegos de mesa y sesiones de lectura de cómics, para que puedas compartir tu pasión con otros entusiastas.
+             	 </p>
+          		</div>
+      		</div>
+  		</div>
+	</section>
+	<section>
+  		<div class="row"  data-aos="flip-up">
+      		<div class="col-12 col-md-5 col-xl-5 img order-md-1">
+          		<img src="img/juegosmesa2.jpg" alt="Juegos de mesa y comics" width="400px">
+      		</div>
+      		<div class="col-11 col-md-6 col-xl-6">
+          		<div class="seccion">
+              	<h2>Conclusión</h2>
+              	<p>En The Android's Dungeon, creemos en el poder de las historias y los juegos para entretener, inspirar y unir a las personas. Ven y únete a nuestra comunidad de fanáticos de los cómics y los juegos de mesa, y descubre un mundo de aventura y diversión en cada esquina. ¡Te esperamos en The Android's Dungeon, donde los sueños se convierten en realidad y la imaginación cobra vida!</p>              
+          		</div>
+      		</div>
+  		</div>
+  		
+  	<div class="row novedades ">
+		  <h2 class="col-12 mx-auto text-center mt-5">Novedades en la tienda</h2>
+		  <div class=" col-sm-12 col-md-12 col-xl-4">
+			  <img class="img-thumbnail" src="/img/niño.jpg" alt="niño leyendo un cómic" width="500px" height="500px">
+			  <h6>El cómic a lo largo de la historia</h6>
+				<p>Ven y únete a nosotros en una charla única donde exploraremos el emocionante mundo de los cómics a lo largo de la historia. Sumérgete en las páginas llenas de aventuras, héroes icónicos y narrativas cautivadoras que han capturado la imaginación de generaciones.</p>
+				<p>En esta charla, exploraremos los orígenes de los cómics desde sus primeras manifestaciones hasta la evolución contemporánea. Descubre cómo los cómics han influido en la cultura popular, han dado vida a inolvidables superhéroes y han abordado temas sociales y políticos de importancia.</p>
+				<p>Acompáñanos mientras exploramos las diferentes épocas doradas y plateadas, y cómo han dado paso a la era moderna de los cómics. Conoceremos los artistas y escritores visionarios que han moldeado la industria, así como las innovaciones tecnológicas que han transformado la forma en que experimentamos estas increíbles historias.</p>
+				<p>No importa si eres un apasionado coleccionista de cómics o simplemente sientes curiosidad por sumergirte en este fascinante mundo, esta charla es para ti. Aprenderás, te emocionarás y te inspirarás mientras desentrañamos los secretos y las maravillas de los cómics a lo largo de los años.</p>
+				<p>¡No te pierdas esta oportunidad única de expandir tu conocimiento y compartir tu amor por los cómics con otros entusiastas! Únete a nosotros en esta charla y déjate llevar por el poder de las historias ilustradas.</p>
+
+				<p><Strong>Fecha:</Strong> <p>25/05/2023</p><br>
+				<Strong>Hora:</Strong> <p>20:00</p><br>
+				<Strong>Lugar:</Strong> <p>Calle Principal, Ciudad</p><br>
+				<p>¡Te esperamos para disfrutar juntos de un viaje apasionante a través de la historia de los cómics!</p>
+		  </div>
+		  <div class="col-sm-12 col-md-12 col-xl-4">
+			<img class="img-thumbnail" src="/img/firma.jpg" alt="persona firmando comic" width="500px" height="500px">
+			<h6>Firma de cómics con el talentoso artista</h6>
+			<p>Ven y únete a nosotros en una experiencia emocionante donde podrás conocer de cerca al talentoso artista detrás de un apasionante cómic. Sumérgete en el mundo de la creación visual y descubre los secretos detrás de tus historias favoritas.</p>
+			<p>En esta firma y coloquio, tendrás la oportunidad de interactuar directamente con el artista y descubrir su proceso creativo. Podrás explorar los detalles y las técnicas utilizadas para dar vida a los personajes y las emocionantes escenas que has disfrutado en las páginas de los cómics.</p>			
+			<p>Acompáñanos mientras nos sumergimos en la inspiración y el talento detrás de esta obra de arte. Podrás hacer preguntas, escuchar anécdotas y obtener una visión única de la mente creativa que ha dado vida a este increíble cómic.</p>			
+			<p>No importa si eres un fanático de los cómics de toda la vida o simplemente te apasiona el arte y la narrativa visual, esta firma y coloquio son para ti. Aprenderás, te emocionarás y te inspirarás mientras te sumerges en el mundo de la creación artística.</p>			
+			<p>¡No te pierdas esta oportunidad única de tener un encuentro íntimo con el artista y obtener una visión privilegiada de su trabajo! Únete a nosotros en esta firma y coloquio y déjate llevar por la magia de la creación de cómics.</p>
+			
+			<strong>Fecha:</strong> <p>25/05/2023</p><br>
+			<strong>Hora:</strong> <p>20:00</p><br>
+			<strong>Lugar:</strong> <p>Calle Principal, Ciudad</p><br>			
+			<p>¡Te esperamos para disfrutar de la compañia del talentoso artista!</p>
+
+			  <Strong>Fecha:</Strong> <p>28/05/2023</p><br>
+			  <Strong>Hora:</Strong> <p>20:00</p><br>
+			  <Strong>Lugar:</Strong> <p>Calle Principal, Ciudad</p><br>
+			  <p>¡Te esperamos para disfrutar juntos de un viaje apasionante a través de la historia de los cómics!</p>
+		</div>
+		<div class=" col-sm-12 col-md-12 col-xl-4">
+			<img class="img-thumbnail" src="/img/war.jpg" alt="niño leyendo un cómic" width="500px" height="500px">
+			<h6>El cómic a lo largo de la historia</h6>
+			<p>Ven y únete a nosotros en una emocionante partida de Warhammer: juego de mesa, donde la estrategia y la habilidad se encuentran para librar batallas épicas en un mundo de fantasía. Sumérgete en un universo repleto de guerreros valientes, criaturas temibles y desafíos estratégicos.</p>
+			<p>En esta partida, tendrás la oportunidad de poner a prueba tu destreza táctica y liderar a tus propias fuerzas en el campo de batalla. Enfréntate a otros jugadores apasionados y demuestra tus habilidades estratégicas mientras libras batallas intensas y tomas decisiones cruciales.</p>			
+			<p>Acompáñanos mientras exploramos las diversas facciones y razas presentes en el mundo de Warhammer. Descubre los detalles y las peculiaridades de cada ejército, desde los nobles y disciplinados soldados del Imperio hasta las salvajes y despiadadas hordas del Caos.</p>			
+			<p>No importa si eres un veterano experimentado o un novato curioso, esta partida es para ti. Aprenderás, te emocionarás y te sumergirás en un universo lleno de intriga y estrategia mientras luchas por la victoria y conquistas el campo de batalla.</p>			
+			<p>¡No te pierdas esta oportunidad única de enfrentarte a otros jugadores y sumergirte en el apasionante mundo de Warhammer: juego de mesa! Únete a nosotros en esta partida y demuestra tu valía como estratega y comandante.</p>
+			
+			<strong>Fecha:</strong> <p>25/05/2023</p><br>
+			<strong>Hora:</strong> <p>12:00</p><br>
+			<strong>Lugar:</strong> <p>Calle Principal, Ciudad</p><br>
+			
+			¡Te esperamos para disfrutar juntos de una batalla llena de emoción y estrategia en el mundo de Warhammer!
+		</div>
+	</div>
+	</section>
+	<div id="demo" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="/img/born.jpg" alt="comic" class="d-block w-25 mx-auto">
         </div>
-      <div class="col-12 col-md-5 col-xl-5">
-          <img src="/img/juegosmesa.jpg" alt="Estanteria de juegos de mesa" width="400px">
+        <div class="carousel-item">
+          <img src="/img/v.jpeg" alt="comic" class="d-block w-25 mx-auto">
+        </div>
+        <div class="carousel-item">
+          <img src="/img/Swamp.jpg" alt="comic" class="d-block w-25 mx-auto">
+        </div>
       </div>
-      <div class="col-11 col-md-6 col-xl-6">
-          <div class="seccion">
-              <h2>¿Quienes somos?</h2>
-              <p>¡Bienvenidos a The Android's Dungeon, tu destino definitivo para los amantes de los cómics y los juegos de mesa! Sumérgete en un mundo lleno de aventuras épicas, emociones sin límites y diversión sin fin. En The Android's Dungeon, nos apasiona brindarte la mejor experiencia al explorar los mundos de los cómics y los juegos de mesa.
-              </p>
-          </div>
-      </div>
-  </div>
-</section>
-<section>
-  <div class="row"  data-aos="flip-up">
-      <div class="col-12 col-md-5 col-xl-5 img order-md-1">
-          <img src="/img/juegosmesa2.jpg" alt="Juegos de mesa y comics" width="400px">
-      </div>
-      <div class="col-11 col-md-6 col-xl-6">
-          <div class="seccion">
-              <h2>Selección de cómics y juegos de mesa</h2>
-              <p>En The Android's Dungeon, te ofrecemos una amplia y cuidadosamente seleccionada variedad de cómics y juegos de mesa. Nuestro extenso catálogo de cómics abarca desde los clásicos superhéroes hasta novelas gráficas contemporáneas, manga, cómics independientes y mucho más. Además, también tenemos una increíble selección de juegos de mesa que te sumergirán en emocionantes mundos de fantasía, estrategia y diversión para todas las edades.
-              </p>              
-          </div>
-      </div>
-  </div>
-</section>
-<section>
-  <div class="row"  data-aos="flip-up">
-      <div class="col-xl-1">
-      </div>
-      <div class="col-12 col-md-5 col-xl-5">
-          <img src="/img/juegosmesa3.jpg" alt="Estanteria de juegos de mesa" width="400px">
-      </div>
-      <div class="col-11 col-md-6 col-xl-6">
-          <div class="seccion">
-              <h2>Experiencia en la tienda</h2>
-              <p>Cuando visites The Android's Dungeon, te sumergirás en un ambiente acogedor y lleno de energía, donde podrás explorar nuestras estanterías repletas de cómics y estantes de juegos de mesa. Nuestro personal apasionado y conocedor está listo para ayudarte a encontrar las historias y los juegos perfectos que se adapten a tus gustos e intereses. También ofrecemos eventos regulares, como torneos de juegos de mesa y sesiones de lectura de cómics, para que puedas compartir tu pasión con otros entusiastas.
-              </p>
-          </div>
-      </div>
-  </div>
-</section>
-<section>
-  <div class="row"  data-aos="flip-up">
-      <div class="col-12 col-md-5 col-xl-5 img order-md-1">
-          <img src="img/juegosmesa2.jpg" alt="Juegos de mesa y comics" width="400px">
-      </div>
-      <div class="col-11 col-md-6 col-xl-6">
-          <div class="seccion">
-              <h2>Conclusión</h2>
-              <p>En The Android's Dungeon, creemos en el poder de las historias y los juegos para entretener, inspirar y unir a las personas. Ven y únete a nuestra comunidad de fanáticos de los cómics y los juegos de mesa, y descubre un mundo de aventura y diversión en cada esquina. ¡Te esperamos en The Android's Dungeon, donde los sueños se convierten en realidad y la imaginación cobra vida!</p>              
-          </div>
-      </div>
-  </div>
-</section>
-
-
-
+      <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+   </div> 
     <footer>
         <nav th:replace="~{fragment/footer::pie}"></nav>
     </footer>    

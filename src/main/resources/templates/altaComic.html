@@ -11,6 +11,9 @@
     <title>altaComic</title>
 </head>
 <body>
+	 <header>
+		<nav th:replace="~{fragment/headerAdmin::encabezado}"></nav>
+	</header>
     <main>
         <form class="contenedorform row bg-dark text-light" th:action="${comic.id != 0} ? @{/admin/nuevoComic/submit} : @{/admin/nuevoComic}" th:object="${comic}" method="post">
             <fieldset class="contenedorfildset row d-flex col-6">

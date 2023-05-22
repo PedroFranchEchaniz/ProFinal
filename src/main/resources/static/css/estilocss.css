@@ -55,12 +55,28 @@
     color: #f5a623;
 }
 
-.footercontainer div{
+.footer {
+    background-color: #f2f2f2;
+    padding: 20px;
     text-align: center;
-    font-weight: bold;
-    border: red solid;
-    margin-top: 200px;    
-}
+  }
+  
+  .footer h4 {
+    color: #333;
+  }
+  
+  .footer ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer ul li {
+    margin-bottom: 5px;
+  }
+  
+  .footer p {
+    color: #666;
+  }
 
 .card a:hover{
     color: #f5a623;

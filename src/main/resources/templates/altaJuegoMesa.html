@@ -12,6 +12,9 @@
 </head>
 <body>
     <main>
+		<header>
+			<nav th:replace="~{fragment/headerAdmin::encabezado}"></nav>
+		</header>
         <form class="contenedorform row bg-dark text-light" th:action="${juegoMesa.id != 0} ? @{/admin/nuevoJuegoMesa/submit} : @{/admin/nuevoJuegoMesa}" th:object="${juegoMesa}" method="post">
             <fieldset class="contenedorfildset row d-flex col-6">
 				<input th:if="${juegoMesa.id != 0}" type="hidden" name="id" th:field="*{id}" />                
@@ -32,10 +35,10 @@
                 <label class="col-3"for="tipo">Tipo</label>
                 <input class="col-9"type="text" name="tipo" id="tipo" th:field="*{tipo}">
                 <label class="col-5"for="nJugadoresMin">n mínimo Jugador </label>
-                <input class="col-2"type="number" name="nJugadoresMin" id="nJugadoresMin" th:field="*{nJugadoresMin}">
+                <input class="col-2"type="number" min="1" name="nJugadoresMin" id="nJugadoresMin" th:field="*{nJugadoresMin}">
                 <div class="col-3"></div>
                  <label class="col-5"for="nJugadoresMax">n máximo Jugador </label>
-                <input class="col-2"type="number" name="nJugadoresMax" id="nJugadoresMax" th:field="*{nJugadoresMax}">
+                <input class="col-2"type="number" min="1" name="nJugadoresMax" id="nJugadoresMax" th:field="*{nJugadoresMax}">
                 <div class="col-3"></div>
                                 
             </fieldset>

@@ -59,7 +59,8 @@ public class ClienteController {
 	public String procesarEdicionCliente(@ModelAttribute("cliente") Cliente c) {
 		clienteServicio.edit(c);
 		return "redirect:/admin/listaClientes";
-	}
+	}	
+
 	
 	@GetMapping("admin/borrarCliente/{id}")
 	public String borrarEditorial (@PathVariable("id") Long id, Model model){
@@ -82,7 +83,7 @@ public class ClienteController {
 	@PostMapping ("/editarUsuario/submit")
 	public String procesarMisDatos (@ModelAttribute("cliente") @AuthenticationPrincipal Cliente u) {
 		clienteServicio.edit(u);
-		return "misDatos";
+		return "redirect:/";
 	}
 	
 	@GetMapping ("user/misCompras")

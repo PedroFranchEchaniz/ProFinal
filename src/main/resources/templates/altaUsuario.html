@@ -11,6 +11,9 @@
     <script src="js/scripts.js" th:src="@{/js/scripts.js}" defer></script>
 </head>
 <body>
+	 <header>
+		<nav th:replace="~{fragment/headerAdmin::encabezado}"></nav>
+	</header>	
     <div class="row d-flex justify-content-center">        
         <form class="contenedorform row bg-dark text-light" th:action="${cliente.id != 0} ? @{/admin/nuevoUsuario/submit} : @{/admin/nuevoUsuario}" th:object="${cliente}" method="post">
             <fieldset class="contenedorfildset2 row d-flex col-6">

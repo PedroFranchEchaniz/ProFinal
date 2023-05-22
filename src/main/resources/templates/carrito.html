@@ -11,8 +11,8 @@
     <title>carrito</title>
 </head>
 <body>
-    <header>
-		
+    <header>		
+		<nav th:replace="~{fragment/header3::encabezado}"></nav>
 	</header>
     <main>
         <div class="containerCarrito">           
@@ -57,12 +57,8 @@
             </div>
         </div>
     </main>
-    <footer>
-        <div class="footercontainer row bg-light d-flex">
-          <div class="col-4">Contacto</div>
-          <div class="col-4">Información</div>
-          <div class="col-4">Metodo de pago</div>
-        </div>
-      </footer>    
+      <footer>
+        <nav th:replace="~{fragment/footer::pie}"></nav>
+    </footer>     
 </body>
 </html>

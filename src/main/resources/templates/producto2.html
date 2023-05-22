@@ -17,7 +17,7 @@
 	<main>
         <div class="maincontainer row d-flex" th:object="${comic}">
             <div class="col-12 col-md-6">
-                <img th:src="${#strings.isEmpty(jm.img)} ? 'http://placehold.it/350x260' : ${jm.img}" alt="Card image" width="400px">
+                <img th:src="${#strings.isEmpty(jm.img)} ? 'http://placehold.it/350x260' : ${jm.img}" alt="Portada Juego de mesa" width="400px">
                 <p>Valoración</p>                
             </div>
             <div class="col-12 col-md-6">
@@ -40,5 +40,8 @@
                 <h6>Comentario</h6>
             </div>
         </div>
-    </main>	
+    </main>
+       <footer>
+        	<nav th:replace="~{fragment/footer::pie}"></nav>
+    	</footer>  	
 </body>
