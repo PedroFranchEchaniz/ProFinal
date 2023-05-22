@@ -24,6 +24,9 @@
 						<li class="nav-item" sec:authorize="hasRole('ROLE_USER')">							
 							<a class="nav-link" type="button" th:href="@{/user/editarUsuario}">Zona Usuario</a>	
 						</li>
+						<li class="nav-item" sec:authorize="hasRole('ROLE_USER')">							
+							<a class="nav-link" type="button" th:href="@{/user/misCompras}">Mis Compras</a>	
+						</li>
 						<li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')" >
 							<a class="nav-link" type="button" th:href="@{/admin/listaEditorial}">Zona Admin</a>
 						</li>

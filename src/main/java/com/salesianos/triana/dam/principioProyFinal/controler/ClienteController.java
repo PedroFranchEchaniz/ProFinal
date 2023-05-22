@@ -85,7 +85,7 @@ public class ClienteController {
 		return "misDatos";
 	}
 	
-	@GetMapping ("/misCompras")
+	@GetMapping ("user/misCompras")
 	public String misCompras (@AuthenticationPrincipal Cliente u, Model model) {
 		model.addAttribute("ventas", ventaServicio.findByIdCliente(u));
 		return "comprasUsuario";
