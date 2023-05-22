@@ -18,8 +18,9 @@
         <form class="contenedorform row bg-dark text-light" th:action="${cliente.id != 0} ? @{/admin/nuevoUsuario/submit} : @{/admin/nuevoUsuario}" th:object="${cliente}" method="post">
             <fieldset class="contenedorfildset2 row d-flex col-6">
 				<input th:if="${cliente.id != 0}" type="hidden" name="id" th:field="*{id}" />                
-                <label class="col-4" for="nombre">Nombre*</label>
-                <input class="col-8" type="text" name="nombre" id="nombre" autocomplete autofocus th:field="*{nombre}">               
+                <label class="col-4" for="nombre">Nombre*</label>                
+                <input class="col-8" type="text" name="nombre" id="nombre" autocomplete autofocus th:field="*{nombre}" required>
+                <p class="mensajeContraseña col-12" id="mensajeNombre">Solo se admiten letras</p>               
                 <label class="col-4"for="fechanacimiento">Fecha Nacimiento*</label>
                 <input class="col-8"type="date" name="fechanacimiento" id="fechanacimiento" th:field="*{fechaNacimiento}">                            
                 <label class="col-4"for="user">Usuario</label>
@@ -35,14 +36,13 @@
                 <label class="col-4"for="email">Email*</label>
                 <input class="col-8"type="email" name="email" id="email" th:field="*{correoElectronico}"><br/>                                                
                 <label class="col-4" for="contrasena">Contraseña*</label>
-<input class="col-8" type="password" name="contrasena2" id="contrasena2" th:field="*{password}">
-<span class="mensajeContraseña" id="mensajeContraseña">Error en la contraseña</span>                                
+                <input class="col-8" type="password" name="contrasena2" id="contrasena2" th:field="*{password}">
+                <p class="mensajeContraseña" id="mensajeContraseña">Error en la contraseña</p>                                
                 </fieldset>            
             <p>Los campos * son obligatorios</p>
             <p class="col-11"></p>
             <button type="submit" id="botonFormularioCliente" class="btn btn-primary col-1">Enviar</button>
         </form>
-    </div>
-    
+    </div>    
 </body>
 </html>
