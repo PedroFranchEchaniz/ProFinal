@@ -13,23 +13,24 @@
 <body>
 	<header>
 		<nav th:replace="~{fragment/header3::encabezado}"></nav>
-	</header>
-	
+	</header>	
 	<main>
         <div class="maincontainer row d-flex" th:object="${comic}">
             <div class="col-12 col-md-6">
-                <img th:src="${#strings.isEmpty(comic.img)} ? 'http://placehold.it/350x260' : ${comic.img}" alt="Card image" width="400px">
+                <img th:src="${#strings.isEmpty(jm.img)} ? 'http://placehold.it/350x260' : ${jm.img}" alt="Card image" width="400px">
                 <p>Valoración</p>                
             </div>
             <div class="col-12 col-md-6">
-                <h1 th:text="${comic.titulo}">Producto</h1>
-                <p th:text="${comic.ilustrador}">Lorem ipsum dolor sit amet</p>
+                <h1 th:text="${jm.titulo}">Producto</h1>
+                <p th:text="${jm.tipo}">Lorem ipsum dolor sit amet</p>
+                <p>Min. Jugadores</p><p th:text="${jm.nJugadoresMin}"></p>
+                <p>Max. Jugadores</p><p th:text="${jm.nJugadoresMax}"></p>
                 <div class="descripcion col-12 col-md-6">
-                    <p th:text="${comic.sinopsis}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias velit doloremque fugit sequi ab quibusdam, consequuntur qui fugiat? Culpa, iusto eaque minima eligendi laborum autem tenetur sit officiis nulla impedit?</p>
+                    <p th:text="${jm.descripcion}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias velit doloremque fugit sequi ab quibusdam, consequuntur qui fugiat? Culpa, iusto eaque minima eligendi laborum autem tenetur sit officiis nulla impedit?</p>
                 </div>
                 <div class="row">
-                    <p class="col-12" th:text="${comic.precioUnidad}">Precio</p>                                     
-                    <a th:href="@{/productoAcarrito/{id}(id=${comic.id})}" class="btn btn-primary col-1" type="button"><i class="bi bi-cart3"></i></a>                    
+                    <p class="col-12" th:text="${jm.precioUnidad}">Precio</p>                                     
+                    <a th:href="@{/productoAcarrito/{id}(id=${jm.id})}" class="btn btn-primary col-1" type="button"><i class="bi bi-cart3"></i></a>                    
                 </div>
             </div>
             <div class="col-12">

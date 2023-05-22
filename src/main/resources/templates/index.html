@@ -12,7 +12,7 @@
 </head>
 <body>	
 	<header>		
-		<nav th:replace="~{fragment/header::encabezado}"></nav>
+		<nav th:replace="~{fragment/header2::encabezado}"></nav>
 	</header>
 	<main>
 	  <main>
@@ -29,6 +29,7 @@
             <p class="card-text" th:text="${#strings.abbreviate(producto.stock,10)}">Some example text.</p>            
             <p class="card-text" th:text="${producto.precioUnidad}">0</p>
             <a th:href="@{/productoAcarrito/{id}(id=${producto.id})}"class="btn btn-primary"><i class="bi bi-cart-plus-fill"></i></a>
+            <a th:href="@{/mostrarProducto/{id}(id=${producto.id})}"class="btn btn-primary"><i class="bi bi-plus-circle"></i></a>
           </div>
         </div>
       </div>                                                          
