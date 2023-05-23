@@ -42,11 +42,11 @@ function validarCampos(event) {
 		mensajeApellido.style.display = 'none'; 
 	}
 	
-	const today = new Date();
-	const birthDate = new Date(fechaNacimiento.value);
-	const age = today.getFullYear() - birthDate.getFullYear();
+	const hoy = new Date();
+	const fechaCumple = new Date(fechaNacimiento.value);
+	const edad = hoy.getFullYear() - fechaCumple.getFullYear();
 
-	if (age < 18) {
+	if (edad < 18) {
 		mensajeEdad.textContent = 'Debes ser mayor de edad para registrarte.';
 		mensajeEdad.style.display = 'block'; 
 		fechaNacimiento.focus(); 
