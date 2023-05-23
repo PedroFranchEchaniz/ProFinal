@@ -34,7 +34,7 @@
                           <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Salir</a>
                     </li>
 						<li class="nav-item">
-							<a class="nav-link" href="#"><i class="bi bi-cart3"></i><sub>0</sub></a>                            
+							<a sec:authorize="hasRole('ROLE_USER')" class="nav-link" type="button" th:href="@{/cesta}" ><i class="bi bi-cart3"></i></a>                            
 						</li>
 					</ul>
             <form th:action="@{/search}" th:object="${searchForm}" method="POST" class="d-flex">
