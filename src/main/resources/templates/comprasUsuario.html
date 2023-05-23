@@ -17,9 +17,10 @@
         <main>
         <div th:each="venta : ${ventas}">
 			<div class="datosCompra ms-5 mt-5">
-            	<p>Compra<p><p th:text="${venta.id}">Id venta<p>
+            	<p>Compra<p>
+				<p th:text="${venta.id}">Id venta<p>
             	<p th:text="${venta.fecha}">Fecha</p>
-            	<p th:text="${venta.descuento}"></p>
+            	<p th:text="${venta.descuento}">Sin descuento</p>
             	<p th:text="${venta.total}">Total</p>
             </div>
 			<table class="table table-striped">
