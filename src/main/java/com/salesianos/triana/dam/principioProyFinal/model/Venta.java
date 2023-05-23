@@ -34,7 +34,8 @@ public class Venta {
 	@GeneratedValue
 	private Long id;
 	private LocalDate fecha;	
-	private double total;	
+	private double total;
+	private double descuento;
 	
 	@ManyToOne
 	@JoinColumn(foreignKey=@ForeignKey(name="fk_venta_cliente"))

@@ -42,7 +42,7 @@ public class Cliente implements UserDetails  {
 	private String username;
 	private String password;
 	private String correoElectronico;
-	private String img;
+	private String img;	
 	private boolean admin;
 	
 	/*@ToString.Exclude

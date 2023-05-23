@@ -85,7 +85,12 @@ public class VentaServicio extends BaseServiceImpl <Venta, Long, VentaRepositori
 		  }
 		  v.setCliente(c);
 		  v.setFecha(LocalDate.now());
-		  v.setTotal(totalCarrito());		  
+		  if(totalCarrito()>125) {
+			  v.setDescuento(0.25);
+			  v.setTotal(totalCarrito()-(totalCarrito()*v.getDescuento()));
+		  }else {
+		  v.setTotal(totalCarrito());
+		  }
 		  save(v);
 		  producto.clear();
 	    	/*LineaVenta lv;
