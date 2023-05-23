@@ -57,6 +57,17 @@ public class VentaController {
 	  private double totalCarrito() {
 		 return ventaServicio.totalCarrito();
 	  }
+	  
+	  @ModelAttribute("descuento")
+	  private double descuent() {
+		  if(ventaServicio.totalCarrito()>=125) {
+			  return (ventaServicio.totalCarrito()*0.25);
+		  }else if(ventaServicio.totalCarrito()<125){
+			  return 0;
+		  }else {
+			  return 0;
+		  }
+	  }
 	
 	@GetMapping("/checkout")
 	private String guardarVenta(@AuthenticationPrincipal Cliente c) {
