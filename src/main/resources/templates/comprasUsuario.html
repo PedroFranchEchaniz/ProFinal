@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" 
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,8 +20,11 @@
 			<div class="datosCompra ms-5 mt-5">
             	<p>Compra<p>
 				<p th:text="${venta.id}">Id venta<p>
+				<p>Fecha</p>
             	<p th:text="${venta.fecha}">Fecha</p>
+            	<p>Descuento</p>
             	<p th:text="${venta.descuento}">Sin descuento</p>
+            	<p>Total</p>
             	<p th:text="${venta.total}">Total</p>
             </div>
 			<table class="table table-striped">
