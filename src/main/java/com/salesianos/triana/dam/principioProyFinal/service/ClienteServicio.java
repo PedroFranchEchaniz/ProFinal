@@ -3,6 +3,8 @@ package com.salesianos.triana.dam.principioProyFinal.service;
 
 
 
+import java.util.List;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -23,6 +25,10 @@ private final ClienteRepositorio repo;
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		return repo.findFirstByUsername(username)
 				.orElseThrow(() -> new UsernameNotFoundException("Error al buscar el usuario"));
+	}
+	
+	public List<Cliente> findByNombre(String nombre){
+		return this.repository.findByNombreContainsIgnoreCase(nombre);
 	}
 
 }

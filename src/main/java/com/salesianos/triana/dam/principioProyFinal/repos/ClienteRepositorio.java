@@ -1,5 +1,6 @@
 package com.salesianos.triana.dam.principioProyFinal.repos;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,4 +12,5 @@ public interface ClienteRepositorio
 
 	Optional<Cliente> findFirstByUsername(String username);
 
+	public List<Cliente> findByNombreContainsIgnoreCase(String nombre);
 }

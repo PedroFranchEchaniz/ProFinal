@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.salesianos.triana.dam.principioProyFinal.formsBeans.SearchBean;
 import com.salesianos.triana.dam.principioProyFinal.model.Cliente;
 import com.salesianos.triana.dam.principioProyFinal.service.ClienteServicio;
 import com.salesianos.triana.dam.principioProyFinal.service.VentaServicio;
@@ -29,6 +30,7 @@ public class ClienteController {
 	@GetMapping("/admin/listaClientes")
 	public String listaClientes (Model model) {
 		model.addAttribute("listaClientes", clienteServicio.findAll());
+		model.addAttribute("busqueda", new SearchBean());
 		return"listaClientes";
 	}
 	
@@ -89,7 +91,12 @@ public class ClienteController {
 	@GetMapping ("user/misCompras")
 	public String misCompras (@AuthenticationPrincipal Cliente u, Model model) {
 		model.addAttribute("ventas", ventaServicio.findByIdCliente(u));
-		return "comprasUsuario";
-		
+		return "comprasUsuario";		
+	}
+	
+	@PostMapping("admin/buscarCliente")
+	public String buscarPorNombreApellido(@ModelAttribute("busqueda") SearchBean searchBean, Model model) {
+		model.addAttribute("listaClientes", clienteServicio.findByNombre(searchBean.getSearch()));
+		return "listaClientes";
 	}
 }

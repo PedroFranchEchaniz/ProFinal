@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.salesianos.triana.dam.principioProyFinal.formsBeans.SearchBean;
 import com.salesianos.triana.dam.principioProyFinal.model.JuegoMesa;
 import com.salesianos.triana.dam.principioProyFinal.service.EditorialServicio;
 import com.salesianos.triana.dam.principioProyFinal.service.JmesaServicio;
@@ -28,6 +29,7 @@ public class JMcontroller {
 	 @GetMapping("/listaJM")
 	 public String listaJuegos (Model model) {
 		 model.addAttribute("juegosMesa", jmServicio.findAll());
+		 model.addAttribute("busqueda", new SearchBean());
 		 return "listaJuegosMesa";
 	 }
 	 
@@ -69,5 +71,11 @@ public class JMcontroller {
 			 jmServicio.delete(jmEliminar.get());
 		 }
 		 return "redirect:/admin/listaJM";
+	 }
+	 
+	 @PostMapping("/buscarJuego")
+	 public String buscarPorTitulo (@ModelAttribute("busqueda") SearchBean searchBean, Model model) {
+		 model.addAttribute("juegosMesa", jmServicio.findByTitulo(searchBean.getSearch()));
+		 return "listaJuegosMesa";
 	 }
 }
