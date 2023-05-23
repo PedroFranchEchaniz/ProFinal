@@ -25,10 +25,10 @@ public class MainController {
 		return "index";
 	}
 	
-	/*@GetMapping("/error")
+	@GetMapping("/error")
 	public String error(Model model) {
 		return "error";
-	}*/
+	}
 	
 	@PostMapping("/search")
 	public String buscarPorTitulo (@ModelAttribute("searchForm") SearchBean searchBean, Model model) {
