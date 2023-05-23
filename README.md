@@ -44,7 +44,7 @@ Errores
 
 | Prueba | Solución | OK |
 | --- | --- | --- |
-| Acceder zona admin | Implementar seguridad en el programa | si |
+| Acceder a /admin desde usuario | Implementar seguridad en el programa | si |
 | Introducción de números negativos | Implementar JS | si |
 | Buscar un id inexistente | Implementar seguridad en el programa | si |
 | Acceder a las dierentes partes de la tienda sin estar logueado | Implementar seguridad en el programa | si |
