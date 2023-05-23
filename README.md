@@ -4,11 +4,16 @@ Para acceder a la página existen dos formas:
 Forma de administrador:
 
 Usuario: admin.
+
 Contraseña: 1234.
+
+
 Forma de usuario:
 
 Usuario: user.
+
 Contraseña: 1234.
+
 En la aplicación web encontramos una tienda de cómics y juegos de mesa que permite, por un lado, al usuario comprar cómics y juegos de mesa, y por otro lado, al administrador gestionar la tienda dando de alta productos.
 
 ##
