@@ -20,60 +20,65 @@ public class VentaController {
 
 	@Autowired
 	private VentaServicio ventaServicio;
-	
+
 	@Autowired
 	private ProductoServicio productoServicio;
-	
+
 	@GetMapping("/cesta")
-	public String mostrarCarrito (Model model) {
+	public String mostrarCarrito(Model model) {
 		model.addAttribute("producto", ventaServicio.getProductosInCart());
 		return "carrito";
 	}
-	
+
 	@GetMapping("/productoAcarrito/{id}")
 	public String productoAcarrito(@PathVariable("id") Long id, Model model) {
-		Optional<Producto> agregarProducto = productoServicio.findById(id);		
-		if(agregarProducto != null) {
+		Optional<Producto> agregarProducto = productoServicio.findById(id);
+		if (agregarProducto != null) {
 			ventaServicio.addProducto(agregarProducto.get());
 			return "redirect:/cesta";
-		}else {
+		} else {
 			return "index";
 		}
-		
+
 	}
-	
+
 	@GetMapping("/borrarProducto/{id}")
-	public String eliminarProducto (@PathVariable("id") Long id, Model model) {
-		Optional<Producto> quitarProducto = productoServicio.findById(id);		
-		if(quitarProducto.isPresent()) {
+	public String eliminarProducto(@PathVariable("id") Long id, Model model) {
+		Optional<Producto> quitarProducto = productoServicio.findById(id);
+		if (quitarProducto.isPresent()) {
 			ventaServicio.removeProducto(quitarProducto.get());
 			return "redirect:/cesta";
-		}else {
+		} else {
 			return "index";
 		}
 	}
-	
-	  @ModelAttribute("total_carrito")
-	  private double totalCarrito() {
-		 return ventaServicio.totalCarrito();
-	  }
-	  
-	  @ModelAttribute("descuento")
-	  private double descuent() {
-		  if(ventaServicio.totalCarrito()>=125) {
-			  return (ventaServicio.totalCarrito()*0.25);
-		  }else if(ventaServicio.totalCarrito()<125){
-			  return 0;
-		  }else {
-			  return 0;
-		  }
-	  }
-	
+
+	@ModelAttribute("total_carrito")
+	private double totalCarrito() {
+		return ventaServicio.totalCarrito();
+	}
+
+	@ModelAttribute("descuento")
+	private double descuent() {
+		if (ventaServicio.totalCarrito() >= 125) {
+			return (ventaServicio.totalCarrito() * 0.25);
+		} else if (ventaServicio.totalCarrito() < 125) {
+			return 0;
+		} else {
+			return 0;
+		}
+	}
+
 	@GetMapping("/checkout")
-	private String guardarVenta(@AuthenticationPrincipal Cliente c) {
+	private String guardarVenta(@AuthenticationPrincipal Cliente c, Model model) {
+		/*
+		 * boolean hasEnoughStock = ventaServicio.cantidadStock(); if (!hasEnoughStock)
+		 * { model.addAttribute("error", "No hay suficiente stock de algún producto.");
+		 * return "carrito"; // o la vista que desees mostrar en caso de error }
+		 */
+
 		ventaServicio.checkoutCarrito(c);
 		return "redirect:/";
 	}
-	
-	
+
 }

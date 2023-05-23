@@ -16,11 +16,12 @@
 	</header>
         <main>
         <div th:each="venta : ${ventas}">
-            <h1>Compra</h1>
-            <h3 th:text="${venta.id}">Id venta</h3>
-            <h4 th:text="${venta.fecha}">Fecha</h4>
-            <h4 th:text="${venta.descuento}"></h4>
-            <h4 th:text="${venta.total}">Total</h4>
+			<div class="datosCompra ms-5 mt-5">
+            	<p>Compra<p><p th:text="${venta.id}">Id venta<p>
+            	<p th:text="${venta.fecha}">Fecha</p>
+            	<p th:text="${venta.descuento}"></p>
+            	<p th:text="${venta.total}">Total</p>
+            </div>
 			<table class="table table-striped">
             <thead>
                 <tr>

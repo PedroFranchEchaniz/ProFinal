@@ -197,3 +197,7 @@ section{
     font-weight: bold;
     margin-top: 20px; 
 }
+
+.datosCompra{
+	line-height: 5px;
+}
