@@ -15,6 +15,7 @@ import com.salesianos.triana.dam.principioProyFinal.formsBeans.SearchBean;
 import com.salesianos.triana.dam.principioProyFinal.model.JuegoMesa;
 import com.salesianos.triana.dam.principioProyFinal.service.EditorialServicio;
 import com.salesianos.triana.dam.principioProyFinal.service.JmesaServicio;
+import com.salesianos.triana.dam.principioProyFinal.service.VentaServicio;
 
 @Controller
 @RequestMapping("/admin")
@@ -25,6 +26,9 @@ public class JMcontroller {
 	 
 	 @Autowired
 	 EditorialServicio editorialServicio;
+	 
+	 @Autowired
+	 VentaServicio ventaServicio;
 	 
 	 @GetMapping("/listaJM")
 	 public String listaJuegos (Model model) {
@@ -68,7 +72,11 @@ public class JMcontroller {
 	 public String borrarJuegoMesa(@PathVariable("id") Long id, Model model) {
 		Optional <JuegoMesa> jmEliminar = jmServicio.findById(id);
 		 if(jmEliminar.isPresent()) {
+			 if(ventaServicio.productoEncontrado(jmEliminar.get())==0){
 			 jmServicio.delete(jmEliminar.get());
+			 }else {
+				 return "redirect:/admin/listaJM/?error=true";
+			 }
 		 }
 		 return "redirect:/admin/listaJM";
 	 }
