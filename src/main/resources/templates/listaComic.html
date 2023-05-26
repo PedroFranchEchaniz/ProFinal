@@ -11,10 +11,13 @@
 <body>
     <header>
     	<nav th:replace="~{fragment/header4::encabezado}"></nav>	
-    </header>
-    
-    <main>
+    </header>   
+    <main>		
         <div class="container-fluid">
+			 <div class="alert alert-warning" role="alert" th:if="${param.error}">
+    				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    				<span>No se pueden eliminar accesorios presentes en ventas finalizadas.</span>
+			</div>
             <table class="table table-striped">
                 <thead>
                     <tr>                        

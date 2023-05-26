@@ -15,6 +15,7 @@ import com.salesianos.triana.dam.principioProyFinal.formsBeans.SearchBean;
 import com.salesianos.triana.dam.principioProyFinal.model.Comic;
 import com.salesianos.triana.dam.principioProyFinal.service.ComicServicio;
 import com.salesianos.triana.dam.principioProyFinal.service.EditorialServicio;
+import com.salesianos.triana.dam.principioProyFinal.service.VentaServicio;
 
 @Controller
 @RequestMapping("/admin")
@@ -25,6 +26,9 @@ public class ComicControlador {
 	
 	@Autowired
 	public EditorialServicio editorialServicio;
+	
+	@Autowired
+	public VentaServicio ventaServicio;
 	
 	@GetMapping("/listaC")
 	public String listaComics (Model model) {
@@ -68,7 +72,10 @@ public class ComicControlador {
 	public String borrarEditorial(@PathVariable("id") Long id, Model model) {
 		Optional <Comic> cEliminar = comicServicio.findById(id);
 		if(cEliminar.isPresent()) {
+			if(ventaServicio.productoEncontrado(cEliminar.get()) == 0)
 			comicServicio.delete(cEliminar.get());
+		}else {
+			return "redirect:/admin/listaC/?error=true";
 		}
 		return "redirect:/admin/listaC";
 	}
@@ -78,5 +85,7 @@ public class ComicControlador {
 		model.addAttribute("comics", comicServicio.findByNombre(searchBean.getSearch()));
 		return "listaComic";
 	}
+	
+	
 	
 }

@@ -116,4 +116,8 @@ public class VentaServicio extends BaseServiceImpl<Venta, Long, VentaRepositorio
 	 * valor = producto.get(p); if (valor > p.getStock()) { return false; } } return
 	 * true; }
 	 */
+	
+	public int productoEncontrado (Producto p) {
+		return ventaRepositorio.countProductoLineaVenta(p);
+	}
 }
