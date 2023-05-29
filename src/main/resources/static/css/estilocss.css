@@ -227,3 +227,10 @@ section{
   .stock-unavailable {
     color: red; 
   }
+  
+  .mensajeEdadUsuario{
+	 display: none;
+    color: red;
+    font-weight: bold;
+    margin-top: 20px; 
+  }
