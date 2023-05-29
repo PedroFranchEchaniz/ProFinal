@@ -3,7 +3,10 @@ package com.salesianos.triana.dam.principioProyFinal.controler;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -82,9 +85,11 @@ public class ClienteController {
 			return "misDatos";		
 	}
 	
-	@PostMapping ("/editarUsuario/submit")
-	public String procesarMisDatos (@ModelAttribute("cliente") @AuthenticationPrincipal Cliente u) {
-		clienteServicio.edit(u);
+	@PostMapping("/editarUsuario/submit")
+	public String procesarMisDatos(@ModelAttribute("cliente") Cliente u, Authentication authentication) {
+	    clienteServicio.edit(u); 	   
+	    Authentication auth = new UsernamePasswordAuthenticationToken(u, authentication.getCredentials(), authentication.getAuthorities());
+	    SecurityContextHolder.getContext().setAuthentication(auth);
 		return "redirect:/";
 	}
 	

@@ -24,6 +24,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+@SuppressWarnings("serial")
 @Entity
 @Data
 @AllArgsConstructor
