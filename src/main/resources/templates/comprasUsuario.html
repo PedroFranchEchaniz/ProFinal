@@ -15,37 +15,38 @@
 	<header>		
 		<nav th:replace="~{fragment/header3::encabezado}"></nav>
 	</header>
-        <main>
-        <div th:each="venta : ${ventas}">
-			<div class="datosCompra ms-5 mt-5">
-            	<p>Compra<p>
-				<p th:text="${venta.id}">Id venta<p>
-				<p>Fecha</p>
-            	<p th:text="${venta.fecha}">Fecha</p>
-            	<p>Descuento</p>
-            	<p th:text="${venta.descuento}">Sin descuento</p>
-            	<p>Total</p>
-            	<p th:text="${venta.total}">Total</p>
-            </div>
-			<table class="table table-striped">
-            <thead>
-                <tr>
-					<th>Título</th>
-                    <th>Producto</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
-                    <th>Subtotal</th>
-                </tr>
-            </thead>
-            <tbody th:each="lv : ${venta.lineaVenta}">
-                <tr>
-					<td th:text="${lv.producto.titulo}"></td>
-                    <td><img th:src="${#strings.isEmpty(lv.producto.img)} ? 'http://placehold.it/350x260' : ${lv.producto.img}" alt="Card image" width="100px"></td>
-                    <td th:text="${lv.producto.precioUnidad}">null</td>
-                    <td th:text="${lv.cantidad}">null</td>
-                    <td th:text="${lv.subtotal}">null</td>
-                </tr>
-            </tbody>
+     <main>
+        <div class="container" th:each="venta : ${ventas}">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th colspan="5">
+                            <p>Compra</p>
+                        </th>
+                    </tr>
+                    <tr class="datosCompra">
+                        <td><p th:text="${venta.id}">Id venta</p></td>
+                        <td><p th:text="${venta.fecha}">Fecha</p></td>
+                        <td><p th:text="${venta.descuento}">Sin descuento</p></td>
+                        <td><p th:text="${venta.total}">Total</p></td>
+                    </tr>
+                    <tr>
+                        <th>Título</th>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody th:each="lv : ${venta.lineaVenta}">
+                    <tr>
+                        <td th:text="${lv.producto.titulo}"></td>
+                        <td><img th:src="${#strings.isEmpty(lv.producto.img)} ? 'http://placehold.it/350x260' : ${lv.producto.img}" alt="Card image" width="100px"></td>
+                        <td th:text="${lv.producto.precioUnidad}">null</td>
+                        <td th:text="${lv.cantidad}">null</td>
+                        <td th:text="${lv.subtotal}">null</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </main>

@@ -86,36 +86,13 @@ public class VentaServicio extends BaseServiceImpl<Venta, Long, VentaRepositorio
 		}
 		save(v);
 		producto.clear();
-		/*
-		 * LineaVenta lv; List<LineaVenta> lista = new ArrayList<LineaVenta>(); Venta
-		 * venta = new Venta();
-		 * 
-		 * for (Map.Entry<Producto , Integer> carrito : producto.entrySet()) {
-		 * 
-		 * lv= LineaVenta.builder() .producto(carrito.getKey())
-		 * .cantidad(carrito.getValue()) .build(); lista.add(lv);
-		 * venta.addLineaVenta(lv);
-		 * 
-		 * }
-		 * 
-		 * venta = Venta.builder() .total(totalCarrito()) .fecha(LocalDate.now())
-		 * .build();
-		 * 
-		 * venta.setLineaVenta(lista);
-		 * 
-		 * producto.clear();
-		 */
+		
 	}
 
 	public List<Venta> findByIdCliente(Cliente c) {
 		return ventaRepositorio.buscarPorIdCliente(c.getId());
 	}
 
-	/*
-	 * public boolean cantidadStock() { for (Producto p : producto.keySet()) { int
-	 * valor = producto.get(p); if (valor > p.getStock()) { return false; } } return
-	 * true; }
-	 */
 	
 	public int productoEncontrado (Producto p) {
 		return ventaRepositorio.countProductoLineaVenta(p);

@@ -220,17 +220,22 @@ section{
     object-fit: cover;
   }
 
-  .stock-available {
+.stock-available {
     color: rgb(10, 182, 10); 
   }
   
-  .stock-unavailable {
+.stock-unavailable {
     color: red; 
   }
   
-  .mensajeEdadUsuario{
-	 display: none;
+.mensajeEdadUsuario{
+	display: none;
     color: red;
     font-weight: bold;
     margin-top: 20px; 
+  }
+  
+.datosCompra {
+  background-color: #f8f9fa;
+  padding: 20px;
   }
