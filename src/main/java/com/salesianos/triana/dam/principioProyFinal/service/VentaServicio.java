@@ -1,6 +1,6 @@
 package com.salesianos.triana.dam.principioProyFinal.service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -77,7 +77,7 @@ public class VentaServicio extends BaseServiceImpl<Venta, Long, VentaRepositorio
 			productoServicio.restarStock(p.getId(), valor);
 		}
 		v.setCliente(c);
-		v.setFecha(LocalDate.now());
+		v.setFecha(LocalDateTime.now());
 		if (totalCarrito() > 125) {
 			v.setDescuento(0.25);
 			v.setTotal(totalCarrito() - (totalCarrito() * v.getDescuento()));

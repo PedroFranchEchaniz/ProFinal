@@ -26,9 +26,9 @@
                     </tr>
                     <tr class="datosCompra">
                         <td><p th:text="${venta.id}">Id venta</p></td>
-                        <td><p th:text="${venta.fecha}">Fecha</p></td>
-                        <td><p th:text="${venta.descuento}">Sin descuento</p></td>
-                        <td><p th:text="${venta.total}">Total</p></td>
+                        <td><p th:text="${#temporals.format(venta.fecha, 'dd/MMM/yyyy HH:mm')}">Fecha</p></td>
+                        <td><p th:text="${#numbers.formatDecimal(venta.descuento, 0, 2) +'€'}">Sin descuento</p></td>
+                        <td><p th:text="${#numbers.formatDecimal(venta.total, 0, 2) + '€'}">Total</p></td>
                     </tr>
                     <tr>
                         <th>Título</th>
@@ -42,9 +42,9 @@
                     <tr>
                         <td th:text="${lv.producto.titulo}"></td>
                         <td><img th:src="${#strings.isEmpty(lv.producto.img)} ? 'http://placehold.it/350x260' : ${lv.producto.img}" alt="Card image" width="100px"></td>
-                        <td th:text="${lv.producto.precioUnidad}">null</td>
+                        <td th:text="${#numbers.formatDecimal(lv.producto.precioUnidad, 0, 2) + '€'}">null</td>
                         <td th:text="${lv.cantidad}">null</td>
-                        <td th:text="${lv.subtotal}">null</td>
+                        <td th:text="${#numbers.formatDecimal(lv.subtotal, 0, 2) + '€'}">null</td>
                     </tr>
                 </tbody>
             </table>

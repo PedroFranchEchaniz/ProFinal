@@ -235,6 +235,13 @@ section{
     margin-top: 20px; 
   }
   
+  .mensajeNombreUsuario{
+	display: none;
+    color: red;
+    font-weight: bold;
+    margin-top: 20px; 
+  }
+  
 .datosCompra {
   background-color: #f8f9fa;
   padding: 20px;

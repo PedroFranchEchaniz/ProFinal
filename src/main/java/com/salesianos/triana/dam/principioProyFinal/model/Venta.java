@@ -1,6 +1,6 @@
 package com.salesianos.triana.dam.principioProyFinal.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -33,7 +33,7 @@ public class Venta {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private LocalDate fecha;	
+	private LocalDateTime fecha;	
 	private double total;
 	private double descuento;
 	
