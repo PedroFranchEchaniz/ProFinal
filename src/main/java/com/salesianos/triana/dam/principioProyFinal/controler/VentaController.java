@@ -59,7 +59,7 @@ public class VentaController {
 	}
 
 	@ModelAttribute("descuento")
-	private double descuent() {
+	private double descuento() {
 		if (ventaServicio.totalCarrito() >= 125) {
 			return (ventaServicio.totalCarrito() * 0.25);
 		} else if (ventaServicio.totalCarrito() < 125) {
@@ -70,8 +70,8 @@ public class VentaController {
 	}
 	
 	@ModelAttribute("cantidadCarrito")
-	private int total() {
-		
+	private int productosEnCarrito() {
+		return ventaServicio.productosEnCarrtio();
 	}
 
 	@GetMapping("/checkout")
