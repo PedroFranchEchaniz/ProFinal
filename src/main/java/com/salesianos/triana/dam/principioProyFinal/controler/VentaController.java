@@ -68,6 +68,11 @@ public class VentaController {
 			return 0;
 		}
 	}
+	
+	@ModelAttribute("cantidadCarrito")
+	private int total() {
+		
+	}
 
 	@GetMapping("/checkout")
 	private String guardarVenta(@AuthenticationPrincipal Cliente c, Model model) {

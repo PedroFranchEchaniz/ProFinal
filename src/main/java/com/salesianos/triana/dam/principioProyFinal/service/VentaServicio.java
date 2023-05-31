@@ -55,6 +55,14 @@ public class VentaServicio extends BaseServiceImpl<Venta, Long, VentaRepositorio
 	public Map<Producto, Integer> getProductosInCart() {
 		return Collections.unmodifiableMap(producto);
 	}
+	
+	public int productosEnCarrtio() {
+		int cantidad = 0;
+		for(Producto p : producto.keySet()) {
+			cantidad += producto.get(p);
+			}
+		return cantidad;
+	}
 
 	public double totalCarrito() {
 		Map<Producto, Integer> carrito = getProductosInCart();
