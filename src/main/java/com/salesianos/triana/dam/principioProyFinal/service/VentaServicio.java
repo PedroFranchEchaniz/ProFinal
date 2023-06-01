@@ -62,6 +62,7 @@ public class VentaServicio extends BaseServiceImpl<Venta, Long, VentaRepositorio
 			cantidad += producto.get(p);
 			}
 		return cantidad;
+		/*return  producto.values().stream().mapToInt(Integer::intValue).sum();*/
 	}
 
 	public double totalCarrito() {

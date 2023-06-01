@@ -71,17 +71,13 @@ public class VentaController {
 	
 	@ModelAttribute("cantidadCarrito")
 	private int productosEnCarrito() {
-		return ventaServicio.productosEnCarrtio();
+		int cantidad = 0;
+		cantidad = ventaServicio.productosEnCarrtio();
+		return cantidad;
 	}
 
 	@GetMapping("/checkout")
 	private String guardarVenta(@AuthenticationPrincipal Cliente c, Model model) {
-		/*
-		 * boolean hasEnoughStock = ventaServicio.cantidadStock(); if (!hasEnoughStock)
-		 * { model.addAttribute("error", "No hay suficiente stock de algún producto.");
-		 * return "carrito"; // o la vista que desees mostrar en caso de error }
-		 */
-
 		ventaServicio.checkoutCarrito(c);
 		return "redirect:/";
 	}

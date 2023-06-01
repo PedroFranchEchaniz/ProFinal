@@ -9,6 +9,5 @@ import com.salesianos.triana.dam.principioProyFinal.model.Producto;
 
 public interface EditorialRepositorio
 	extends JpaRepository<Editorial, Long>{
-
 	
 }

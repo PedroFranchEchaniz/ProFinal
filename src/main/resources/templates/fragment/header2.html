@@ -35,7 +35,7 @@
                           <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Salir</a>
                     	</li>
 						<li class="nav-item">
-							<a sec:authorize="hasRole('ROLE_USER')" class="nav-link" type="button" th:href="@{/cesta}"><i class="bi bi-cart3"><sub th:text="${cantidadCarrito + 'unidades'}">0</sub></i></a>                            
+							<a sec:authorize="hasRole('ROLE_USER')" class="nav-link" type="button" th:href="@{/cesta}"><i class="bi bi-cart3"><sub><p th:text="${cantidadCarrito + 'unidades'}">0</p></sub></i></a>                            
 						</li>
 						 <li class="nav-item">
                    			<p class="nav-link">0.0</p>

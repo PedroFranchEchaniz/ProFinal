@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.salesianos.triana.dam.principioProyFinal.model.Editorial;
 import com.salesianos.triana.dam.principioProyFinal.model.Producto;
 import com.salesianos.triana.dam.principioProyFinal.repos.ProductoRepositorio;
 
@@ -25,6 +26,10 @@ public class ProductoServicio extends BaseServiceImpl<Producto, Long, ProductoRe
 	
 	public List<Producto> findByTitulo (String titulo){
 		return productoRepositorio.findByTituloContainingIgnoreCase(titulo);
+	}
+	
+	public int editorialEcnontrada (Editorial e) {
+		return productoRepositorio.countProductoEditorial(e);
 	}
 
 }

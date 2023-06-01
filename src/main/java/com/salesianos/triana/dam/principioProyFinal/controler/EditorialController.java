@@ -64,7 +64,7 @@ public class EditorialController {
 	@GetMapping("/borrarEditorial/{id}")
 	public String borrarEditorial(@PathVariable("id") Long id, Model model) {		
 		Optional<Editorial> eEliminar = editorialServicio.findById(id);
-		if (eEliminar != null) {
+		if (eEliminar.isPresent()) {
 			editorialServicio.delete(eEliminar.get());
 		}
 		return "redirect:/admin/listaEditorial";

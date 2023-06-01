@@ -18,3 +18,4 @@ public interface VentaRepositorio extends JpaRepository<Venta, Long> {
 		public int countProductoLineaVenta(@Param("producto") Producto producto);
 	
 }		
+ 
