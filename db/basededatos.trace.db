@@ -10474,3 +10474,7 @@ SELECT COUNT (p.id) FROM Producto JOIN Editorial e WHERE e.id = p.editorial_id [
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-06-02 10:14:57 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT COUNT(p.id) FROM PRODUCTO p JOIN EDITORIAL e WHERE p.editorial_id = e.id [*]GOUP BY e.id"
+Syntax error in SQL statement "SELECT COUNT(p.id) FROM PRODUCTO p JOIN EDITORIAL e WHERE p.editorial_id = e.id [*]GOUP BY e.id"; SQL statement:
+SELECT COUNT(p.id) FROM PRODUCTO p JOIN EDITORIAL e WHERE p.editorial_id = e.id GOUP BY e.id [42000-214]

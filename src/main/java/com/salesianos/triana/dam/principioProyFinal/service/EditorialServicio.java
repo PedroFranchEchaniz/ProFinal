@@ -10,6 +10,5 @@ import com.salesianos.triana.dam.principioProyFinal.repos.EditorialRepositorio;
 
 @Service
 public class EditorialServicio extends BaseServiceImpl<Editorial, Long, EditorialRepositorio> {
-
 	
 }
