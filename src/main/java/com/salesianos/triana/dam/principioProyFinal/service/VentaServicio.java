@@ -70,7 +70,7 @@ public class VentaServicio extends BaseServiceImpl<Venta, Long, VentaRepositorio
 		double total = 0.0;
 		if (carrito != null) {
 			for (Producto p : carrito.keySet()) {
-				total += p.getPrecioUnidad() * carrito.get(p);
+				total += (p.getPrecioUnidad() - (p.getPrecioUnidad() * p.getDescuento()/100))* carrito.get(p);
 			}
 			return total;
 		}

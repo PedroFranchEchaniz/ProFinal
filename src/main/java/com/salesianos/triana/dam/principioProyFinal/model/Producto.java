@@ -28,6 +28,7 @@ public class Producto {
 	protected double precioUnidad;	
 	protected int stock;
 	protected String img;
+	protected double descuento;
 
 	
 	@ManyToOne
