@@ -25,10 +25,6 @@ public class ProductoServicio extends BaseServiceImpl<Producto, Long, ProductoRe
 	
 	public List<Producto> findByTitulo (String titulo){
 		return productoRepositorio.findByTituloContainingIgnoreCase(titulo);
-	}
-	
-	public int productoEnEditorial (Producto producto) {
-		return productoRepositorio.nProductosEditorial(producto.getId());
-	}
+	}	
 
 }

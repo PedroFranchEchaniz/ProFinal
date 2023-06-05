@@ -24,6 +24,7 @@
                             <tr>
                                 <th>Producto</th>
                                 <th>Precio</th>
+                                <th>Descuento</th>
                                 <th>Cantidad</th>
                                 <th>Subtotal</th>
                                 <th>Acciones</th>
@@ -33,8 +34,9 @@
                             <tr>
                                 <td><img th:src="${#strings.isEmpty(element.key.img)} ? 'http://placehold.it/350x260' : ${element.key.img}" width="100px"></td>                                
                                 <td th:text="${element.key.precioUnidad}">0</td>
+                                <td th:text="${element.key.descuento}">0</td>
                                 <td th:text="${element.value}">0</td>
-                                <td th:text="${element.key.precioUnidad * element.value}">0</td>
+                                <td th:text="${(element.key.precioUnidad -(element.key.precioUnidad*element.key.descuento/100)) * element.value}">0</td>
                                 <td>
                                     <a th:href="@{/borrarProducto/{id}/(id=${element.key.id})}"  class="btn btn-danger"><i class="bi bi-trash"></i></a>
                                 </td>

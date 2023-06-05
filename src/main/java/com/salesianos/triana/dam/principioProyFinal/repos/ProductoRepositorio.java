@@ -15,6 +15,5 @@ public interface ProductoRepositorio
 	
 	public List<Producto> findByTituloContainingIgnoreCase (String titulo);	
 	
-	@Query("SELECT COUNT(p.editorial.id) FROM Producto p WHERE p.id = ?1")
-	public int nProductosEditorial (Long id);
+	
 }
