@@ -1,5 +1,6 @@
 package com.salesianos.triana.dam.principioProyFinal.controler;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.salesianos.triana.dam.principioProyFinal.model.Cliente;
 import com.salesianos.triana.dam.principioProyFinal.model.Producto;
+import com.salesianos.triana.dam.principioProyFinal.model.Venta;
 import com.salesianos.triana.dam.principioProyFinal.service.ProductoServicio;
 import com.salesianos.triana.dam.principioProyFinal.service.VentaServicio;
 
@@ -86,6 +88,25 @@ public class VentaController {
 	public String listaVentas(Model model) {
 		model.addAttribute("ventas", ventaServicio.findAll());
 		return "listaVentas";
+	}
+	
+	@GetMapping("admin/borrarVenta/{id}")
+	public String borrarVenta(@PathVariable("id") Long id, Model model) {
+		Optional<Venta> vEliminar = ventaServicio.findById(id);
+		if(vEliminar.isPresent()) {
+			ventaServicio.delete(vEliminar.get());
+		}
+		return "redirect:/admin/listaVentas";
+	}
+	
+	@ModelAttribute("totalVentas")
+	private double totalVentas() {
+		List <Venta> ventas = ventaServicio.findAll();
+		double totalGanancia = 0;
+		for(Venta venta:ventas) {
+			totalGanancia += venta.getTotal();
+		}
+		return totalGanancia;
 	}
 
 }

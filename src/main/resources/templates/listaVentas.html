@@ -21,22 +21,25 @@
 		</div>
         <div class="container-fluid">
             <table class="table table-striped">
-                <thead>
+				<p th:text="${'Ganancias obtenidas: ' +totalVentas}">0</p>
+                <thead>					
                     <tr>
                         <th class="col-2">Id</th>
                         <th class="col-2">Fecha</th>
                         <th class="col-2">Total</th>
                         <th class="col-2">Id Cliente</th>
-                        <th class="col-2">Nombre</th>                                       
+                        <th class="col-2">Nombre</th>
+                        <th class="col-2">Apellido</th>                                       
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="venta : ${ventas}" >
                         <td th:text="${venta.id}">null</td>
-                        <td th:text="${venta.fecha}">null</td>
-                        <td th:text="${venta.total}">null</td>
+                        <td th:text="${#temporals.forma(venta.fecha, 'dd/MM/yyyy HH:mm')}">null</td>
+                        <td th:text="${#numbers.formatDecimal(venta.total, 0, 2) + '€'}">null</td>
                         <td th:text="${venta.cliente.id}">null</td>
-                        <td th:text="${venta.cliente.nombre}">null</td>                      
+                        <td th:text="${venta.cliente.nombre}">null</td>
+                        <td th:text="${venta.cliente.apellidos}">null</td>                                             
                   </tr>
                 </tbody>
             </table>           
