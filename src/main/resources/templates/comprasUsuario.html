@@ -26,7 +26,7 @@
                     </tr>
                     <tr class="datosCompra">
                         <td><p th:text="${venta.id}">Id venta</p></td>
-                        <td><p th:text="${#temporals.format(venta.fecha, 'dd/MMM/yyyy HH:mm')}">Fecha</p></td>
+                        <td><p th:text="${#temporals.format(venta.fecha, 'dd/mm/yyyy HH:mm')}">Fecha</p></td>
                         <td><p th:text="${'Descuento ' +#numbers.formatDecimal(venta.descuento, 0, 2) +'€'}">Sin descuento</p></td>
                         <td><p th:text="${'Total ' +#numbers.formatDecimal(venta.total, 0, 2) + '€'}">Total</p></td>
                     </tr>

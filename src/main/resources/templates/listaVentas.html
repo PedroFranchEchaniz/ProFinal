@@ -35,7 +35,7 @@
                 <tbody>
                     <tr th:each="venta : ${ventas}" >
                         <td th:text="${venta.id}">null</td>
-                        <td th:text="${#temporals.forma(venta.fecha, 'dd/MM/yyyy HH:mm')}">null</td>
+                        <td th:text="${#temporals.format(venta.fecha, 'dd/mm/yyyy HH:mm')}">null</td>
                         <td th:text="${#numbers.formatDecimal(venta.total, 0, 2) + '€'}">null</td>
                         <td th:text="${venta.cliente.id}">null</td>
                         <td th:text="${venta.cliente.nombre}">null</td>
