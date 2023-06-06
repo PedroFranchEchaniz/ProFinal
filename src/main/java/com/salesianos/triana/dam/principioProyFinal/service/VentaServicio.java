@@ -56,12 +56,13 @@ public class VentaServicio extends BaseServiceImpl<Venta, Long, VentaRepositorio
 		return Collections.unmodifiableMap(producto);
 	}
 	
-	public int productosEnCarrtio() {
+	public int productosEnCarrito() {
 		int cantidad = 0;
 		for(Producto p : producto.keySet()) {
 			cantidad += producto.get(p);
 			}
-		return cantidad;
+		System.out.println(cantidad);
+		return cantidad;		
 		/*return  producto.values().stream().mapToInt(Integer::intValue).sum();*/
 	}
 

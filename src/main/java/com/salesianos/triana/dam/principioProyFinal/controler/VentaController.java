@@ -1,4 +1,5 @@
 package com.salesianos.triana.dam.principioProyFinal.controler;
+import org.springframework.core.annotation.Order;
 
 import java.util.List;
 import java.util.Optional;
@@ -56,6 +57,7 @@ public class VentaController {
 	}
 
 	@ModelAttribute("total_carrito")
+	@Order(1)
 	private double totalCarrito() {
 		return ventaServicio.totalCarrito();
 	}
@@ -72,9 +74,11 @@ public class VentaController {
 	}
 	
 	@ModelAttribute("cantidadCarrito")
+	@Order(2)
 	private int productosEnCarrito() {
 		int cantidad = 0;
-		cantidad = ventaServicio.productosEnCarrtio();
+		cantidad = ventaServicio.productosEnCarrito();
+		System.out.println(cantidad);
 		return cantidad;
 	}
 
