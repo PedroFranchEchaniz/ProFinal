@@ -81,5 +81,11 @@ public class VentaController {
 		ventaServicio.checkoutCarrito(c);
 		return "redirect:/";
 	}
+	
+	@GetMapping("admin/listaVentas")
+	public String listaVentas(Model model) {
+		model.addAttribute("ventas", ventaServicio.findAll());
+		return "listaVentas";
+	}
 
 }
