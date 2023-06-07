@@ -16,9 +16,18 @@
 	<main>
     <div class="maincontainer row d-flex"> 
       <div class="side row d-flex col-sm-12 col-md-2 col-xl-2">
-        <a href="#">COMIC</a>
-        <a href="#">JUEGOS MESA</a>
-      </div>          
+		    <div class="dropdown dropend">
+    			<button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+      				Dropend
+    			</button>
+    			<ul class="dropdown-menu">
+      				<li><a th:href="@{/comics}">COMIC</a></li>
+      				<li><a th:href="@{/juegosMesa}">JUEGOS MESA</a></li>
+      				<li><a th:href="@{/}">MOSTRAR TODO</a></li>
+    			</ul>
+  			</div>
+		</div>		  
+                
       <div class="col-sm-12 col-md-4 col-xl-2 card-deck mb-4" th:each="producto:${productos}">
         <div class="card mt-5 h-100 mb-3" style="max-width:300px">
           <img class="card-img-top product-image" th:src="${#strings.isEmpty(producto.img)} ? 'http://placehold.it/350x260' : ${producto.img}" alt="protada producto" >

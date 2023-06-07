@@ -10848,3 +10848,7 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/Admin/D
 	at org.h2.mvstore.FileStore.open(FileStore.java:128)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:452)
 	... 55 more
+2023-06-07 11:51:21 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT * FROM Producto JOIN COMIC [*]USING id"
+Syntax error in SQL statement "SELECT * FROM Producto JOIN COMIC [*]USING id"; SQL statement:
+SELECT * FROM Producto JOIN COMIC USING id [42000-214]

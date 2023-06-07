@@ -41,7 +41,26 @@ public class MainController {
 		return "login";
 	}
 	
+	@GetMapping("/comics")
+	public String comics(Model model) {
+		model.addAttribute("productos", productoServicio.listaComics());
+		model.addAttribute("searchForm", new SearchBean());
+		return "index";
+	}
 	
+	@GetMapping("/juegosMesa")
+	public String juegosMesa(Model model) {
+		model.addAttribute("productos", productoServicio.listaJuegosMesa());
+		model.addAttribute("searchForm", new SearchBean());
+		return "index";
+	}
+	
+	@GetMapping("/comicsDescuento")
+	public String comicsDescuento(Model model) {
+		model.addAttribute("productos", productoServicio.listaComicsDescuento());
+		model.addAttribute("searchForm", new SearchBean());
+		return "index";
+	}
 	
 	
 }
