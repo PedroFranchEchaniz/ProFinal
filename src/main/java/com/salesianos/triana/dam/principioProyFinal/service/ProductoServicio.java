@@ -38,5 +38,11 @@ public class ProductoServicio extends BaseServiceImpl<Producto, Long, ProductoRe
 	public List<Producto> listaComicsDescuento(){
 		return productoRepositorio.comicsDescuento();
 	}
+	
+	public List<Producto> listaJuegosDescuento(){
+		return productoRepositorio.JuegosDescuento();		
+	}
+	
+	
 
 }
