@@ -26,6 +26,11 @@
       				<li><a th:href="@{/}">MOSTRAR TODO</a></li>
     			</ul>
   			</div>
+  			<form th:action="@{/filtrarPrecio}" th:object="${maxYmin}" method="post">
+    			<input class="col-9" type="number" min="0" max="10000" name="minPrice" placeholder="Precio mínimo" th:field="*{minPrecio}"/>
+    			<input class="col-9" type="number" min="0" max="10000" name="maxPrice" placeholder="Precio máximo" th:field="*{maxPrecio}"/>
+    			<button type="submit">Buscar</button>
+			</form> 			
 		</div>		  
                 
       <div class="col-sm-12 col-md-4 col-xl-2 card-deck mb-4" th:each="producto:${productos}">

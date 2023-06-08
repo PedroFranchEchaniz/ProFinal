@@ -29,6 +29,6 @@ public interface ProductoRepositorio
 	@Query("SELECT p FROM Producto p WHERE p.descuento > 0")
 	public List<Producto> productosDescuento();
 	
-	@Query("SELECT p FROM Producto p WHERE p.precioUnidad BETWEEN 1? AND 2?")
-	public List<Producto> filtrarPrecio();
+	@Query("SELECT p FROM Producto p WHERE p.precioUnidad BETWEEN ?1 AND ?2")
+	public List<Producto> filtrarPrecio(double min, double max);
 }
