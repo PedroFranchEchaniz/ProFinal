@@ -17,7 +17,7 @@
     </header>
     <main>
         <div class="imgUsuario">
-            <img class="img-thumbnail" src="/static/img/noImg.jpg" th:src="*{img}" alt="Foto perfil" width="300px" height="300">
+            <img class="img-thumbnail" th:src="${#strings.isEmpty(cliente.img)} ? 'http://placehold.it/350x260' : ${cliente.img}" alt="Foto perfil" width="300px" height="300">
             <button type="button" class="btn btn-primary btn-sm"><i class="bi bi-card-image"></i></button>
         </div>
         <form class="contenedorform row bg-light d-flex" th:object="${cliente}" method="post" th:action="@{/editarUsuario/submit}">

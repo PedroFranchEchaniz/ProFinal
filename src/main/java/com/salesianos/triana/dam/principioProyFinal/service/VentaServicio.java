@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -55,15 +56,15 @@ public class VentaServicio extends BaseServiceImpl<Venta, Long, VentaRepositorio
 	public Map<Producto, Integer> getProductosInCart() {
 		return Collections.unmodifiableMap(producto);
 	}
-	
+
 	public int productosEnCarrito() {
 		int cantidad = 0;
-		for(Producto p : producto.keySet()) {
+		for (Producto p : producto.keySet()) {
 			cantidad += producto.get(p);
-			}
+		}
 		System.out.println(cantidad);
-		return cantidad;		
-		/*return  producto.values().stream().mapToInt(Integer::intValue).sum();*/
+		return cantidad;
+		/* return producto.values().stream().mapToInt(Integer::intValue).sum(); */
 	}
 
 	public double totalCarrito() {
@@ -71,7 +72,7 @@ public class VentaServicio extends BaseServiceImpl<Venta, Long, VentaRepositorio
 		double total = 0.0;
 		if (carrito != null) {
 			for (Producto p : carrito.keySet()) {
-				total += (p.getPrecioUnidad() - (p.getPrecioUnidad() * p.getDescuento()/100))* carrito.get(p);
+				total += (p.getPrecioUnidad() - (p.getPrecioUnidad() * p.getDescuento() / 100)) * carrito.get(p);
 			}
 			return total;
 		}
@@ -96,15 +97,33 @@ public class VentaServicio extends BaseServiceImpl<Venta, Long, VentaRepositorio
 		}
 		save(v);
 		producto.clear();
-		
+
 	}
 
 	public List<Venta> findByIdCliente(Cliente c) {
 		return ventaRepositorio.buscarPorIdCliente(c.getId());
 	}
 
-	
-	public int productoEncontrado (Producto p) {
+	public int productoEncontrado(Producto p) {
 		return ventaRepositorio.countProductoLineaVenta(p);
+	}
+
+	public int generarNumeroSorteo() {
+		int numMax = ventaRepositorio.findAll().size();
+		int numMin = 1000;
+		Random num = new Random(System.nanoTime());
+
+		return num.nextInt(numMax - numMin + 1) + numMin;
+	}
+
+	public void encontrarIdganadora() {
+		List<Venta> ventas = ventaRepositorio.findAll();
+
+		for (Venta v : ventas) {
+			boolean ganador = true;
+			if (this.generarNumeroSorteo() == v.getId()) {
+				v.getCliente().setGanador(ganador);
+			}
+		}
 	}
 }

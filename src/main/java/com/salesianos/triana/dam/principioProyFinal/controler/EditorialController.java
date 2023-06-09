@@ -67,13 +67,12 @@ public class EditorialController {
 	@GetMapping("/borrarEditorial/{id}")
 	public String borrarEditorial(@PathVariable("id") Long id, Model model) {		
 		Optional<Editorial> eEliminar = editorialServicio.findById(id);
-		if (eEliminar.isPresent()) {
-			editorialServicio.delete(eEliminar.get());
-			/*if(editorialServicio.productoEnEditorial(eEliminar.get())==0)
+		if (eEliminar.isPresent()) {			
+			if(editorialServicio.productosEditorial(eEliminar.get())==0)
 				editorialServicio.delete(eEliminar.get());
 		}else {
-			return "redirect: /admin/listaEditorial/?error=true";
-		*/}
+			return "redirect:/admin/listaEditorial/?error=true";
+		}
 		return "redirect:/admin/listaEditorial";
 	}	
 	

@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -45,6 +46,7 @@ public class Cliente implements UserDetails  {
 	private String correoElectronico;
 	private String img;	
 	private boolean admin;
+	@Nullable private Boolean ganador;
 	
 	/*@ToString.Exclude
 	@EqualsAndHashCode.Exclude
