@@ -32,6 +32,9 @@ public class VentaServicio extends BaseServiceImpl<Venta, Long, VentaRepositorio
 
 	@Autowired
 	ProductoServicio productoServicio;
+	
+	@Autowired
+	ClienteServicio clienteServicio;
 
 	private Map<Producto, Integer> producto = new HashMap<>();
 
@@ -83,18 +86,21 @@ public class VentaServicio extends BaseServiceImpl<Venta, Long, VentaRepositorio
 		Venta v = new Venta();
 		for (Producto p : producto.keySet()) {
 			int valor = producto.get(p);
-			v.addLineaVenta(LineaVenta.builder().producto(p).cantidad(valor).pvp(p.getPrecioUnidad())
+			v.addLineaVenta(LineaVenta.builder()
+					.producto(p)
+					.cantidad(valor)
+					.pvp(p.getPrecioUnidad())
 					.subtotal(p.getPrecioUnidad() * valor).build());
 			productoServicio.restarStock(p.getId(), valor);
 		}
-		v.setCliente(c);
-		v.setFecha(LocalDateTime.now());
-		if (totalCarrito() > 125) {
-			v.setDescuento(0.25);
-			v.setTotal(totalCarrito() - (totalCarrito() * v.getDescuento()));
-		} else {
-			v.setTotal(totalCarrito());
+		v.setCliente(c);		
+		if(c.getGanador() != null) {
+			v.setDescuento(25);
+			v.setTotal(totalCarrito()-(totalCarrito()*v.getDescuento()/100));
+		}else {		
+		v.setTotal(totalCarrito());
 		}
+		v.setFecha(LocalDateTime.now());
 		save(v);
 		producto.clear();
 
@@ -109,21 +115,21 @@ public class VentaServicio extends BaseServiceImpl<Venta, Long, VentaRepositorio
 	}
 
 	public int generarNumeroSorteo() {
-		int numMax = ventaRepositorio.findAll().size();
+		int numMax = ventaRepositorio.findAll().get(ventaRepositorio.findAll().size()-1).getId().intValue();
 		int numMin = 1000;
 		Random num = new Random(System.nanoTime());
-
 		return num.nextInt(numMax - numMin + 1) + numMin;
 	}
 
 	public void encontrarIdganadora() {
 		List<Venta> ventas = ventaRepositorio.findAll();
-
-		for (Venta v : ventas) {
-			boolean ganador = true;
-			if (this.generarNumeroSorteo() == v.getId()) {
-				v.getCliente().setGanador(ganador);
+		int numeroGanador = this.generarNumeroSorteo();
+		boolean ganador = true;
+		for (Venta v : ventas) {			
+			if ( numeroGanador == v.getId()) {
+				clienteServicio.findById(v.getCliente().getId()).get().setGanador(ganador);
+				clienteServicio.save(clienteServicio.findById(v.getCliente().getId()).get());
 			}
-		}
+		}		
 	}
 }

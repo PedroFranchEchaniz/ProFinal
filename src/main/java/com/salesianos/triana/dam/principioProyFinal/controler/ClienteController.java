@@ -104,4 +104,10 @@ public class ClienteController {
 		model.addAttribute("listaClientes", clienteServicio.findByNombre(searchBean.getSearch()));
 		return "listaClientes";
 	}
+	
+	@GetMapping("admin/sortear")
+	public String generarGanador() {		
+		ventaServicio.encontrarIdganadora();
+		return "redirect:/admin/listaClientes";
+	}
 }

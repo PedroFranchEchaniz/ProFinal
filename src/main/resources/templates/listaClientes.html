@@ -16,14 +16,16 @@
     </header>
     <main>
         <div class="container-fluid">
+            <a type="button" class="btn btn-primary" th:href="@{/admin/nuevoUsuario}">Añadir</a>
+            <a type="button" class="btn btn-primary" th:href="@{/admin/sortear}">SORTEO</a>
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th class="col-2">ID</th>
-                        <th class="col-2">nombre</th>
-                        <th class="col-2">apellidos</th>                        
-                        <th class="col-2">contraseña</th>
-                        <th class="col-2">correo</th>                
+                        <th class="col-2">Nombre</th>
+                        <th class="col-2">Apellidos</th>                       
+                        <th class="col-2">Correo</th>
+                        <th class="col-2">Ganador</th>                
                     </tr>
                 </thead>
                 <tbody th:each="cliente : ${listaClientes}">
@@ -32,6 +34,7 @@
                         <td th:text="${cliente.nombre}">null</td>
                         <td th:text="${cliente.apellidos}">null</td>                       
                         <td th:text="${cliente.correoElectronico}">null</td>
+                        <td th:text="${cliente.ganador}">null</td>
                         <td>                        
                         <a href="#"
 								th:href="@{editarCliente/{id}(id=${cliente.id})}"
@@ -41,8 +44,7 @@
                         </td>
                     </tr>
                 </tbody>
-            </table>
-            <a type="button" class="btn btn-primary" th:href="@{/admin/nuevoUsuario}">Añadir</a>
+            </table>            
         </div>
     </main>
 </body>

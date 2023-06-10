@@ -63,13 +63,11 @@ public class VentaController {
 	}
 
 	@ModelAttribute("descuento")
-	private double descuento() {
-		if (ventaServicio.totalCarrito() >= 125) {
-			return (ventaServicio.totalCarrito() * 0.25);
-		} else if (ventaServicio.totalCarrito() < 125) {
-			return 0;
-		} else {
-			return 0;
+	private double descuento(@AuthenticationPrincipal Cliente c) {
+		if (c.getGanador() != null) {
+			return 25.00;
+		}else {
+			return 00.00;
 		}
 	}
 	

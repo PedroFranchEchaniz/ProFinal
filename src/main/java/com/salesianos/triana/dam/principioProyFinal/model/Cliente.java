@@ -46,7 +46,7 @@ public class Cliente implements UserDetails  {
 	private String correoElectronico;
 	private String img;	
 	private boolean admin;
-	@Nullable private Boolean ganador;
+	private Boolean ganador;
 	
 	/*@ToString.Exclude
 	@EqualsAndHashCode.Exclude
