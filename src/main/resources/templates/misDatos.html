@@ -48,6 +48,9 @@
             <p class="col-sm-12 col-md-7 col-lg-8">Los campos * son obligatorios</p>
             <button type="submit" class="btn btn-primary botonmargin col-1" id="botonUsuario">Editar</button>
         </form>
+        <div class="imgGanador" th:if="${cliente.ganador}">
+			<img src="/img/win.png" alt="ganador" width="300px">
+		</div>
     </main>
     <footer>
         <nav th:replace="~{fragment/footer::pie}"></nav>

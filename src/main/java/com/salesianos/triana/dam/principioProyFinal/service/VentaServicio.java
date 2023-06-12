@@ -100,6 +100,8 @@ public class VentaServicio extends BaseServiceImpl<Venta, Long, VentaRepositorio
 		}else {		
 		v.setTotal(totalCarrito());
 		}
+		c.setGanador(null);
+		clienteServicio.save(c);
 		v.setFecha(LocalDateTime.now());
 		save(v);
 		producto.clear();
