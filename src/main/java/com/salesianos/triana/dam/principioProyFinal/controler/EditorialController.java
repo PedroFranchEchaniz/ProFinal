@@ -29,6 +29,7 @@ public class EditorialController {
 	
 	@Autowired
 	private ProductoServicio producutoServicio;
+	
 	@GetMapping("/listaEditorial")
 	public String listarTodos(Model model) {
 		model.addAttribute("lista", editorialServicio.findAll());		
