@@ -13,7 +13,7 @@ boton.addEventListener('click', validarCampos);
 function validarCampos(event) {
 	event.preventDefault();
 	const nombreRegExp = /^[a-zA-Z\s]+$/;
-	let validacionExitosa = true;	
+	let validacionExitosa = true;
 
 	if (!nombreRegExp.test(nombre.value.trim())) {
 		mensajeNombre.textContent = 'Por favor, ingresa un nombre válido sin números ni caracteres especiales.';
@@ -44,6 +44,15 @@ function validarCampos(event) {
 		validacionExitosa = false;
 	} else {
 		mensajeEdad.style.display = 'none';
+	}
+
+	if (contrasenia.value !== contrasenia2.value) {
+		mensajeContrasena.textContent = 'Las contraseñas no coinciden.';
+		mensajeContrasena.style.display = 'block';
+		contrasenia.focus();
+		validacionExitosa = false;
+	} else {
+		mensajeContrasena.style.display = 'none';
 	}
 
 	if (validacionExitosa) {
