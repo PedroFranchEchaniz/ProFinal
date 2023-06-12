@@ -2,7 +2,9 @@ let boton = document.getElementById('botonFormularioCliente');
 let nombre = document.getElementById('nombre');
 let apellido = document.getElementById('apellido');
 let fechaNacimiento = document.getElementById('fechanacimiento');
-let mensajeContraseña = document.getElementById('mensajeContraseña');
+let contrasenia = document.getElementById('contrasena')
+let contrasenia2 = document.getElementById('contrasena2')
+let mensajeContrasena = document.getElementById('mensajeContrasena');
 let mensajeNombre = document.getElementById('mensajeNombre');
 let mensajeApellido = document.getElementById('mensajeApellido');
 let mensajeEdad = document.getElementById('mensajeEdad');
@@ -11,7 +13,7 @@ boton.addEventListener('click', validarCampos);
 function validarCampos(event) {
 	event.preventDefault();
 	const nombreRegExp = /^[a-zA-Z\s]+$/;
-	let validacionExitosa = true;
+	let validacionExitosa = true;	
 
 	if (!nombreRegExp.test(nombre.value.trim())) {
 		mensajeNombre.textContent = 'Por favor, ingresa un nombre válido sin números ni caracteres especiales.';
