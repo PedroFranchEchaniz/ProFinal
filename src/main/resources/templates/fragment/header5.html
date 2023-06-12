@@ -32,7 +32,10 @@
                     </li>
                     <li>
                         <a type="button" class="btn btn-primary" th:href="@{/admin/listaClientes}">Clientes</a>
-                    </li>                     
+                    </li>
+                    <li>
+                        <a type="button" class="btn btn-primary" th:href="@{/admin/listaVentas}">Ventas</a>
+                    </li>                      
                 </ul>
                <form th:action="@{/admin/buscarCliente}" th:object="${busqueda}" method="post" class="d-flex">
               <input  class="form-control me-2" type="text" placeholder="Buscar" th:field="*{search}" name="titulo">
