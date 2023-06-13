@@ -16,6 +16,9 @@ public interface VentaRepositorio extends JpaRepository<Venta, Long> {
 		
 		@Query("SELECT COUNT(lv.producto.id) FROM Venta v JOIN v.lineaVenta lv WHERE lv.producto = :producto")
 		public int countProductoLineaVenta(@Param("producto") Producto producto);
+		
+		@Query("SELECT lv.producto FROM Venta v JOIN v.lineaVenta lv GROUP BY lv.producto.id ORDER BY SUM(lv.cantidad) DESC")
+		public List<Producto> productosMasVendidos();
 	
 }		
  

@@ -1,6 +1,7 @@
 package com.salesianos.triana.dam.principioProyFinal.service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -134,4 +135,10 @@ public class VentaServicio extends BaseServiceImpl<Venta, Long, VentaRepositorio
 			}
 		}		
 	}
+	
+	public List<Producto> top3() {
+	    List<Producto> top = ventaRepositorio.productosMasVendidos();	    
+	    return top.subList(0, Math.min(top.size(), 3));	    
+	}
+	
 }

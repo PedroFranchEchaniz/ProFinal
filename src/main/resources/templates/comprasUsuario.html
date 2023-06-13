@@ -12,9 +12,14 @@
     <title>MisCompras</title>
 </head>
 <body>
-	<header>		
-		<nav th:replace="~{fragment/header3::encabezado}"></nav>
-	</header>
+<header>
+    <div class="navbar navbar-expand-md navbar-light bg-light">
+		<a class="navbar-brand" href="#" th:href="@{/}"><img src="../../img/logo.png" alt="the android's dungeon"></a>
+		<div class="menu-container">
+        <nav th:replace="~{fragment/header3::encabezado}"></nav>            
+        </div>
+    </div>
+</header>
      <main>
         <div class="container" th:each="venta : ${ventas}">
             <table class="table table-striped">

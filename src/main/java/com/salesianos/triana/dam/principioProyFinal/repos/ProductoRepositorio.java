@@ -31,4 +31,5 @@ public interface ProductoRepositorio
 	
 	@Query("SELECT p FROM Producto p WHERE p.precioUnidad BETWEEN ?1 AND ?2")
 	public List<Producto> filtrarPrecio(double min, double max);
+	
 }

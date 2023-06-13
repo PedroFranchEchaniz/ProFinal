@@ -39,17 +39,7 @@ public class Venta {
 	
 	@ManyToOne
 	@JoinColumn(foreignKey=@ForeignKey(name="fk_venta_cliente"))
-	private Cliente cliente;
-	
-	public void addToCliente (Cliente c) {
-		this.cliente=c;
-		c.getVentas().add(this);
-	}
-	
-	public void removeFromCliente (Cliente c) {
-		c.getVentas().remove(this);
-		this.cliente=null;
-	}
+	private Cliente cliente;	
 	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude

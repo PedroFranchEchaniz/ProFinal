@@ -12,11 +12,10 @@
     <title>Carrito</title>
 </head>
 <body>
-	<header th:fragment="encabezado">
+	<header th:fragment="encabezado" >
 	<form th:action="@{/logout/}" method="POST" id="logoutForm" style="display: none;"></form>
 	<nav class="navbar navbar-expand-md navbar-light bg-light" th:fragment="encabezado">
-			<div class="container">
-				<a class="navbar-brand" href="#" th:href="@{/}"><img src="../../img/logo.png" alt="the android's dungeon"></a>
+			<div class="container">				
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -35,16 +34,13 @@
                           <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Salir</a>
                     	</li>
 						<li class="nav-item">
-							<a sec:authorize="hasRole('ROLE_USER')" class="nav-link" type="button" th:href="@{/cesta}"><i class="bi bi-cart3"><sub th:text="${cantidadCarrito + 'unidades'}">0</sub></i></a>                            
+							<a sec:authorize="hasRole('ROLE_USER')" class="nav-link" type="button" th:href="@{/cesta}"><i class="bi bi-cart3"><sub th:text="${cantidadCarrito}">0</sub></i></a>                            
 						</li>
 						 <li class="nav-item">
                    			<p sec:authorize="hasRole('ROLE_USER')" class="nav-link" th:text="${#numbers.formatDecimal(total_carrito, 0, 2) + '€'}" >0.0</p>
                 		</li>
 					</ul>
-            <form th:action="@{/search}" th:object="${searchForm}" method="POST" class="d-flex">
-              <input  class="form-control me-2" type="text" placeholder="Buscar" th:field="*{search}" name="titulo">
-              <button class="btn btn-primary" type="submit">Buscar</button>
-            </form>
+            
 				</div>
 			</div>
 		</nav>
