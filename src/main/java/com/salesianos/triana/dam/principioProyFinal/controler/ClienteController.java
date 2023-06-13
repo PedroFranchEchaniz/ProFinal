@@ -89,6 +89,8 @@ public class ClienteController {
 	@GetMapping("user/editarUsuario")
 	public String monstrarMisDatos(Model model, @AuthenticationPrincipal Cliente c) {
 		model.addAttribute("cliente", c);
+		model.addAttribute("total_carrito", ventaServicio.totalCarrito());
+		model.addAttribute("cantidadCarrito", ventaServicio.productosEnCarrito());
 		return "misDatos";
 	}
 
@@ -104,6 +106,16 @@ public class ClienteController {
 	@GetMapping("user/misCompras")
 	public String misCompras(@AuthenticationPrincipal Cliente u, Model model) {
 		model.addAttribute("ventas", ventaServicio.findByIdCliente(u));
+		model.addAttribute("total_carrito", ventaServicio.totalCarrito());
+		model.addAttribute("cantidadCarrito", ventaServicio.productosEnCarrito());
+		model.addAttribute("busqueda", new SearchBean());
+		model.addAttribute("productos", ventaServicio.findByIdCliente(u).
+				listIterator()
+				.next()
+				.getLineaVenta()
+				.listIterator()
+				.next()
+				.getProducto());
 		return "comprasUsuario";
 	}
 

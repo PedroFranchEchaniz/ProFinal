@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.salesianos.triana.dam.principioProyFinal.formsBeans.SearchBean;
+import com.salesianos.triana.dam.principioProyFinal.formsBeans.SearchBeanDouble;
 import com.salesianos.triana.dam.principioProyFinal.model.Cliente;
 import com.salesianos.triana.dam.principioProyFinal.model.Producto;
 import com.salesianos.triana.dam.principioProyFinal.model.Venta;
@@ -30,6 +32,9 @@ public class VentaController {
 	@GetMapping("/cesta")
 	public String mostrarCarrito(Model model) {
 		model.addAttribute("producto", ventaServicio.getProductosInCart());
+		model.addAttribute("searchForm", new SearchBean());
+		model.addAttribute("maxYmin", new SearchBeanDouble());
+		model.addAttribute("total_carrito", ventaServicio.totalCarrito());		
 		return "carrito";
 	}
 
@@ -57,8 +62,8 @@ public class VentaController {
 	}
 
 	@ModelAttribute("total_carrito")
-	@Order(1)
-	private double totalCarrito() {
+	@Order(2)
+	private double totalEnCarrito() {
 		return ventaServicio.totalCarrito();
 	}
 
@@ -72,11 +77,10 @@ public class VentaController {
 	}
 	
 	@ModelAttribute("cantidadCarrito")
-	@Order(2)
+	@Order(1)
 	private int productosEnCarrito() {
 		int cantidad = 0;
-		cantidad = ventaServicio.productosEnCarrito();
-		System.out.println(cantidad);
+		cantidad = ventaServicio.productosEnCarrito();		
 		return cantidad;
 	}
 
