@@ -108,14 +108,7 @@ public class ClienteController {
 		model.addAttribute("ventas", ventaServicio.findByIdCliente(u));
 		model.addAttribute("total_carrito", ventaServicio.totalCarrito());
 		model.addAttribute("cantidadCarrito", ventaServicio.productosEnCarrito());
-		model.addAttribute("busqueda", new SearchBean());
-		model.addAttribute("productos", ventaServicio.findByIdCliente(u).
-				listIterator()
-				.next()
-				.getLineaVenta()
-				.listIterator()
-				.next()
-				.getProducto());
+		model.addAttribute("busqueda", new SearchBean());		
 		return "comprasUsuario";
 	}
 
