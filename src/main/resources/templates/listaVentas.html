@@ -18,12 +18,13 @@
 	   <div class="alert alert-warning" role="alert" th:if="${param.error}">
     				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     				<span>Para eliminar este producto deberá eliminar las compras asociadas a el</span>
-		</div>
+		</div>		
 		
-		<div th:each"p : ${top}">
-			<p th:text="${p.id}"></p>			
-		</div>
-		
+		<h1>TOP 3 PRODUCTOS MAS VENDIDOS</h1>	
+		<div th:each="producto : ${top}">
+			<p th:text="${producto.titulo}"></p>
+		</div>	
+			
         <div class="container-fluid">
             <table class="table table-striped">
 				<p th:text="${'Ganancias obtenidas: ' +totalVentas}">0</p>

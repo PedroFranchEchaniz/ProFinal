@@ -2,6 +2,8 @@ package com.salesianos.triana.dam.principioProyFinal.repos;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -20,7 +22,7 @@ public interface VentaRepositorio extends JpaRepository<Venta, Long> {
 		public int countProductoLineaVenta(@Param("producto") Producto producto);
 		
 		@Query("SELECT lv.producto FROM Venta v JOIN v.lineaVenta lv GROUP BY lv.producto.id ORDER BY SUM(lv.cantidad) DESC")
-		public List<Producto> productosMasVendidos();
+		public Page<Producto> productosMasVendidos(Pageable pageable);
 	
 }		
  

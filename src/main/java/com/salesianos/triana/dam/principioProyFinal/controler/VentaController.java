@@ -91,10 +91,9 @@ public class VentaController {
 	}
 	
 	@GetMapping("admin/listaVentas")
-	public String listaVentas(Model model) {
-		List<Producto> topProductos = ventaServicio.top3();
+	public String listaVentas(Model model) {		
 	    model.addAttribute("ventas", ventaServicio.findAll());
-	    model.addAttribute("top", topProductos);
+	    model.addAttribute("top", ventaServicio.top3());
 		return "listaVentas";
 	}
 	

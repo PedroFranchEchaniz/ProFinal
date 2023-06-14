@@ -11,6 +11,7 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -136,9 +137,15 @@ public class VentaServicio extends BaseServiceImpl<Venta, Long, VentaRepositorio
 		}		
 	}
 	
-	public List<Producto> top3() {
-	    List<Producto> top = ventaRepositorio.productosMasVendidos();	    
-	    return top.subList(0, Math.min(top.size(), 3));	    
+	public List<Producto> top3() {	
+		List<Producto> top;
+		top = ventaRepositorio.productosMasVendidos(PageRequest.of(0, 3)).getContent();
+		for(Producto v : top) {
+			System.out.println(v);
+		}
+		return top;
+	    /*List<Producto> top = ventaRepositorio.productosMasVendidos();	    
+	    return top.subList(0, Math.min(top.size(), 3));*/	    
 	}
 	
 }

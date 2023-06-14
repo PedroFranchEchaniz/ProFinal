@@ -11,7 +11,7 @@ INSERT INTO producto (id, img, precio_unidad, stock, editorial_id, titulo, descu
 INSERT INTO comic (guionista, ilustrador, sinopsis, id) VALUES ('Paco', 'Luis', 'Un comic muy guay', 2);
 INSERT INTO producto (id, img, precio_unidad, stock, editorial_id, titulo, descuento) VALUES (3, 'https://www.goldengoblingames.com/media/catalog/product/cache/cfae4e09283942a26059feb86e746738/r/o/rox-402-th-01.jpg', 40.50, 30, 2, 'Brass', 0);
 INSERT INTO juego_mesa (descripcion, n_jugadores_max, n_jugadores_min, tipo, id) VALUES ('Demuestra la capacidad de control y dominio que tienes sobre tus posesiones y vence en este gran juego de estrategia', 2, 5, 'Gestión de recursos', 3);
-INSERT INTO producto (id, img, precio_unidad, stock, editorial_id, titulo, descuento) VALUES (4, 'https://content.eccediciones.com/productos/5065/Vertigo_02_Sandman_01_cover_DEF.jpg', 10, 20.10, 3, 'The Swanp', 0);
+INSERT INTO producto (id, img, precio_unidad, stock, editorial_id, titulo, descuento) VALUES (4, 'https://content.eccediciones.com/productos/5065/Vertigo_02_Sandman_01_cover_DEF.jpg', 10, 20.10, 3, 'SandMan', 0);
 INSERT INTO comic (guionista, ilustrador, sinopsis, id) VALUES ('Paco', 'Luis', 'Un comic muy guay', 4);
 INSERT INTO producto (id, img, precio_unidad, stock, editorial_id, titulo, descuento) VALUES (5, 'https://sm.ign.com/ign_es/gallery/t/the-batman/the-batman-march-comics-variant-covers-gallery_996h.jpg', 20, 30, 4, 'Batman', 0);
 INSERT INTO comic (guionista, ilustrador, sinopsis, id) VALUES ('Paco', 'Luis', 'Un comic muy guay', 5);
