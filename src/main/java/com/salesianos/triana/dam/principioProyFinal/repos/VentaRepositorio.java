@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import com.salesianos.triana.dam.principioProyFinal.model.Producto;
 import com.salesianos.triana.dam.principioProyFinal.model.Venta;
 
+@Repository
 public interface VentaRepositorio extends JpaRepository<Venta, Long> {
 
 		@Query("Select v from Venta v where cliente_id = ?1")

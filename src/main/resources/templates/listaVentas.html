@@ -19,6 +19,7 @@
     				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     				<span>Para eliminar este producto deberá eliminar las compras asociadas a el</span>
 		</div>
+		
 		<div th:each"p : ${top}">
 			<p th:text="${p.id}"></p>			
 		</div>
