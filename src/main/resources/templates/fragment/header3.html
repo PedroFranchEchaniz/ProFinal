@@ -39,8 +39,7 @@
 						 <li class="nav-item">
                    			<p sec:authorize="hasRole('ROLE_USER')" class="nav-link" th:text="${#numbers.formatDecimal(total_carrito, 0, 2) + '€'}" >0.0</p>
                 		</li>
-					</ul>
-            
+					</ul>            
 				</div>
 			</div>
 		</nav>

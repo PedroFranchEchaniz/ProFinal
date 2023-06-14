@@ -12,6 +12,7 @@
 		crossorigin="anonymous"></script>
 	<script srcr="../static/js/scripts.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+	 <link rel="stylesheet" href="../static/css/estilocss.css" th:href="@{/css/estilocss.css}">
 	<title>ListaClientes</title>
 </head>
 
@@ -19,7 +20,7 @@
 	<header>
 		<nav th:replace="~{fragment/header5::encabezado}"></nav>
 	</header>
-	<main>
+	<main class="main-with-margin">
 		<div class="container-fluid">
 			<a type="button" class="btn btn-primary" th:href="@{/admin/nuevoUsuario}">Añadir</a>
 			<a type="button" class="btn btn-primary" th:href="@{/admin/sortear}">SORTEO</a>
