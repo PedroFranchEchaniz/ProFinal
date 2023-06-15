@@ -37,10 +37,10 @@
                     <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/productoAcarrito/{id}(id=${comic.id})}" class="btn btn-primary col-1" type="button"><i class="bi bi-cart3"></i></a>                    
                 </div>
             </div>
-            <div class="col-12">
+            <div th:each="valoracion:${valoraciones}">
                 <h3>Valoraciones</h3>
                 <h5>Usuario</h5>
-                <p>Valoración</p>
+                <p th:text="{valoracion.valoracion}">Valoración</p>
                 <h6>Comentario</h6>
             </div>
         </div>

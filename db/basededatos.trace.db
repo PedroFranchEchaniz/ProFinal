@@ -12041,3 +12041,11 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/pedro/D
 	at org.h2.mvstore.FileStore.open(FileStore.java:128)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:452)
 	... 55 more
+2023-06-15 20:46:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "select valoracion0_.cliente_id as cliente_1_6_, valoracion0_.producto_id as producto2_6_, valoracion0_.valoracion as valoraci3_6_ from valoracion valoracion0_ inner join producto producto1_ on [*]where producto1_.id=?"; se esperaba "INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"
+Syntax error in SQL statement "select valoracion0_.cliente_id as cliente_1_6_, valoracion0_.producto_id as producto2_6_, valoracion0_.valoracion as valoraci3_6_ from valoracion valoracion0_ inner join producto producto1_ on [*]where producto1_.id=?"; expected "INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+select valoracion0_.cliente_id as cliente_1_6_, valoracion0_.producto_id as producto2_6_, valoracion0_.valoracion as valoraci3_6_ from valoracion valoracion0_ inner join producto producto1_ on where producto1_.id=? [42001-214]
+2023-06-15 20:48:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "select valoracion0_.cliente_id as cliente_1_6_, valoracion0_.producto_id as producto2_6_, valoracion0_.valoracion as valoraci3_6_ from valoracion valoracion0_ inner join producto producto1_ on [*]where producto1_.id=?"; se esperaba "INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"
+Syntax error in SQL statement "select valoracion0_.cliente_id as cliente_1_6_, valoracion0_.producto_id as producto2_6_, valoracion0_.valoracion as valoraci3_6_ from valoracion valoracion0_ inner join producto producto1_ on [*]where producto1_.id=?"; expected "INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+select valoracion0_.cliente_id as cliente_1_6_, valoracion0_.producto_id as producto2_6_, valoracion0_.valoracion as valoraci3_6_ from valoracion valoracion0_ inner join producto producto1_ on where producto1_.id=? [42001-214]

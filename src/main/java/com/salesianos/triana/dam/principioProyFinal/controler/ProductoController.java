@@ -60,9 +60,11 @@ public class ProductoController {
 		if(producto.isPresent()) {
 			if(producto.get() instanceof Comic) {
 				model.addAttribute("comic", comic.get());
+				model.addAttribute("valoraciones", servicioValoracion.mostrarValoraciones(comic.get()));
 				return "producto";
 			}else{
 				model.addAttribute("jm", jm.get());
+				model.addAttribute("valoraciones", servicioValoracion.mostrarValoraciones(jm.get()));
 				return "producto2";
 			}
 		}else{
