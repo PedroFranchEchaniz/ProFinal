@@ -50,7 +50,9 @@
                         <td th:text="${#numbers.formatDecimal(lv.producto.precioUnidad, 0, 2) + '€'}">null</td>
                         <td th:text="${lv.cantidad}">null</td>
                         <td th:text="${#numbers.formatDecimal(lv.subtotal, 0, 2) + '€'}">null</td>
-                        <td
+                        <a href="#"
+								th:href="@{valorar/{id}(id=${producto.id})}"
+								class="btn btn-primary">Valorar</a>
                     </tr>
                 </tbody>
             </table>

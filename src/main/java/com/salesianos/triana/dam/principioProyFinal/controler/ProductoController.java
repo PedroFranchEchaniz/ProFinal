@@ -55,7 +55,10 @@ public class ProductoController {
 		}else{
 			return "error";
 		}
-	}	
+	}
+	
+	@GetMapping("/valorar/{id}")
+	public String valorar(@Path)
 	
 	
 }
