@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.salesianos.triana.dam.principioProyFinal.model.Comic;
 import com.salesianos.triana.dam.principioProyFinal.model.JuegoMesa;
 import com.salesianos.triana.dam.principioProyFinal.model.Producto;
+import com.salesianos.triana.dam.principioProyFinal.service.ClienteServicio;
 import com.salesianos.triana.dam.principioProyFinal.service.ComicServicio;
 import com.salesianos.triana.dam.principioProyFinal.service.JmesaServicio;
 import com.salesianos.triana.dam.principioProyFinal.service.ProductoServicio;
@@ -26,6 +27,11 @@ public class ProductoController {
 	
 	@Autowired
 	public JmesaServicio jmServicio;
+	
+	
+	
+	@Autowired
+	public ClienteServicio clienteServicio;
 	
 	/*@GetMapping("/infoProducto/{id}")
 	public String mostrarProducto (@PathVariable ("id") Long id, Model model) {
@@ -55,7 +61,8 @@ public class ProductoController {
 		}else{
 			return "error";
 		}
-	}	
+	}
+	
 	
 	
 }
