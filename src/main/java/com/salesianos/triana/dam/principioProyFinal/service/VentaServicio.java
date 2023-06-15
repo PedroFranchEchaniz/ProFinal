@@ -34,7 +34,7 @@ public class VentaServicio extends BaseServiceImpl<Venta, Long, VentaRepositorio
 
 	@Autowired
 	ProductoServicio productoServicio;
-	
+
 	@Autowired
 	ClienteServicio clienteServicio;
 
@@ -85,29 +85,29 @@ public class VentaServicio extends BaseServiceImpl<Venta, Long, VentaRepositorio
 	}
 
 	public void checkoutCarrito(Cliente c) {
-		Venta v = new Venta();
-		for (Producto p : producto.keySet()) {
-			int valor = producto.get(p);
-			v.addLineaVenta(LineaVenta.builder()
-					.producto(p)
-					.cantidad(valor)
-					.pvp(p.getPrecioUnidad())
-					.subtotal(p.getPrecioUnidad() * valor).build());
-			productoServicio.restarStock(p.getId(), valor);
-		}
-		v.setCliente(c);		
-		if(c.getGanador() != null) {
-			v.setDescuento(25);
-			v.setTotal(totalCarrito()-(totalCarrito()*v.getDescuento()/100));
-		}else {		
-		v.setTotal(totalCarrito());
-		}
-		c.setGanador(null);
-		clienteServicio.save(c);
-		v.setFecha(LocalDateTime.now());
-		save(v);
-		producto.clear();
+		if (producto.isEmpty()) {
 
+		} else {
+			Venta v = new Venta();
+			for (Producto p : producto.keySet()) {
+				int valor = producto.get(p);
+				v.addLineaVenta(LineaVenta.builder().producto(p).cantidad(valor).pvp(p.getPrecioUnidad())
+						.subtotal(p.getPrecioUnidad() * valor).build());
+				productoServicio.restarStock(p.getId(), valor);
+			}
+			v.setCliente(c);
+			if (c.getGanador() != null) {
+				v.setDescuento(25);
+				v.setTotal(totalCarrito() - (totalCarrito() * v.getDescuento() / 100));
+			} else {
+				v.setTotal(totalCarrito());
+			}
+			c.setGanador(null);
+			clienteServicio.save(c);
+			v.setFecha(LocalDateTime.now());
+			save(v);
+			producto.clear();
+		}
 	}
 
 	public List<Venta> findByIdCliente(Cliente c) {
@@ -119,7 +119,7 @@ public class VentaServicio extends BaseServiceImpl<Venta, Long, VentaRepositorio
 	}
 
 	public int generarNumeroSorteo() {
-		int numMax = ventaRepositorio.findAll().get(ventaRepositorio.findAll().size()-1).getId().intValue();
+		int numMax = ventaRepositorio.findAll().get(ventaRepositorio.findAll().size() - 1).getId().intValue();
 		int numMin = 1000;
 		Random num = new Random(System.nanoTime());
 		return num.nextInt(numMax - numMin + 1) + numMin;
@@ -129,23 +129,25 @@ public class VentaServicio extends BaseServiceImpl<Venta, Long, VentaRepositorio
 		List<Venta> ventas = ventaRepositorio.findAll();
 		int numeroGanador = this.generarNumeroSorteo();
 		boolean ganador = true;
-		for (Venta v : ventas) {			
-			if ( numeroGanador == v.getId()) {
+		for (Venta v : ventas) {
+			if (numeroGanador == v.getId()) {
 				clienteServicio.findById(v.getCliente().getId()).get().setGanador(ganador);
 				clienteServicio.save(clienteServicio.findById(v.getCliente().getId()).get());
 			}
-		}		
+		}
 	}
-	
-	public List<Producto> top3() {	
+
+	public List<Producto> top3() {
 		List<Producto> top;
 		top = ventaRepositorio.productosMasVendidos(PageRequest.of(0, 3)).getContent();
-		for(Producto v : top) {
+		for (Producto v : top) {
 			System.out.println(v);
 		}
 		return top;
-	    /*List<Producto> top = ventaRepositorio.productosMasVendidos();	    
-	    return top.subList(0, Math.min(top.size(), 3));*/	    
+		/*
+		 * List<Producto> top = ventaRepositorio.productosMasVendidos(); return
+		 * top.subList(0, Math.min(top.size(), 3));
+		 */
 	}
-	
+
 }
