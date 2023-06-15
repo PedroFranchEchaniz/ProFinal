@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org" 
-	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>	
 	<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,24 +10,43 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 </head>
 <body>	
-	<header>		
-		<nav th:replace="~{fragment/header2::encabezado}"></nav>
-	</header>
-	<main>
-	  <main>
+<header>
+    <div class="navbar navbar-expand-md navbar-light bg-light">
+		<a class="navbar-brand" href="#" th:href="@{/}"><img src="../../img/logo.png" alt="the android's dungeon"></a>
+		<div class="menu-container">
+        	<nav th:replace="~{fragment/header3::encabezado}"></nav>        
+        	<nav th:replace="~{fragment/buscarTitulo::encabezado}"></nav>
+        </div>
+    </div>
+</header>
+	<main class="main-with-margin">
     <div class="maincontainer row d-flex"> 
-      <div class="side row d-flex col-sm-12 col-md-2 col-xl-2">
-        <a href="#">COMIC</a>
-        <a href="#">JUEGOS MESA</a>
-      </div>          
-      <div class="col-sm-12 col-md-12 col-xl-2 " th:each="producto:${productos} ">
-        <div class="card mt-5" style="max-width:300px">
-          <img class="card-img-top" th:src="${#strings.isEmpty(producto.img)} ? 'http://placehold.it/350x260' : ${producto.img}" alt="Card image" width="200px">
+      <div class="side row d-flex col-sm-12 col-md-3 col-xl-3">
+		    <div class="dropdown dropend">
+    			<button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+      				PRODUCTOS
+    			</button>
+    			<ul class="dropdown-menu">
+      				<li><a th:href="@{/comics}">COMIC</a></li>
+      				<li><a th:href="@{/juegosMesa}">JUEGOS MESA</a></li>
+      				<li><a th:href="@{/}">MOSTRAR TODO</a></li>
+    			</ul>
+  			</div>
+  			<form th:action="@{/filtrarPrecio}" th:object="${maxYmin}" method="post">
+    			<input class="col-9" type="number" min="0" max="10000" name="minPrice" placeholder="Precio mínimo" th:field="*{minPrecio}"/>
+    			<input class="col-9" type="number" min="0" max="10000" name="maxPrice" placeholder="Precio máximo" th:field="*{maxPrecio}"/>
+    			<button type="submit">Buscar</button>
+			</form> 			
+		</div>		  
+                
+      <div class="col-sm-12 col-md-4 col-xl-2 card-deck mb-4" th:each="producto:${productos}">
+        <div class="card mt-5 h-100 mb-3" style="max-width:300px">
+          <img class="card-img-top product-image" th:src="${#strings.isEmpty(producto.img)} ? 'http://placehold.it/350x260' : ${producto.img}" alt="protada producto">
           <div class="card-body">
             <h4 class="card-title" th:text="${producto.titulo}" >John Doe</h4>
-            <p class="card-text" th:text="${#strings.abbreviate(producto.stock,10)}">Some example text.</p>            
-            <p class="card-text" th:text="${producto.precioUnidad}">0</p>
-            
+            <p class="card-text" th:classappend="${producto.stock > 0} ? 'stock-available' : 'stock-unavailable'">Stock</p>            
+            <p class="card-text" th:text="${producto.descuento > 0} ? ${#numbers.formatDecimal(producto.descuento, 0 ,2) +'%'} : ''">0</p>
+            <p class="card-text" th:text="${producto.descuento > 0} ? ${#numbers.formatDecimal(producto.precioUnidad - (producto.precioUnidad*producto.descuento/100), 0 ,2) +'€'} : ${#numbers.formatDecimal(producto.precioUnidad ,0 ,2) +'€'}">0</p>             
             <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/productoAcarrito/{id}(id=${producto.id})}"class="btn btn-primary"><i class="bi bi-cart-plus-fill"></i></a>
             <a th:href="@{/mostrarProducto/{id}(id=${producto.id})}"class="btn btn-primary"><i class="bi bi-plus-circle"></i></a>
           </div>
@@ -36,7 +54,7 @@
       </div>                                                          
     </div>    
 	</main>
-	   <footer>
+	<footer>
         <nav th:replace="~{fragment/footer::pie}"></nav>
     </footer>  		
 </body>	

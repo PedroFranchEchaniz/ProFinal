@@ -1,6 +1,6 @@
 package com.salesianos.triana.dam.principioProyFinal.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -33,23 +33,13 @@ public class Venta {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private LocalDate fecha;	
+	private LocalDateTime fecha;	
 	private double total;
 	private double descuento;
 	
 	@ManyToOne
 	@JoinColumn(foreignKey=@ForeignKey(name="fk_venta_cliente"))
-	private Cliente cliente;
-	
-	public void addToCliente (Cliente c) {
-		this.cliente=c;
-		c.getVentas().add(this);
-	}
-	
-	public void removeFromCliente (Cliente c) {
-		c.getVentas().remove(this);
-		this.cliente=null;
-	}
+	private Cliente cliente;	
 	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude

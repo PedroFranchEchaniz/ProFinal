@@ -12,11 +12,10 @@ import com.salesianos.triana.dam.principioProyFinal.repos.ProductoRepositorio;
 @Service
 public class ProductoServicio extends BaseServiceImpl<Producto, Long, ProductoRepositorio> {
 
-	@Autowired
-	private ProductoRepositorio productoRepositorio;
+	
 
 	public void restarStock(Long id, int cantidad) {
-		Optional<Producto> optionalProducto = productoRepositorio.findById(id);
+		Optional<Producto> optionalProducto = this.repository.findById(id);
 		Producto producto = optionalProducto.get();
 		if (optionalProducto.isPresent()) {
 			producto.setStock(producto.getStock() - cantidad);
@@ -24,7 +23,29 @@ public class ProductoServicio extends BaseServiceImpl<Producto, Long, ProductoRe
 	}
 	
 	public List<Producto> findByTitulo (String titulo){
-		return productoRepositorio.findByTituloContainingIgnoreCase(titulo);
+		return this.repository.findByTituloContainingIgnoreCase(titulo);
 	}
+	
+	public List<Producto> listaComics (){
+		return this.repository.comics();
+	}
+	
+	public List<Producto> listaJuegosMesa(){
+		return this.repository.juegosMesa();
+	}
+	
+	public List<Producto> listaComicsDescuento(){
+		return this.repository.comicsDescuento();
+	}
+	
+	public List<Producto> listaJuegosDescuento(){
+		return this.repository.JuegosDescuento();		
+	}
+	
+	public List<Producto> filtroPrecioMinMax(double min, double max){
+		return this.repository.filtrarPrecio(min, max);
+	}
+	
+	
 
 }

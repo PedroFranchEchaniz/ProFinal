@@ -6,30 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+     <link rel="stylesheet" href="../static/css/estilocss.css" th:href="@{/css/estilocss.css}">
     <title>ListaComics</title>
 </head>
 <body>
     <header>
     	<nav th:replace="~{fragment/header4::encabezado}"></nav>	
-    </header>
-    
-    <main>
+    </header>   
+    <main class="main-with-margin">		
+		<div class="alert alert-warning" role="alert" th:if="${param.error}">
+    				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    				<span>Para eliminar este producto deberá eliminar las compras asociadas a el</span>
+			</div>		
         <div class="container-fluid">
+			 <a th:href="@{/admin/nuevoComic}" class="btn btn-primary">Añadir</a>
             <table class="table table-striped">
                 <thead>
                     <tr>                        
                         <th class="col-4">Titulo</th>
                         <th class="col-1">Precio Unidad</th>
                         <th class="col-1">Stock</th>
-                        <th class="col-2">Editorial</th>                
+                        <th class="col-1">Editorial</th>
+                        <th class="col-1">Descuento</th>
+                        <th class="col-1">Total</th>                
                     </tr>
                 </thead>
                 <tbody th:each="comic:${comics}">
                     <tr>
-                        <td th:text="${comic.titulo}">null</td>
-                        <td th:text="${comic.precioUnidad}">null</td>
-                        <td th:text="${comic.stock}">null</td>                        
-                        <td th:text="${comic.editorial.nombre}">null</td>
+                        <td class="col-4" th:text="${comic.titulo}">null</td>
+                        <td class="col-1" th:text="${comic.precioUnidad}">null</td>
+                        <td class="col-1" th:text="${comic.stock}">null</td>                        
+                        <td class="col-1" th:text="${comic.editorial.nombre}">null</td>
+                        <td class="col-1" th:text="${#numbers.formatDecimal(comic.descuento, 0, 2) + '%'}">null</td>
+                        <td class="col-1" th:text="${#numbers.formatDecimal(comic.precioUnidad - (comic.precioUnidad*comic.descuento/100), 0, 2) + '€'}">null</td>
                         <td>                        
                         <a href="#"
 								th:href="@{editarComic/{id}(id=${comic.id})}"
@@ -39,8 +48,7 @@
                         </td>
                     </tr>
                 </tbody>
-            </table>
-            <a th:href="@{/admin/nuevoComic}" class="btn btn-primary">Añadir</a>
+            </table>           
         </div>
     </main>          
 </body>

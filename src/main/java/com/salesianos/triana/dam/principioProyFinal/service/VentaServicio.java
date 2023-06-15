@@ -1,14 +1,17 @@
 package com.salesianos.triana.dam.principioProyFinal.service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -31,6 +34,9 @@ public class VentaServicio extends BaseServiceImpl<Venta, Long, VentaRepositorio
 
 	@Autowired
 	ProductoServicio productoServicio;
+	
+	@Autowired
+	ClienteServicio clienteServicio;
 
 	private Map<Producto, Integer> producto = new HashMap<>();
 
@@ -56,12 +62,22 @@ public class VentaServicio extends BaseServiceImpl<Venta, Long, VentaRepositorio
 		return Collections.unmodifiableMap(producto);
 	}
 
+	public int productosEnCarrito() {
+		int cantidad = 0;
+		for (Producto p : producto.keySet()) {
+			cantidad += producto.get(p);
+		}
+		System.out.println(cantidad);
+		return cantidad;
+		/* return producto.values().stream().mapToInt(Integer::intValue).sum(); */
+	}
+
 	public double totalCarrito() {
 		Map<Producto, Integer> carrito = getProductosInCart();
 		double total = 0.0;
 		if (carrito != null) {
 			for (Producto p : carrito.keySet()) {
-				total += p.getPrecioUnidad() * carrito.get(p);
+				total += (p.getPrecioUnidad() - (p.getPrecioUnidad() * p.getDescuento() / 100)) * carrito.get(p);
 			}
 			return total;
 		}
@@ -72,48 +88,64 @@ public class VentaServicio extends BaseServiceImpl<Venta, Long, VentaRepositorio
 		Venta v = new Venta();
 		for (Producto p : producto.keySet()) {
 			int valor = producto.get(p);
-			v.addLineaVenta(LineaVenta.builder().producto(p).cantidad(valor).pvp(p.getPrecioUnidad())
+			v.addLineaVenta(LineaVenta.builder()
+					.producto(p)
+					.cantidad(valor)
+					.pvp(p.getPrecioUnidad())
 					.subtotal(p.getPrecioUnidad() * valor).build());
 			productoServicio.restarStock(p.getId(), valor);
 		}
-		v.setCliente(c);
-		v.setFecha(LocalDate.now());
-		if (totalCarrito() > 125) {
-			v.setDescuento(0.25);
-			v.setTotal(totalCarrito() - (totalCarrito() * v.getDescuento()));
-		} else {
-			v.setTotal(totalCarrito());
+		v.setCliente(c);		
+		if(c.getGanador() != null) {
+			v.setDescuento(25);
+			v.setTotal(totalCarrito()-(totalCarrito()*v.getDescuento()/100));
+		}else {		
+		v.setTotal(totalCarrito());
 		}
+		c.setGanador(null);
+		clienteServicio.save(c);
+		v.setFecha(LocalDateTime.now());
 		save(v);
 		producto.clear();
-		/*
-		 * LineaVenta lv; List<LineaVenta> lista = new ArrayList<LineaVenta>(); Venta
-		 * venta = new Venta();
-		 * 
-		 * for (Map.Entry<Producto , Integer> carrito : producto.entrySet()) {
-		 * 
-		 * lv= LineaVenta.builder() .producto(carrito.getKey())
-		 * .cantidad(carrito.getValue()) .build(); lista.add(lv);
-		 * venta.addLineaVenta(lv);
-		 * 
-		 * }
-		 * 
-		 * venta = Venta.builder() .total(totalCarrito()) .fecha(LocalDate.now())
-		 * .build();
-		 * 
-		 * venta.setLineaVenta(lista);
-		 * 
-		 * producto.clear();
-		 */
+
 	}
 
 	public List<Venta> findByIdCliente(Cliente c) {
 		return ventaRepositorio.buscarPorIdCliente(c.getId());
 	}
 
-	/*
-	 * public boolean cantidadStock() { for (Producto p : producto.keySet()) { int
-	 * valor = producto.get(p); if (valor > p.getStock()) { return false; } } return
-	 * true; }
-	 */
+	public int productoEncontrado(Producto p) {
+		return ventaRepositorio.countProductoLineaVenta(p);
+	}
+
+	public int generarNumeroSorteo() {
+		int numMax = ventaRepositorio.findAll().get(ventaRepositorio.findAll().size()-1).getId().intValue();
+		int numMin = 1000;
+		Random num = new Random(System.nanoTime());
+		return num.nextInt(numMax - numMin + 1) + numMin;
+	}
+
+	public void encontrarIdganadora() {
+		List<Venta> ventas = ventaRepositorio.findAll();
+		int numeroGanador = this.generarNumeroSorteo();
+		boolean ganador = true;
+		for (Venta v : ventas) {			
+			if ( numeroGanador == v.getId()) {
+				clienteServicio.findById(v.getCliente().getId()).get().setGanador(ganador);
+				clienteServicio.save(clienteServicio.findById(v.getCliente().getId()).get());
+			}
+		}		
+	}
+	
+	public List<Producto> top3() {	
+		List<Producto> top;
+		top = ventaRepositorio.productosMasVendidos(PageRequest.of(0, 3)).getContent();
+		for(Producto v : top) {
+			System.out.println(v);
+		}
+		return top;
+	    /*List<Producto> top = ventaRepositorio.productosMasVendidos();	    
+	    return top.subList(0, Math.min(top.size(), 3));*/	    
+	}
+	
 }

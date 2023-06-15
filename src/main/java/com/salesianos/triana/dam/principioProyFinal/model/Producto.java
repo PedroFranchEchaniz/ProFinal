@@ -25,9 +25,10 @@ public class Producto {
 	@GeneratedValue
 	protected Long id;
 	protected String titulo;
-	protected double precioUnidad;
+	protected double precioUnidad;	
 	protected int stock;
 	protected String img;
+	protected double descuento;
 
 	
 	@ManyToOne

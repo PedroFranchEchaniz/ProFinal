@@ -55,8 +55,7 @@ public class ProductoController {
 		}else{
 			return "error";
 		}
-	}
-	
+	}	
 	
 	
 }

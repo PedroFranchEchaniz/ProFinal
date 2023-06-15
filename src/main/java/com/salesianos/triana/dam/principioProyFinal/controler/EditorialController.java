@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.salesianos.triana.dam.principioProyFinal.model.Editorial;
 import com.salesianos.triana.dam.principioProyFinal.service.EditorialServicio;
+import com.salesianos.triana.dam.principioProyFinal.service.ProductoServicio;
 
 @Controller
 @RequestMapping("/admin")
@@ -25,7 +26,10 @@ public class EditorialController {
 	
 	@Autowired
 	private EditorialServicio editorialServicio;
-
+	
+	@Autowired
+	private ProductoServicio producutoServicio;
+	
 	@GetMapping("/listaEditorial")
 	public String listarTodos(Model model) {
 		model.addAttribute("lista", editorialServicio.findAll());		
@@ -64,8 +68,11 @@ public class EditorialController {
 	@GetMapping("/borrarEditorial/{id}")
 	public String borrarEditorial(@PathVariable("id") Long id, Model model) {		
 		Optional<Editorial> eEliminar = editorialServicio.findById(id);
-		if (eEliminar != null) {
-			editorialServicio.delete(eEliminar.get());
+		if (eEliminar.isPresent()) {			
+			if(editorialServicio.productosEditorial(eEliminar.get())==0)
+				editorialServicio.delete(eEliminar.get());
+		}else {
+			return "redirect:/admin/listaEditorial/?error=true";
 		}
 		return "redirect:/admin/listaEditorial";
 	}	

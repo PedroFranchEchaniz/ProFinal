@@ -1,6 +1,9 @@
 package com.salesianos.triana.dam.principioProyFinal.controler;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,7 +11,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianos.triana.dam.principioProyFinal.formsBeans.SearchBean;
+import com.salesianos.triana.dam.principioProyFinal.formsBeans.SearchBeanDouble;
+import com.salesianos.triana.dam.principioProyFinal.model.Producto;
 import com.salesianos.triana.dam.principioProyFinal.service.ProductoServicio;
+import com.salesianos.triana.dam.principioProyFinal.service.VentaServicio;
 
 @Controller
 public class MainController {
@@ -18,10 +24,14 @@ public class MainController {
 	@Autowired
 	public ProductoServicio productoServicio;
 	
+	@Autowired VentaServicio ventaServicio;
+	
 	@GetMapping("/")
 	public String portada(Model model) {
 		model.addAttribute("productos", productoServicio.findAll());
 		model.addAttribute("searchForm", new SearchBean());
+		model.addAttribute("maxYmin", new SearchBeanDouble());
+		model.addAttribute("total_carrito", ventaServicio.totalCarrito());
 		return "index";
 	}
 	
@@ -33,6 +43,30 @@ public class MainController {
 	@PostMapping("/search")
 	public String buscarPorTitulo (@ModelAttribute("searchForm") SearchBean searchBean, Model model) {
 		model.addAttribute("productos", productoServicio.findByTitulo(searchBean.getSearch()));
+		model.addAttribute("maxYmin", new SearchBeanDouble());
+		model.addAttribute("total_carrito", ventaServicio.totalCarrito());
+		return "index";
+	}
+	
+	@PostMapping("/filtrarPrecio")
+	public String buscarRangoPrecio (@ModelAttribute("maxYmin") SearchBeanDouble searchBeanDouble, Model model) {
+		Double minPrecio = 0.0;
+		Double maxPrecio = 1000.0;
+		List <Producto> productos;
+		if(searchBeanDouble.getMinPrecio() == null && searchBeanDouble.getMaxPrecio() != null) {			
+			maxPrecio = searchBeanDouble.getMaxPrecio();
+			productos = productoServicio.filtroPrecioMinMax(minPrecio, maxPrecio);
+		}else if (searchBeanDouble.getMinPrecio() != null && searchBeanDouble.getMaxPrecio() == null) {
+			minPrecio = searchBeanDouble.getMinPrecio();
+			productos = productoServicio.filtroPrecioMinMax(minPrecio, maxPrecio);
+		}else {
+			minPrecio = searchBeanDouble.getMinPrecio();
+			maxPrecio = searchBeanDouble.getMaxPrecio();
+			productos = productoServicio.filtroPrecioMinMax(minPrecio, maxPrecio);
+		}
+		
+		model.addAttribute("productos", productos);
+		model.addAttribute("searchForm", new SearchBean());
 		return "index";
 	}
 	
@@ -41,7 +75,50 @@ public class MainController {
 		return "login";
 	}
 	
+	@GetMapping("/comics")
+	public String comics(Model model) {
+		model.addAttribute("productos", productoServicio.listaComics());
+		model.addAttribute("searchForm", new SearchBean());
+		model.addAttribute("maxYmin", new SearchBeanDouble());
+		model.addAttribute("total_carrito", ventaServicio.totalCarrito());
+		return "index";
+	}
 	
+	@GetMapping("/juegosMesa")
+	public String juegosMesa(Model model) {
+		model.addAttribute("productos", productoServicio.listaJuegosMesa());
+		model.addAttribute("searchForm", new SearchBean());
+		model.addAttribute("maxYmin", new SearchBeanDouble());
+		model.addAttribute("total_carrito", ventaServicio.totalCarrito());
+		return "index";
+	}
+	
+	@GetMapping("/comicsDescuento")
+	public String comicsDescuento(Model model) {
+		model.addAttribute("productos", productoServicio.listaComicsDescuento());
+		model.addAttribute("searchForm", new SearchBean());
+		model.addAttribute("maxYmin", new SearchBeanDouble());
+		model.addAttribute("total_carrito", ventaServicio.totalCarrito());
+		return "index";
+	}
+	
+	@GetMapping("/juegosMesaDescuento")
+	public String juegosMesaDescuento(Model model) {
+		model.addAttribute("productos", productoServicio.listaJuegosDescuento());
+		model.addAttribute("searchForm", new SearchBean());
+		model.addAttribute("maxYmin", new SearchBeanDouble());
+		model.addAttribute("total_carrito", ventaServicio.totalCarrito());
+		return "index";
+	}
+	
+	@ModelAttribute("cantidadCarrito")
+	@Order(2)
+	private int productosEnCarrito() {
+		int cantidad = 0;
+		cantidad = ventaServicio.productosEnCarrito();
+		System.out.println(cantidad);
+		return cantidad;
+	}
 	
 	
 }
