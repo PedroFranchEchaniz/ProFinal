@@ -3,16 +3,15 @@ package com.salesianos.triana.dam.principioProyFinal.controler;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.salesianos.triana.dam.principioProyFinal.model.Cliente;
 import com.salesianos.triana.dam.principioProyFinal.model.Comic;
 import com.salesianos.triana.dam.principioProyFinal.model.JuegoMesa;
 import com.salesianos.triana.dam.principioProyFinal.model.Producto;
+import com.salesianos.triana.dam.principioProyFinal.model.Valoracion;
 import com.salesianos.triana.dam.principioProyFinal.service.ClienteServicio;
 import com.salesianos.triana.dam.principioProyFinal.service.ComicServicio;
 import com.salesianos.triana.dam.principioProyFinal.service.JmesaServicio;
@@ -67,11 +66,10 @@ public class ProductoController {
 		}
 	}
 	
-	@GetMapping("/valorarProducto/{id}"){
-		public String monstrarProducto(@PathVariable("id") Long id, @AuthenticationPrincipal Cliente c) {
-			
-		}
-	}
-	
+	@GetMapping("/nuevaValoracion")
+		public String valorar(Model model) {
+			model.addAttribute("valoracion", new Valoracion());
+			return "valoracion";
+		}	
 	
 }
