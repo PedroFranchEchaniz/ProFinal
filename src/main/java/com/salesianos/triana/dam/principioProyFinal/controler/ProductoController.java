@@ -3,11 +3,15 @@ package com.salesianos.triana.dam.principioProyFinal.controler;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import com.salesianos.triana.dam.principioProyFinal.model.Cliente;
 import com.salesianos.triana.dam.principioProyFinal.model.Comic;
 import com.salesianos.triana.dam.principioProyFinal.model.JuegoMesa;
 import com.salesianos.triana.dam.principioProyFinal.model.Producto;
@@ -66,10 +70,18 @@ public class ProductoController {
 		}
 	}
 	
-	@GetMapping("/nuevaValoracion")
-		public String valorar(Model model) {
+	@GetMapping("/nuevaValoracion/{id}")
+		public String valorar(@PathVariable("id") Long id, @AuthenticationPrincipal Cliente c, Model model) {
 			model.addAttribute("valoracion", new Valoracion());
+			model.addAttribute("producto", productoServicio.findById(id).get());
+			model.addAttribute("cliente", c);
 			return "valoracion";
-		}	
+		}
+	
+	@PostMapping("/nuevaValoracion/submit")
+	public String submitNuevaValoracion(@ModelAttribute("valoracion") Valoracion v) {
+		servicioValoracion.save(v);
+		return"redirect:/user/misCompras";
+	}
 	
 }

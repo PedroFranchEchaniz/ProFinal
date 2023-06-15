@@ -15,12 +15,16 @@
 		<nav th:replace="~{fragment/headerAdmin::encabezado}"></nav>
 	</header>
     <main class="main-with-margin">
-        <form class="contenedorform row bg-dark text-light"  th:object="${valoracion}" method="post">
-            <fieldset class="contenedorfildset row d-flex col-6">
-				<input th:if="${producto != 0}" type="hidden" name="id" th:field="*{id}" />
-				<input th:value="{cliente.id}" type="hidden" name="idCliente" th:field="*"                
+        <form class="contenedorform row bg-dark text-light"  th:object="${valoracion}" method="post" th:action= "@{/nuevaValoracion/submit}">
+            <fieldset class="contenedorfildset row d-flex col-6">				
+				<Select name="idCliente" th:field="*{cliente}">
+					<option th:value="${cliente.id}" th:text="${cliente.nombre}"></option>
+				</Select>                
                 <label class="col-3" for="valoracion">Valoración</label>
-                <input class="col-9" type="resumen" name="valoracion" id="valoracion" required autofocus th:field="*{valoracion}">                
+                <input class="col-9" type="resumen" name="valoracion" id="valoracion" required autofocus th:field="*{valoracion}">
+               	<select name="idProducto" th:field="*{producto}">
+					   <option th:value="${producto.id}" th:text="${producto.titulo}"></option>
+				   </select>                
             <p>Los campos * son obligatorios</p>
            	</fieldset>
             <button type="submit" class="btn btn-primary botonmargin col-1">Agregar</button>
