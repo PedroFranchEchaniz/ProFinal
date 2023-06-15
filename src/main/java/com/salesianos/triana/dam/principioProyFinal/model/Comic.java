@@ -1,5 +1,7 @@
 package com.salesianos.triana.dam.principioProyFinal.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 
 import lombok.Data;
@@ -16,16 +18,20 @@ public class Comic extends Producto{
 
 	private String ilustrador;
 	private String guionista;
-	private String sinopsis;	
+	private String sinopsis;
 	
-
 	public Comic(Long id, String titulo, double precioUnidad, int stock, String img, double descuento,
-			Editorial editorial, String ilustrador, String guionista, String sinopsis) {
-		super(id, titulo, precioUnidad, stock, img, descuento, editorial);
+			Editorial editorial, Set<Valoracion> valoraciones, String ilustrador, String guionista, String sinopsis) {
+		super(id, titulo, precioUnidad, stock, img, descuento, editorial, valoraciones);
 		this.ilustrador = ilustrador;
 		this.guionista = guionista;
 		this.sinopsis = sinopsis;
 	}
+	
+	
+	
+
+	
 
 
 

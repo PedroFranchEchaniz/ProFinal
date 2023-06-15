@@ -3,7 +3,9 @@ package com.salesianos.triana.dam.principioProyFinal.model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,7 +15,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.lang.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -48,11 +49,11 @@ public class Cliente implements UserDetails  {
 	private boolean admin;
 	private Boolean ganador;
 	
-	/*@ToString.Exclude
+	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	@OneToMany(mappedBy="cliente", fetch = FetchType.EAGER)
 	@Builder.Default
-	private List <Valoracion> valoraciones = new ArrayList<>();*/
+	private Set <Valoracion> valoraciones = new HashSet<>();
 	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude

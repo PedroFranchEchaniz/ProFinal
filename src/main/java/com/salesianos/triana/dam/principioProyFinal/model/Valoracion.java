@@ -1,56 +1,58 @@
 package com.salesianos.triana.dam.principioProyFinal.model;
 
-/*import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-@Builder
-
+@AllArgsConstructor
+@Entity
 public class Valoracion {
+
+	@EmbeddedId
+	private ValoracionPk valoracionPk = new ValoracionPk();
 	
-	@Id
-	@GeneratedValue
-	private Long id;
-	private double puntuacion;
-	private String comentario;
+	public Valoracion(Cliente c ,Producto p) {
+		this.producto=p;
+		this.cliente=c;
+	}
+	
+	private String valoracion;
 	
 	@ManyToOne
-	@JoinColumn (foreignKey = @ForeignKey(name="fk_valoracion_cliente"))
-	private Cliente cliente;
-	
-	@ManyToOne
-	@JoinColumn (foreignKey = @ForeignKey(name = "fk_valoracion_producto"))
+	@MapsId("producto_id")
+	@JoinColumn(name = "producto_id")
 	private Producto producto;
 	
-	public void addToCliente(Cliente cliente) {
-		this.cliente=cliente;
-		cliente.getValoraciones().add(this);
+	@ManyToOne
+	@MapsId("cliente_id")
+	@JoinColumn(name="cliente_id")
+	private Cliente cliente;
+	
+	public void addToCliente(Cliente c) {
+		c.getValoraciones().add(this);
+		this.cliente = c;
 	}
 	
-	public void removeFromCliente (Cliente cliente) {
-		cliente.getValoraciones().remove(this);
-		this.cliente=null;
+	public void removeFromCliente (Cliente c) {
+		c.getValoraciones().add(this);
+		this.cliente = null;
 	}
 	
-	public void addToProducto (Producto producto) {
-		this.producto=producto;
-		producto.getValoraciones().add(this);
+	public void addToProducto (Producto p) {
+		p.getValoraciones().add(this);
+		this.producto = p;
 	}
 	
-	public void removeFromProducto (Producto producto) {
-		producto.getValoraciones().remove(this);
-		this.producto=null;
+	public void removeFromProducto(Producto p) {
+		p.getValoraciones().remove(this);
+		this.producto = null;
 	}
-}*/
+}

@@ -1,5 +1,7 @@
 package com.salesianos.triana.dam.principioProyFinal.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 
 import lombok.Data;
@@ -17,15 +19,18 @@ public class JuegoMesa extends Producto{
 	private int nJugadoresMin;
 	private int nJugadoresMax;
 	private String tipo;
-	private String descripcion;	
-
+	private String descripcion;
+	
 	public JuegoMesa(Long id, String titulo, double precioUnidad, int stock, String img, double descuento,
-			Editorial editorial, int nJugadoresMin, int nJugadoresMax, String tipo, String descripcion) {
-		super(id, titulo, precioUnidad, stock, img, descuento, editorial);
+			Editorial editorial, Set<Valoracion> valoraciones, int nJugadoresMin, int nJugadoresMax, String tipo,
+			String descripcion) {
+		super(id, titulo, precioUnidad, stock, img, descuento, editorial, valoraciones);
 		this.nJugadoresMin = nJugadoresMin;
 		this.nJugadoresMax = nJugadoresMax;
 		this.tipo = tipo;
 		this.descripcion = descripcion;
-	}
+	}	
+
+	
 	
 }
